@@ -1,0 +1,80 @@
+{
+  "source": "https://www.swsresearch.com/institute-sw/api/index_analysis/index_analysis_report/",
+  "requested_range": [
+    "2015-01-01",
+    "2026-07-31"
+  ],
+  "per_code": [
+    {
+      "code": "801054",
+      "name": "稀有金属",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801055",
+      "name": "工业金属",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801056",
+      "name": "能源金属",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801039",
+      "name": "非金属材料",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801086",
+      "name": "电子化学品",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801053",
+      "name": "贵金属",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801030",
+      "name": "基础化工",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801950",
+      "name": "煤炭",
+      "rows": 1610,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801960",
+      "name": "石油石化",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31"
+    },
+    {
+      "code": "801040",
+      "name": "钢铁",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31"
+    }
+  ],
+  "sha256": "6a8779c9ab11f99cbc9f2f20bef4d2a28b1fe304b1b43e76ba0a489418cce846"
+}

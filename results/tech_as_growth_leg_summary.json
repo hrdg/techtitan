@@ -1,0 +1,72 @@
+{
+  "window": [
+    "2021-01-04",
+    "2026-07-31"
+  ],
+  "growth_day_share": 0.4656,
+  "avg_gate_growth": 0.2018,
+  "avg_gate_value": 0.1036,
+  "results": [
+    {
+      "variant": "科技池成长腿 （无A016）",
+      "annual_return": 0.5462,
+      "annual_vol": 0.2889,
+      "sharpe": 1.8906,
+      "max_drawdown": -0.3724,
+      "calmar": 1.4667,
+      "oos_annual": 1.3768,
+      "oos_sharpe": 4.7005
+    },
+    {
+      "variant": "科技池+ΔAR成长腿 （无A016）",
+      "annual_return": 0.4784,
+      "annual_vol": 0.2637,
+      "sharpe": 1.8146,
+      "max_drawdown": -0.2845,
+      "calmar": 1.6813,
+      "oos_annual": 1.167,
+      "oos_sharpe": 4.2761
+    },
+    {
+      "variant": "科技池成长腿 ＋分腿A016",
+      "annual_return": 0.2344,
+      "annual_vol": 0.1403,
+      "sharpe": 1.6709,
+      "max_drawdown": -0.0858,
+      "calmar": 2.7309,
+      "oos_annual": 0.5261,
+      "oos_sharpe": 3.3446
+    },
+    {
+      "variant": "科技池+ΔAR成长腿 ＋分腿A016",
+      "annual_return": 0.2287,
+      "annual_vol": 0.137,
+      "sharpe": 1.6694,
+      "max_drawdown": -0.0858,
+      "calmar": 2.6639,
+      "oos_annual": 0.4701,
+      "oos_sharpe": 3.0455
+    },
+    {
+      "variant": "原版成长腿(159915+588000) （无A016）",
+      "annual_return": 0.3797,
+      "annual_vol": 0.2541,
+      "sharpe": 1.4943,
+      "max_drawdown": -0.2333,
+      "calmar": 1.6271,
+      "oos_annual": 0.8457,
+      "oos_sharpe": 3.7612
+    },
+    {
+      "variant": "原版成长腿(159915+588000) ＋分腿A016",
+      "annual_return": 0.2014,
+      "annual_vol": 0.1405,
+      "sharpe": 1.4331,
+      "max_drawdown": -0.106,
+      "calmar": 1.8995,
+      "oos_annual": 0.3952,
+      "oos_sharpe": 3.5543
+    }
+  ],
+  "caveat": "科技池为指数口径、原版腿与价值腿为 ETF 复权价；A016 敞口 clip 到 [0,1]，其余现金"
+}

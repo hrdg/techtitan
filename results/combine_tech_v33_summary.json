@@ -1,0 +1,156 @@
+{
+  "window": [
+    "2021-01-04",
+    "2026-07-31"
+  ],
+  "sources": {
+    "v33_nav": "/Users/hsh/Documents/Quant/风格轮动/research/runs/v33_size_etf_20261005/nav_platform.csv",
+    "v33_definition": "成长/价值周频票 → 512100 中证1000ETF / 510300 沪深300ETF；gated 为分腿 A016"
+  },
+  "caveat": "风格袖含成本、科技袖零成本；权重按月重置",
+  "results": [
+    {
+      "variant": "60% 科技+分腿A016 ＋ 40% v3.3分腿A016",
+      "annual_return": 0.2382,
+      "annual_vol": 0.123,
+      "sharpe": 1.9371,
+      "max_drawdown": -0.0764,
+      "calmar": 3.1165,
+      "oos_annual": 0.4717,
+      "oos_sharpe": 3.3564,
+      "n_days": 1351
+    },
+    {
+      "variant": "70% 科技+分腿A016 ＋ 30% v3.3分腿A016",
+      "annual_return": 0.2606,
+      "annual_vol": 0.1345,
+      "sharpe": 1.9371,
+      "max_drawdown": -0.087,
+      "calmar": 2.9946,
+      "oos_annual": 0.5242,
+      "oos_sharpe": 3.3881,
+      "n_days": 1351
+    },
+    {
+      "variant": "50% 科技+分腿A016 ＋ 50% v3.3分腿A016",
+      "annual_return": 0.2159,
+      "annual_vol": 0.1119,
+      "sharpe": 1.9291,
+      "max_drawdown": -0.0656,
+      "calmar": 3.2928,
+      "oos_annual": 0.4204,
+      "oos_sharpe": 3.3182,
+      "n_days": 1351
+    },
+    {
+      "variant": "② 科技+分腿A016(IC)",
+      "annual_return": 0.3288,
+      "annual_vol": 0.1712,
+      "sharpe": 1.9204,
+      "max_drawdown": -0.1174,
+      "calmar": 2.8005,
+      "oos_annual": 0.6899,
+      "oos_sharpe": 3.4771,
+      "n_days": 1351
+    },
+    {
+      "variant": "④ v3.3 分腿A016",
+      "annual_return": 0.1072,
+      "annual_vol": 0.0747,
+      "sharpe": 1.4349,
+      "max_drawdown": -0.0615,
+      "calmar": 1.7442,
+      "oos_annual": 0.1826,
+      "oos_sharpe": 2.4586,
+      "n_days": 1350
+    },
+    {
+      "variant": "50% 科技+ΔAR ＋ 50% v3.3分腿A016",
+      "annual_return": 0.2224,
+      "annual_vol": 0.1848,
+      "sharpe": 1.2032,
+      "max_drawdown": -0.1833,
+      "calmar": 1.2132,
+      "oos_annual": 0.5428,
+      "oos_sharpe": 2.4932,
+      "n_days": 1351
+    },
+    {
+      "variant": "60% 科技+ΔAR ＋ 40% v3.3分腿A016",
+      "annual_return": 0.243,
+      "annual_vol": 0.2145,
+      "sharpe": 1.1325,
+      "max_drawdown": -0.2171,
+      "calmar": 1.1194,
+      "oos_annual": 0.6155,
+      "oos_sharpe": 2.4321,
+      "n_days": 1351
+    },
+    {
+      "variant": "70% 科技+ΔAR ＋ 30% v3.3分腿A016",
+      "annual_return": 0.2627,
+      "annual_vol": 0.2448,
+      "sharpe": 1.0731,
+      "max_drawdown": -0.2497,
+      "calmar": 1.0521,
+      "oos_annual": 0.688,
+      "oos_sharpe": 2.3826,
+      "n_days": 1351
+    },
+    {
+      "variant": "① 科技+ΔAR（基准）",
+      "annual_return": 0.3163,
+      "annual_vol": 0.3373,
+      "sharpe": 0.9379,
+      "max_drawdown": -0.341,
+      "calmar": 0.9275,
+      "oos_annual": 0.9022,
+      "oos_sharpe": 2.2742,
+      "n_days": 1351
+    },
+    {
+      "variant": "70% 科技+ΔAR ＋ 30% v3.3无闸",
+      "annual_return": 0.2558,
+      "annual_vol": 0.2731,
+      "sharpe": 0.9368,
+      "max_drawdown": -0.309,
+      "calmar": 0.828,
+      "oos_annual": 0.716,
+      "oos_sharpe": 2.2529,
+      "n_days": 1351
+    },
+    {
+      "variant": "60% 科技+ΔAR ＋ 40% v3.3无闸",
+      "annual_return": 0.2345,
+      "annual_vol": 0.2543,
+      "sharpe": 0.9223,
+      "max_drawdown": -0.3019,
+      "calmar": 0.7768,
+      "oos_annual": 0.6534,
+      "oos_sharpe": 2.2289,
+      "n_days": 1351
+    },
+    {
+      "variant": "50% 科技+ΔAR ＋ 50% v3.3无闸",
+      "annual_return": 0.2126,
+      "annual_vol": 0.2372,
+      "sharpe": 0.8962,
+      "max_drawdown": -0.3048,
+      "calmar": 0.6975,
+      "oos_annual": 0.5907,
+      "oos_sharpe": 2.1901,
+      "n_days": 1351
+    },
+    {
+      "variant": "③ v3.3 无A016",
+      "annual_return": 0.0957,
+      "annual_vol": 0.1959,
+      "sharpe": 0.4882,
+      "max_drawdown": -0.3427,
+      "calmar": 0.2791,
+      "oos_annual": 0.2794,
+      "oos_sharpe": 1.4749,
+      "n_days": 1350
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "finding": "A016 只有两条独立腿：IC==IM、IF==IH（逐日完全相同）",
+  "growth_day_partial_exposure_share": 0.4054,
+  "avg_gate_growth": 0.2558,
+  "avg_gate_growth_squared": 0.1796,
+  "results": [
+    {
+      "variant": "① 科技池成长腿 ＋分腿A016（单闸）",
+      "avg_exposure": 0.167,
+      "annual_return": 0.2344,
+      "annual_vol": 0.1403,
+      "sharpe": 1.6709,
+      "max_drawdown": -0.0858,
+      "calmar": 2.7309,
+      "oos_sharpe": 3.3446
+    },
+    {
+      "variant": "③ 只在成长日加 IC 闸（价值腿不闸）",
+      "avg_exposure": 0.654,
+      "annual_return": 0.2875,
+      "annual_vol": 0.1839,
+      "sharpe": 1.5634,
+      "max_drawdown": -0.1498,
+      "calmar": 1.9187,
+      "oos_sharpe": 3.8107
+    },
+    {
+      "variant": "② 科技池成长腿A016 ＋分腿A016（成长日双闸=exp²）",
+      "avg_exposure": 0.132,
+      "annual_return": 0.1805,
+      "annual_vol": 0.12,
+      "sharpe": 1.504,
+      "max_drawdown": -0.0858,
+      "calmar": 2.1028,
+      "oos_sharpe": 2.9331
+    }
+  ]
+}

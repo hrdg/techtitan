@@ -1,0 +1,122 @@
+{
+  "strategy": "高集中度高估值 + ΔAR 择时（threshold=1.5）",
+  "note": "月频为研报口径；周频是本复现的扩展变体，非研报原策略",
+  "bond_leg": {
+    "etf": "511010.XSHG",
+    "name": "国债ETF（上证5年期国债）"
+  },
+  "industries_held_at_weekly": [
+    "801081",
+    "801085",
+    "801093",
+    "801101",
+    "801102",
+    "801103",
+    "801735",
+    "801737",
+    "801745"
+  ],
+  "etf_mapping": {
+    "801081": {
+      "etf": "512480.XSHG",
+      "name": "半导体ETF（中证全指半导体）",
+      "tracking": "直接"
+    },
+    "801085": {
+      "etf": "159732.XSHE",
+      "name": "消费电子ETF",
+      "tracking": "直接"
+    },
+    "801093": {
+      "etf": "159565.XSHE",
+      "name": "汽车零部件ETF（中证全指汽车零部件）",
+      "tracking": "直接"
+    },
+    "801101": {
+      "etf": "159998.XSHE",
+      "name": "计算机ETF（中证计算机，一级行业代理）",
+      "tracking": "代理"
+    },
+    "801102": {
+      "etf": "515880.XSHG",
+      "name": "通信ETF（中证全指通信设备）",
+      "tracking": "直接"
+    },
+    "801103": {
+      "etf": "159852.XSHE",
+      "name": "软件ETF（中证软件服务，兄弟二级代理）",
+      "tracking": "代理"
+    },
+    "801735": {
+      "etf": "515790.XSHG",
+      "name": "光伏ETF（中证光伏产业）",
+      "tracking": "直接"
+    },
+    "801737": {
+      "etf": "159755.XSHE",
+      "name": "电池ETF（国证新能源车电池）",
+      "tracking": "直接"
+    },
+    "801745": {
+      "etf": "512660.XSHG",
+      "name": "军工ETF（中证军工，一级行业代理）",
+      "tracking": "代理"
+    }
+  },
+  "summary": {
+    "M": {
+      "label": "月频（研报原口径）",
+      "annual_return": 0.3151,
+      "max_drawdown": -0.341,
+      "sharpe": 0.9712,
+      "calmar": 0.9239,
+      "no_timing_annual": 0.289,
+      "risk_off_share": 0.2834,
+      "industry_count_dist": {
+        "1": 1361,
+        "2": 964
+      },
+      "legs_count_dist": {
+        "1": 1441,
+        "2": 884
+      },
+      "rebalance_count": 115,
+      "industries_per_rebalance_dist": {
+        "1": 68,
+        "2": 47
+      },
+      "mean_industries_per_rebalance": 1.409,
+      "max_min_industries": [
+        2,
+        1
+      ]
+    },
+    "W": {
+      "label": "周频",
+      "annual_return": 0.2662,
+      "max_drawdown": -0.3614,
+      "sharpe": 0.8165,
+      "calmar": 0.7365,
+      "no_timing_annual": 0.228,
+      "risk_off_share": 0.2834,
+      "industry_count_dist": {
+        "1": 1372,
+        "2": 953
+      },
+      "legs_count_dist": {
+        "1": 1459,
+        "2": 866
+      },
+      "rebalance_count": 490,
+      "industries_per_rebalance_dist": {
+        "1": 291,
+        "2": 199
+      },
+      "mean_industries_per_rebalance": 1.406,
+      "max_min_industries": [
+        2,
+        1
+      ]
+    }
+  }
+}

@@ -1,0 +1,590 @@
+{
+  "schema_version": "1.0",
+  "strategy_sha256": "1340a31c4730e8a46b16491ca49b1f88c85b0d7fff4af06234e6b8ca6f007e75",
+  "code_revision": {
+    "src/tech_rotation/factors.py": "7a50af7645847edc6880abd086f03ef115394ef7b76045b7220ab43573472a73",
+    "src/tech_rotation/backtest.py": "15512e73f5a9303a801852320cfb976008b5754ac1d0da402fc9cb26e20f876e",
+    "scripts/run_reproduction.py": "94573323c5a5c782a8cfc2a94692eddc5da0849c3123765e49e7e2a67df1e80c"
+  },
+  "data_snapshot": {
+    "sw_l2_daily.parquet": "6de13b000e11d8eeb0c9c171a1fa9752023af8d338515dfbf84774e86dea30e0",
+    "industry_panel_final.parquet": "ac9c2c55ba1faa409d1d9fccbf3e743fa10a01941e2c1b80417bb2bce1e8a811",
+    "industry_panel_proxy.parquet": "37aa9f984788d6a9a17d2f1eb703fa026bd75ba3b8577c53f191d6be5f07d118",
+    "jq_panel_1520.json": "2f8a15fb4d63ec9c98cd49d3ea0ccc43bda9e3dbfff6eff26cdb7e06f11ba296",
+    "benchmark_csi_daily.parquet": "e62002b68ed12f9de7c97f74765435578a7738473f90c124e5375053510975e7",
+    "sw2_members.json": "4398ea3603532e8865c7ad5f384a296ff069cea05727c9e0d52d571fdd4c00a0"
+  },
+  "environment": {
+    "python": "3.12.14 (.venv, uv)",
+    "packages": [
+      "pandas 2.2.3",
+      "numpy 2.3.5",
+      "akshare 1.19.1",
+      "pyarrow",
+      "pytest 9.1.1"
+    ],
+    "platform": "macOS, Asia/Shanghai"
+  },
+  "checks": [
+    {
+      "id": "source_fidelity",
+      "status": "PASS",
+      "criterion": "研报公式、参数、区间、表格均有页码定位",
+      "evidence": [
+        {
+          "path": "evidence.json",
+          "note": "F001-F042 逐条带页码"
+        },
+        {
+          "path": "../../raw/report_text.txt",
+          "note": "pdfplumber 文本层"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "id": "formula_fixture",
+      "status": "PASS",
+      "criterion": "C/ΔC/AR/RV/择时信号/指标用构造数据独立验算",
+      "evidence": [
+        {
+          "path": "../../../tests/test_factors.py",
+          "note": "C/ΔC/AR/RV 公式验算"
+        },
+        {
+          "path": "../../../tests/test_backtest.py",
+          "note": "组合/择时/指标验算；pytest 结果: 11 passed in 0.20s"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "id": "point_in_time",
+      "status": "PARTIAL",
+      "criterion": "滚动窗口只用截至决策时点的数据；信号先于成交",
+      "evidence": [
+        {
+          "path": "../../../src/tech_rotation/factors.py",
+          "note": "滚动窗口 + 前一日流通市值"
+        },
+        {
+          "path": "../../../src/tech_rotation/backtest.py",
+          "note": "上月末信号、signal.shift(1) 次日生效"
+        }
+      ],
+      "reason": "行业成分股名单在 2021-12-13 之前为冻结名单（研报用万得回溯序列，属分类前推），存在成分口径上的前视，无法用可得数据消除。"
+    },
+    {
+      "id": "historical_universe",
+      "status": "PARTIAL",
+      "criterion": "使用历史时点成分",
+      "evidence": [
+        {
+          "path": "../../../data/raw/sw2_members.json",
+          "note": "11 个抽样日的 PIT 名单"
+        },
+        {
+          "path": "../../../data/raw/proxy_validation.csv",
+          "note": "重合期校验"
+        }
+      ],
+      "reason": "2021-12 之前聚宽/申万均无二级行业成分历史，只能用 2021-12-13 名单前推。"
+    },
+    {
+      "id": "execution",
+      "status": "PARTIAL",
+      "criterion": "调仓价与成交假设明确",
+      "evidence": [
+        {
+          "path": "strategy.json",
+          "note": "execution.rebalance/fill/costs"
+        }
+      ],
+      "reason": "研报称“每月第一个交易日开盘价调仓”；本实现用收盘到收盘日收益并在调仓日当日生效近似开盘成交，零成本、无冲击。"
+    },
+    {
+      "id": "accounting",
+      "status": "PASS",
+      "criterion": "权重归一、无杠杆、择时全额切换",
+      "evidence": [
+        {
+          "path": "../../../tests/test_backtest.py",
+          "note": "等权与调仓生效日用例"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "id": "smoke_backtest",
+      "status": "PASS",
+      "criterion": "端到端可运行并产出表格",
+      "evidence": [
+        {
+          "path": "logs/run_reproduction_final.log",
+          "note": "端到端运行日志（成功）"
+        },
+        {
+          "path": "../../../results/table4_5_proxy.csv",
+          "note": "表 4/5 复现"
+        },
+        {
+          "path": "../../../results/threshold_sensitivity_proxy.csv",
+          "note": "表 6/7 复现"
+        },
+        {
+          "path": "../../../results/grid_k1k2_proxy.csv",
+          "note": "图 11/12 复现"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "id": "reproducibility",
+      "status": "PASS",
+      "criterion": "脚本、数据快照哈希、依赖版本齐全",
+      "evidence": [
+        {
+          "path": "../../../data/raw/industry_panel_proxy_manifest.json",
+          "note": "含 sha256"
+        },
+        {
+          "path": "../../../data/raw/sw_l2_fetch_manifest.json",
+          "note": "申万取数清单"
+        },
+        {
+          "path": "../../../scripts/run_reproduction.py",
+          "note": "复现入口脚本"
+        }
+      ],
+      "reason": "聚宽取数需账号授权与网络；其余步骤可离线重跑。"
+    },
+    {
+      "id": "metrics_comparison",
+      "status": "PARTIAL",
+      "criterion": "表 4/表 5 关键行分项对照",
+      "evidence": [
+        {
+          "path": "../../../results/table4_5_proxy.csv",
+          "note": "复现指标表"
+        },
+        {
+          "path": "../../../results/threshold_sensitivity_proxy.csv",
+          "note": "阈值敏感性对照"
+        }
+      ],
+      "reason": "单因子腿（高估值）与基准波动率/回撤高度一致，但组合腿与择时后收益仍低于研报，主要来自数据源替代与样本起点差异。"
+    }
+  ],
+  "command_evidence": [
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python -m pytest tests -q",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:58:03.065506+08:00",
+      "exit_code": 0,
+      "log_path": "logs/pytest.log"
+    },
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/run_reproduction.py --panel final",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:58:03.371061+08:00",
+      "exit_code": 0,
+      "log_path": "logs/run_reproduction_final.log"
+    },
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/run_reproduction.py --panel official --start 2023-01-01",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:58:09.810450+08:00",
+      "exit_code": 0,
+      "log_path": "logs/run_reproduction_official.log"
+    },
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/fetch_sw_l2.py",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:58:12.496031+08:00",
+      "exit_code": 0,
+      "log_path": "logs/fetch_sw_l2.log"
+    },
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/build_industry_panel.py",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:58:32.526197+08:00",
+      "exit_code": 0,
+      "log_path": "logs/build_industry_panel.log"
+    },
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/validate_proxy_panel.py",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:59:02.761449+08:00",
+      "exit_code": 0,
+      "log_path": "logs/validate_proxy_panel.log"
+    },
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/build_final_panel.py",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:59:02.994247+08:00",
+      "exit_code": 0,
+      "log_path": "logs/build_final_panel.log"
+    },
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/spec_sensitivity.py",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:59:03.302491+08:00",
+      "exit_code": 0,
+      "log_path": "logs/spec_sensitivity.log"
+    },
+    {
+      "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/make_charts.py",
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "executed_at": "2026-10-06T23:59:06.461888+08:00",
+      "exit_code": 0,
+      "log_path": "logs/make_charts.log"
+    }
+  ],
+  "metric_comparison": [
+    {
+      "id": "table4_high_value",
+      "strategy": "高估值（无择时）",
+      "detail": {
+        "metric": "高估值",
+        "target": {
+          "cum": 6.9782,
+          "ann": 0.2524,
+          "vol": 0.3539,
+          "sharpe": 0.8131,
+          "mdd": 0.5447,
+          "calmar": 0.4633
+        },
+        "reproduced_cum_return": 6.05614643901804,
+        "target_cum_return": 6.9782,
+        "rel_dev_cum_return": 0.1321,
+        "reproduced_annual_return": 0.2337973308609391,
+        "target_annual_return": 0.2524,
+        "rel_dev_annual_return": 0.0737,
+        "reproduced_annual_vol": 0.3648956224628397,
+        "target_annual_vol": 0.3539,
+        "rel_dev_annual_vol": 0.0311,
+        "reproduced_max_drawdown": -0.5419019536611477,
+        "target_max_drawdown": 0.5447,
+        "rel_dev_max_drawdown": 0.0051,
+        "reproduced_calmar": 0.4314384350921403,
+        "target_calmar": 0.4633,
+        "rel_dev_calmar": 0.0688,
+        "reproduced_sharpe": 0.6407238576416427,
+        "target_sharpe": 0.8131,
+        "rel_dev_sharpe": 0.212,
+        "note_sharpe": "研报夏普口径无法由表内数据复算（F034），此处仅作量级参考"
+      }
+    },
+    {
+      "id": "table4_high_concentration",
+      "strategy": "高集中度（无择时）",
+      "detail": {
+        "metric": "高集中度",
+        "target": {
+          "cum": 2.4314,
+          "ann": 0.1429,
+          "vol": 0.3033,
+          "sharpe": 0.5926,
+          "mdd": 0.5082,
+          "calmar": 0.2813
+        },
+        "reproduced_cum_return": 3.0817954724265606,
+        "target_cum_return": 2.4314,
+        "rel_dev_cum_return": 0.2675,
+        "reproduced_annual_return": 0.1632764309888277,
+        "target_annual_return": 0.1429,
+        "rel_dev_annual_return": 0.1426,
+        "reproduced_annual_vol": 0.3093034967854677,
+        "target_annual_vol": 0.3033,
+        "rel_dev_annual_vol": 0.0198,
+        "reproduced_max_drawdown": -0.4272193674442622,
+        "target_max_drawdown": 0.5082,
+        "rel_dev_max_drawdown": 0.1593,
+        "reproduced_calmar": 0.3821840567893491,
+        "target_calmar": 0.2813,
+        "rel_dev_calmar": 0.3586,
+        "reproduced_sharpe": 0.5278842065664583,
+        "target_sharpe": 0.5926,
+        "rel_dev_sharpe": 0.1092,
+        "note_sharpe": "研报夏普口径无法由表内数据复算（F034），此处仅作量级参考"
+      }
+    },
+    {
+      "id": "table4_combined",
+      "strategy": "高集中度高估值（无择时）",
+      "detail": {
+        "metric": "高集中度高估值",
+        "target": {
+          "cum": 17.551,
+          "ann": 0.3723,
+          "vol": 0.3726,
+          "sharpe": 1.0358,
+          "mdd": 0.549,
+          "calmar": 0.6781
+        },
+        "reproduced_cum_return": 9.600167713300602,
+        "target_cum_return": 17.551,
+        "rel_dev_cum_return": 0.453,
+        "reproduced_annual_return": 0.288987427488206,
+        "target_annual_return": 0.3723,
+        "rel_dev_annual_return": 0.2238,
+        "reproduced_annual_vol": 0.3838710077311766,
+        "target_annual_vol": 0.3726,
+        "rel_dev_annual_vol": 0.0302,
+        "reproduced_max_drawdown": -0.4888182376520179,
+        "target_max_drawdown": 0.549,
+        "rel_dev_max_drawdown": 0.1096,
+        "reproduced_calmar": 0.5911960831828286,
+        "target_calmar": 0.6781,
+        "rel_dev_calmar": 0.1282,
+        "reproduced_sharpe": 0.7528243125112039,
+        "target_sharpe": 1.0358,
+        "rel_dev_sharpe": 0.2732,
+        "note_sharpe": "研报夏普口径无法由表内数据复算（F034），此处仅作量级参考"
+      }
+    },
+    {
+      "id": "table4_a500",
+      "strategy": "中证A500",
+      "detail": {
+        "metric": "中证A500",
+        "target": {
+          "cum": 0.545,
+          "ann": 0.0483,
+          "vol": 0.1923,
+          "sharpe": 0.3414,
+          "mdd": 0.443,
+          "calmar": 0.109
+        },
+        "reproduced_cum_return": 0.493364257793665,
+        "target_cum_return": 0.545,
+        "rel_dev_cum_return": 0.0947,
+        "reproduced_annual_return": 0.0441230805321748,
+        "target_annual_return": 0.0483,
+        "rel_dev_annual_return": 0.0865,
+        "reproduced_annual_vol": 0.1922171465512725,
+        "target_annual_vol": 0.1923,
+        "rel_dev_annual_vol": 0.0004,
+        "reproduced_max_drawdown": -0.4430078164792222,
+        "target_max_drawdown": 0.443,
+        "rel_dev_max_drawdown": 0.0,
+        "reproduced_calmar": 0.0995988758908146,
+        "target_calmar": 0.109,
+        "rel_dev_calmar": 0.0862,
+        "reproduced_sharpe": 0.2295480987197223,
+        "target_sharpe": 0.3414,
+        "rel_dev_sharpe": 0.3276,
+        "note_sharpe": "研报夏普口径无法由表内数据复算（F034），此处仅作量级参考"
+      }
+    },
+    {
+      "id": "table4_tech50",
+      "strategy": "科技50",
+      "detail": {
+        "metric": "科技50",
+        "target": {
+          "cum": 1.8343,
+          "ann": 0.1195,
+          "vol": 0.2744,
+          "sharpe": 0.5483,
+          "mdd": 0.6305,
+          "calmar": 0.1895
+        },
+        "reproduced_cum_return": 1.56837847694195,
+        "target_cum_return": 1.8343,
+        "rel_dev_cum_return": 0.145,
+        "reproduced_annual_return": 0.1067495579539923,
+        "target_annual_return": 0.1195,
+        "rel_dev_annual_return": 0.1067,
+        "reproduced_annual_vol": 0.2747653000575148,
+        "target_annual_vol": 0.2744,
+        "rel_dev_annual_vol": 0.0013,
+        "reproduced_max_drawdown": -0.6305419916480697,
+        "target_max_drawdown": 0.6305,
+        "rel_dev_max_drawdown": 0.0001,
+        "reproduced_calmar": 0.1692980949214457,
+        "target_calmar": 0.1895,
+        "rel_dev_calmar": 0.1066,
+        "reproduced_sharpe": 0.3885117878118057,
+        "target_sharpe": 0.5483,
+        "rel_dev_sharpe": 0.2914,
+        "note_sharpe": "研报夏普口径无法由表内数据复算（F034），此处仅作量级参考"
+      }
+    },
+    {
+      "id": "table4_industry_ew",
+      "strategy": "行业等权",
+      "detail": {
+        "metric": "行业等权重",
+        "target": {
+          "cum": 1.4427,
+          "ann": 0.1016,
+          "vol": 0.2772,
+          "sharpe": 0.4879,
+          "mdd": 0.4647,
+          "calmar": 0.2187
+        },
+        "reproduced_cum_return": 1.5839906850727972,
+        "target_cum_return": 1.4427,
+        "rel_dev_cum_return": 0.0979,
+        "reproduced_annual_return": 0.1074709919480199,
+        "target_annual_return": 0.1016,
+        "rel_dev_annual_return": 0.0578,
+        "reproduced_annual_vol": 0.278744803627081,
+        "target_annual_vol": 0.2772,
+        "rel_dev_annual_vol": 0.0056,
+        "reproduced_max_drawdown": -0.452907142333985,
+        "target_max_drawdown": 0.4647,
+        "rel_dev_max_drawdown": 0.0254,
+        "reproduced_calmar": 0.2372914487375607,
+        "target_calmar": 0.2187,
+        "rel_dev_calmar": 0.085,
+        "reproduced_sharpe": 0.385553346823283,
+        "target_sharpe": 0.4879,
+        "rel_dev_sharpe": 0.2098,
+        "note_sharpe": "研报夏普口径无法由表内数据复算（F034），此处仅作量级参考"
+      }
+    },
+    {
+      "id": "table5_combined_timed",
+      "strategy": "高集中度高估值（择时）",
+      "detail": {
+        "metric": "高集中度高估值_择时",
+        "target": {
+          "cum": 35.8395,
+          "ann": 0.4782,
+          "vol": 0.3229,
+          "sharpe": 1.3724,
+          "mdd": 0.3274,
+          "calmar": 1.4606
+        },
+        "reproduced_cum_return": 11.773442661881928,
+        "target_cum_return": 35.8395,
+        "rel_dev_cum_return": 0.6715,
+        "reproduced_annual_return": 0.3150971768821753,
+        "target_annual_return": 0.4782,
+        "rel_dev_annual_return": 0.3411,
+        "reproduced_annual_vol": 0.3244328279881131,
+        "target_annual_vol": 0.3229,
+        "rel_dev_annual_vol": 0.0047,
+        "reproduced_max_drawdown": -0.3410371413107937,
+        "target_max_drawdown": 0.3274,
+        "rel_dev_max_drawdown": 0.0417,
+        "reproduced_calmar": 0.9239380076641598,
+        "target_calmar": 1.4606,
+        "rel_dev_calmar": 0.3674,
+        "reproduced_sharpe": 0.9712247026177022,
+        "target_sharpe": 1.3724,
+        "rel_dev_sharpe": 0.2923,
+        "note_sharpe": "研报夏普口径无法由表内数据复算（F034），此处仅作量级参考"
+      }
+    }
+  ],
+  "sensitivity_comparison": {
+    "reproduced_best_k_full": [
+      2,
+      6
+    ],
+    "reproduced_best_k_in_sample": [
+      7,
+      1
+    ],
+    "reproduced_best_k_oos": [
+      2,
+      2
+    ],
+    "report_best_k": [
+      2,
+      4
+    ],
+    "reproduced_best_threshold_full": 1.25,
+    "report_best_threshold_full": 1.5,
+    "reproduced_best_threshold_oos": 1.0,
+    "report_best_threshold_oos": 0.75,
+    "grid_share_sharpe_ge_1_full": 0.078125,
+    "report_claim": "全样本 2<=k1,k2<=5 时夏普均在 1.0 以上"
+  },
+  "proxy_panel_validation": {
+    "overlap_start": "2021-12-13",
+    "panel": "quantdb 成分股重建（2017 起为策略净值段）",
+    "ret_corr_min": 0.9676071365201248,
+    "ret_corr_median": 0.9944582226989354,
+    "tracking_error_ann_median": 0.03658991637735825,
+    "tracking_error_ann_max": 0.0937463257575203,
+    "pb_corr_min": 0.941066675525522,
+    "weakest_industry": "电子制造II"
+  },
+  "spec_sensitivity": {
+    "note": "DEC-003 / DEC-002 变体对照；判据是研报图 8 的 AR 区间与 2.4 节持仓描述，不用收益水平挑选",
+    "variants": [
+      {
+        "variant": "V0_市值×衰减（当前 DEC-003）",
+        "AR1_mean": 0.7407,
+        "AR2_mean": 0.0977,
+        "AR_total_mean": 0.8385,
+        "intersection_empty_share": 0.1913,
+        "ann": 0.289,
+        "mdd": -0.4888
+      },
+      {
+        "variant": "V1_仅衰减",
+        "AR1_mean": 0.7358,
+        "AR2_mean": 0.0912,
+        "AR_total_mean": 0.827,
+        "intersection_empty_share": 0.287,
+        "ann": 0.2742,
+        "mdd": -0.5633
+      },
+      {
+        "variant": "V2_仅市值",
+        "AR1_mean": 0.7417,
+        "AR2_mean": 0.0966,
+        "AR_total_mean": 0.8383,
+        "intersection_empty_share": 0.2261,
+        "ann": 0.2816,
+        "mdd": -0.4682
+      },
+      {
+        "variant": "V3_市值×衰减+等方差标准化",
+        "AR1_mean": 0.7328,
+        "AR2_mean": 0.0862,
+        "AR_total_mean": 0.8189,
+        "intersection_empty_share": 0.3565,
+        "ann": 0.2174,
+        "mdd": -0.5231
+      },
+      {
+        "variant": "V4_原始收益（无加权）",
+        "AR1_mean": 0.7373,
+        "AR2_mean": 0.0896,
+        "AR_total_mean": 0.8269,
+        "intersection_empty_share": 0.2348,
+        "ann": 0.3155,
+        "mdd": -0.4709
+      }
+    ],
+    "rv_leave_one_out_effect": "R0 与 R1 的持仓与全部指标逐位相同：DEC-002 的不确定性对本策略结果无影响",
+    "ar_spread_across_variants": {
+      "AR1_mean_range": [
+        0.7328,
+        0.7417
+      ],
+      "AR_total_mean_range": [
+        0.8189,
+        0.8385
+      ],
+      "report_figure8": {
+        "AR1": "大部分 0.4-0.9",
+        "AR2": "0-0.3",
+        "AR_total": "0.7-0.9"
+      },
+      "conclusion": "各变体的 AR 结构都落在研报图 8 区间内，图 8 无法区分预处理口径；变体只把组合年化在 21.7%~31.6% 之间移动，均未达到研报的 37.2%"
+    }
+  },
+  "conclusions": {
+    "code_correctness": "PASS",
+    "methodological_validity": "PARTIAL",
+    "report_reproduction": "PARTIAL",
+    "live_profitability": "NOT_ASSESSED"
+  }
+}

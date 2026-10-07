@@ -1,0 +1,32 @@
+{
+  "schema": "constituent-rebuilt proxy of 申万二级行业指数",
+  "source_data": {
+    "stock_panel": "/Users/hsh/quantmind/QuantMind_src/QuantMind-master/data/quantdb",
+    "membership": "joinquant get_industry_stocks(sw_l2) via research exec",
+    "membership_dates": [
+      "2021-12-13",
+      "2022-06-30",
+      "2022-12-30",
+      "2023-06-30",
+      "2023-12-29",
+      "2024-06-28",
+      "2024-12-31",
+      "2025-06-30",
+      "2025-12-31",
+      "2026-06-30",
+      "2026-07-31"
+    ]
+  },
+  "construction": {
+    "industry_return": "float_mv(t-1) weighted, split-adjusted price return (cash dividends not reinvested)",
+    "industry_pb": "sum(total_mv)/sum(equity), 整体法",
+    "membership": "PIT step from 2021-12-13 samples; frozen at 2021-12-13 list before that"
+  },
+  "range": [
+    "2016-01-04",
+    "2026-07-31"
+  ],
+  "industries": 15,
+  "rows": 38535,
+  "sha256": "28ad721783c674070f1a54c3181218aa413f05a62d471d78a803319792fa1c59"
+}

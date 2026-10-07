@@ -1,0 +1,31 @@
+# 环境与缓存
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# 研报原文（版权，不入库；用 research/scripts/extract_pdf.py 自备提取）
+*.pdf
+
+# 取数原始响应信封（可由脚本重取）
+data/raw/*_raw.json
+
+# 另一条研究线（随机签名复现）—— 暂不纳入本仓库
+src/random_signature/
+tests/test_random_signature.py
+tests/test_optimizer_convergence.py
+scripts/rs_*.py
+scripts/make_rs_*.py
+scripts/run_rs_reproduction.py
+research/scripts/rs_*.py
+research/scripts/rs_rerun_*.sh
+research/scripts/jq_fetch_inception_lists.py
+research/scripts/jq_fetch_pit_index.py
+research/scripts/jq_probe_pit_index.py
+data/raw/rs_*
+results/rs_*
+research/runs/swsc_randomsig_260625/
+
+# 研报文本层（版权，用 extract_pdf.py 自备生成）
+research/raw/

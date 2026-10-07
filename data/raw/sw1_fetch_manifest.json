@@ -1,0 +1,293 @@
+{
+  "source": "https://www.swsresearch.com/institute-sw/api/index_analysis/index_analysis_report/",
+  "index_type": "一级行业",
+  "requested_range": [
+    "2015-01-01",
+    "2026-07-31"
+  ],
+  "fetched_at": "2026-10-07T11:14:47.748923+08:00",
+  "industries": 31,
+  "rows": 80477,
+  "sha256": "eb3a7dca6f7e168e858a0230d716e65f8d7e8959c47410510acf137257343e92",
+  "per_code": [
+    {
+      "code": "801010",
+      "name": "农林牧渔",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801030",
+      "name": "基础化工",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801040",
+      "name": "钢铁",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801050",
+      "name": "有色金属",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801080",
+      "name": "电子",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801110",
+      "name": "家用电器",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801120",
+      "name": "食品饮料",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801130",
+      "name": "纺织服饰",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801140",
+      "name": "轻工制造",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801150",
+      "name": "医药生物",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801160",
+      "name": "公用事业",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801170",
+      "name": "交通运输",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801180",
+      "name": "房地产",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801200",
+      "name": "商贸零售",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801210",
+      "name": "社会服务",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801230",
+      "name": "综合",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801710",
+      "name": "建筑材料",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801720",
+      "name": "建筑装饰",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801730",
+      "name": "电力设备",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801740",
+      "name": "国防军工",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801750",
+      "name": "计算机",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801760",
+      "name": "传媒",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801770",
+      "name": "通信",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801780",
+      "name": "银行",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801790",
+      "name": "非银金融",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801880",
+      "name": "汽车",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801890",
+      "name": "机械设备",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 1
+    },
+    {
+      "code": "801950",
+      "name": "煤炭",
+      "rows": 1610,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 0
+    },
+    {
+      "code": "801960",
+      "name": "石油石化",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 0
+    },
+    {
+      "code": "801970",
+      "name": "环保",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 0
+    },
+    {
+      "code": "801980",
+      "name": "美容护理",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31",
+      "pb_missing": 0,
+      "fmv_zero_or_missing": 0
+    }
+  ]
+}

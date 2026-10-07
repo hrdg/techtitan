@@ -1,0 +1,81 @@
+{
+  "description": "primary panel: joinquant 2015-2016 + quantdb reconstruction 2017-2026",
+  "splice_date": "2017-01-03",
+  "conventions": {
+    "2015-2016": "joinquant fq=post（后复权，含分红）",
+    "2017-2026": "quantdb 成分股重建（价格指数口径）"
+  },
+  "range": [
+    "2015-01-05",
+    "2026-07-31"
+  ],
+  "rows": 28130,
+  "rows_from_joinquant": 4880,
+  "patched_cells": {
+    "ret": 0,
+    "float_mv": 0
+  },
+  "overlap_2016_cross_source": [
+    {
+      "code": "801078",
+      "n": 237,
+      "ret_corr": 0.8851,
+      "tracking_error_ann": 0.191
+    },
+    {
+      "code": "801081",
+      "n": 233,
+      "ret_corr": 0.9149,
+      "tracking_error_ann": 0.1809
+    },
+    {
+      "code": "801085",
+      "n": 228,
+      "ret_corr": 0.9489,
+      "tracking_error_ann": 0.1054
+    },
+    {
+      "code": "801093",
+      "n": 243,
+      "ret_corr": 0.9444,
+      "tracking_error_ann": 0.1152
+    },
+    {
+      "code": "801101",
+      "n": 243,
+      "ret_corr": 0.9258,
+      "tracking_error_ann": 0.1379
+    },
+    {
+      "code": "801102",
+      "n": 242,
+      "ret_corr": 0.9451,
+      "tracking_error_ann": 0.1079
+    },
+    {
+      "code": "801103",
+      "n": 243,
+      "ret_corr": 0.9631,
+      "tracking_error_ann": 0.1421
+    },
+    {
+      "code": "801735",
+      "n": 241,
+      "ret_corr": 0.9525,
+      "tracking_error_ann": 0.1257
+    },
+    {
+      "code": "801737",
+      "n": 243,
+      "ret_corr": 0.9433,
+      "tracking_error_ann": 0.1523
+    },
+    {
+      "code": "801745",
+      "n": 231,
+      "ret_corr": 0.9277,
+      "tracking_error_ann": 0.1516
+    }
+  ],
+  "sha256": "cc11b2df2af2a89565550ec1e68886a6e6463e0a650eb7c230a38d42d0ac5dd6"
+}

@@ -1,0 +1,143 @@
+{
+  "source": "https://www.swsresearch.com/institute-sw/api/index_analysis/index_analysis_report/",
+  "index_type": "二级行业",
+  "type": "DAY",
+  "requested_range": [
+    "2015-01-01",
+    "2026-07-31"
+  ],
+  "fetched_at": "2026-10-06T23:58:32.501198+08:00",
+  "panel_rows": 19565,
+  "per_code": [
+    {
+      "code": "801081",
+      "name": "半导体",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "sha256": "64f7caf6e723af348eed581f20b84f01e50df8d7adfec5710357bf1ca67c2752",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 1
+      }
+    },
+    {
+      "code": "801085",
+      "name": "消费电子",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "sha256": "5be685f7e1b42b0afd9201e4ecbcbb0fac6b431b5585dfea35e9c41dbd53067b",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 1
+      }
+    },
+    {
+      "code": "801737",
+      "name": "电池",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31",
+      "sha256": "2d572080108795a15b29287722f71e139b38a9161e2697407cda6c9cbab85ee4",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 0
+      }
+    },
+    {
+      "code": "801735",
+      "name": "光伏设备",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31",
+      "sha256": "ad5af65e6b10c61d524aa19c212648bb3ed967e2415af7c0f1a5f6086f4914b2",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 0
+      }
+    },
+    {
+      "code": "801745",
+      "name": "军工电子Ⅱ",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31",
+      "sha256": "e918be94734cd86c98354d2bf185f3d71d79f6dba9b11f56a077f0995041d4b2",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 0
+      }
+    },
+    {
+      "code": "801101",
+      "name": "计算机设备",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "sha256": "12a7e1fb6eab70fee7a95ed9ec93fff43581a09dfdb03abc9af999bc9cc48543",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 1
+      }
+    },
+    {
+      "code": "801103",
+      "name": "IT服务Ⅱ",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31",
+      "sha256": "a1dec715d7c6960de5793b5c4258f9123396de9896c7cbcaffdbaaaea130476b",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 0
+      }
+    },
+    {
+      "code": "801102",
+      "name": "通信设备",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "sha256": "c37c30cfb942efee4b21ff7eed389292574c48f7abbceb32105eddfb2f403a4c",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 1
+      }
+    },
+    {
+      "code": "801093",
+      "name": "汽车零部件",
+      "rows": 2797,
+      "date_min": "2015-01-05",
+      "date_max": "2026-07-31",
+      "sha256": "ef66ecef02b6f28c6bc277b601f74c765ba21ecda0e7a3e1683a25abc4422e01",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 1
+      }
+    },
+    {
+      "code": "801078",
+      "name": "自动化设备",
+      "rows": 1116,
+      "date_min": "2021-12-13",
+      "date_max": "2026-07-31",
+      "sha256": "044b989d934ef2907c384eae09a5d5ef18cada3f1611d31ebf2590c485f615c6",
+      "missing": {
+        "close": 0,
+        "pb": 0,
+        "float_mktcap_yi": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "a016_source": "/Users/hsh/Documents/Quant/择时策略/output/e247_lev_sig_daily.csv",
+  "a016_rule": "exp = min(1.5, 3s)+ + min(s,0); 多头截断到 [0,1]",
+  "note": "IC 腿用于全窗口（IM 期货 2022-07 才上市）；其余权重进国债指数 H11006",
+  "results": [
+    {
+      "variant": "组合+A016(IC)替代·shift1(乐观)",
+      "avg_equity_weight": 0.224,
+      "annual_return": 0.271,
+      "annual_vol": 0.1573,
+      "sharpe": 1.7231,
+      "max_drawdown": -0.1596,
+      "calmar": 1.6979,
+      "oos_annual": 0.7767,
+      "oos_sharpe": 3.8045,
+      "oos_mdd": -0.0959
+    },
+    {
+      "variant": "组合+A016(IC)替代·shift2(生产)",
+      "avg_equity_weight": 0.224,
+      "annual_return": 0.2726,
+      "annual_vol": 0.1638,
+      "sharpe": 1.6642,
+      "max_drawdown": -0.1944,
+      "calmar": 1.4022,
+      "oos_annual": 0.6899,
+      "oos_sharpe": 3.4771,
+      "oos_mdd": -0.1174
+    },
+    {
+      "variant": "组合+A016(IC)替代·shift1(乐观)+成本",
+      "avg_equity_weight": 0.224,
+      "annual_return": 0.2567,
+      "annual_vol": 0.1573,
+      "sharpe": 1.6323,
+      "max_drawdown": -0.1604,
+      "calmar": 1.5999,
+      "oos_annual": 0.7599,
+      "oos_sharpe": 3.7215,
+      "oos_mdd": -0.0963
+    },
+    {
+      "variant": "组合+A016(IC)替代·shift2(生产)+成本",
+      "avg_equity_weight": 0.224,
+      "annual_return": 0.2583,
+      "annual_vol": 0.1637,
+      "sharpe": 1.5779,
+      "max_drawdown": -0.1957,
+      "calmar": 1.32,
+      "oos_annual": 0.6739,
+      "oos_sharpe": 3.4012,
+      "oos_mdd": -0.1174
+    },
+    {
+      "variant": "组合+ΔAR×A016(IC)·shift1(乐观)",
+      "avg_equity_weight": 0.182,
+      "annual_return": 0.2158,
+      "annual_vol": 0.1468,
+      "sharpe": 1.4696,
+      "max_drawdown": -0.2277,
+      "calmar": 0.9475,
+      "oos_annual": 0.6882,
+      "oos_sharpe": 3.4241,
+      "oos_mdd": -0.0959
+    },
+    {
+      "variant": "组合+ΔAR×A016(IC)·shift2(生产)",
+      "avg_equity_weight": 0.182,
+      "annual_return": 0.2218,
+      "annual_vol": 0.1529,
+      "sharpe": 1.4509,
+      "max_drawdown": -0.2389,
+      "calmar": 0.9286,
+      "oos_annual": 0.65,
+      "oos_sharpe": 3.3274,
+      "oos_mdd": -0.1174
+    },
+    {
+      "variant": "组合+A016(IF)替代·shift2(生产)",
+      "avg_equity_weight": 0.113,
+      "annual_return": 0.1813,
+      "annual_vol": 0.1261,
+      "sharpe": 1.4381,
+      "max_drawdown": -0.1242,
+      "calmar": 1.4594,
+      "oos_annual": 0.2502,
+      "oos_sharpe": 2.0929,
+      "oos_mdd": -0.0729
+    },
+    {
+      "variant": "组合+A016(IF)替代·shift2(生产)+成本",
+      "avg_equity_weight": 0.113,
+      "annual_return": 0.173,
+      "annual_vol": 0.126,
+      "sharpe": 1.3731,
+      "max_drawdown": -0.1373,
+      "calmar": 1.2598,
+      "oos_annual": 0.2424,
+      "oos_sharpe": 2.0307,
+      "oos_mdd": -0.0746
+    },
+    {
+      "variant": "组合+A016(IF)替代·shift1(乐观)",
+      "avg_equity_weight": 0.113,
+      "annual_return": 0.1493,
+      "annual_vol": 0.1177,
+      "sharpe": 1.2688,
+      "max_drawdown": -0.1363,
+      "calmar": 1.0959,
+      "oos_annual": 0.2389,
+      "oos_sharpe": 1.95,
+      "oos_mdd": -0.078
+    },
+    {
+      "variant": "组合+ΔAR×A016(IF)·shift2(生产)",
+      "avg_equity_weight": 0.086,
+      "annual_return": 0.1403,
+      "annual_vol": 0.1137,
+      "sharpe": 1.2342,
+      "max_drawdown": -0.1059,
+      "calmar": 1.3252,
+      "oos_annual": 0.2276,
+      "oos_sharpe": 1.9782,
+      "oos_mdd": -0.0631
+    },
+    {
+      "variant": "组合+A016(IF)替代·shift1(乐观)+成本",
+      "avg_equity_weight": 0.113,
+      "annual_return": 0.1412,
+      "annual_vol": 0.1177,
+      "sharpe": 1.1999,
+      "max_drawdown": -0.1382,
+      "calmar": 1.0218,
+      "oos_annual": 0.2311,
+      "oos_sharpe": 1.8848,
+      "oos_mdd": -0.0789
+    },
+    {
+      "variant": "组合+ΔAR×A016(IF)·shift1(乐观)",
+      "avg_equity_weight": 0.085,
+      "annual_return": 0.1046,
+      "annual_vol": 0.1056,
+      "sharpe": 0.9898,
+      "max_drawdown": -0.1363,
+      "calmar": 0.7674,
+      "oos_annual": 0.1814,
+      "oos_sharpe": 1.5468,
+      "oos_mdd": -0.078
+    },
+    {
+      "variant": "研报原生：组合+ΔAR(1.5)",
+      "avg_equity_weight": 0.717,
+      "annual_return": 0.3142,
+      "annual_vol": 0.3245,
+      "sharpe": 0.9682,
+      "max_drawdown": -0.341,
+      "calmar": 0.9212,
+      "oos_annual": 0.9022,
+      "oos_sharpe": 2.2742,
+      "oos_mdd": -0.2416
+    },
+    {
+      "variant": "组合（无择时）",
+      "avg_equity_weight": 1.0,
+      "annual_return": 0.289,
+      "annual_vol": 0.3839,
+      "sharpe": 0.7528,
+      "max_drawdown": -0.4888,
+      "calmar": 0.5912,
+      "oos_annual": 0.7181,
+      "oos_sharpe": 1.5883,
+      "oos_mdd": -0.3723
+    }
+  ],
+  "signal_overlap": {
+    "both_equity": 0.3368,
+    "only_dar": 0.3751,
+    "only_a016": 0.1067,
+    "neither": 0.1768
+  },
+  "signal_attribution": {
+    "两者都开": {
+      "days": 782,
+      "mean_daily": 0.00249,
+      "annualized": 0.7168,
+      "win_rate": 0.5486
+    },
+    "只 ΔAR 开": {
+      "days": 884,
+      "mean_daily": 0.00104,
+      "annualized": 0.2145,
+      "win_rate": 0.5339
+    },
+    "只 A016 开": {
+      "days": 249,
+      "mean_daily": 0.00344,
+      "annualized": 1.2153,
+      "win_rate": 0.5341
+    },
+    "两者都关": {
+      "days": 410,
+      "mean_daily": -0.00166,
+      "annualized": -0.3894,
+      "win_rate": 0.4512
+    }
+  },
+  "a016_daily_turnover": 0.0906
+}

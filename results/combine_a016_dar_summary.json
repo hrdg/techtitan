@@ -1,0 +1,148 @@
+{
+  "unconditional_mean_daily": 0.00131,
+  "criterion": "风险调整后效率为主判据，且样本外不得明显恶化；平均股票权重一并披露",
+  "results": [
+    {
+      "variant": "① 只用 A016",
+      "avg_equity": 0.224,
+      "annual_return": 0.2583,
+      "annual_vol": 0.1637,
+      "sharpe": 1.5779,
+      "max_drawdown": -0.1957,
+      "calmar": 1.32,
+      "oos_annual": 0.6739,
+      "oos_sharpe": 3.4012,
+      "oos_mdd": -0.1174
+    },
+    {
+      "variant": "⑩ A016×ΔAR 软闸(1.0→1.5 线性)",
+      "avg_equity": 0.198,
+      "annual_return": 0.2297,
+      "annual_vol": 0.1539,
+      "sharpe": 1.493,
+      "max_drawdown": -0.1711,
+      "calmar": 1.3424,
+      "oos_annual": 0.6998,
+      "oos_sharpe": 3.5542,
+      "oos_mdd": -0.1174
+    },
+    {
+      "variant": "⑨ A016，ΔAR 仅在极端(>1.75)清仓",
+      "avg_equity": 0.216,
+      "annual_return": 0.2375,
+      "annual_vol": 0.1601,
+      "sharpe": 1.483,
+      "max_drawdown": -0.1957,
+      "calmar": 1.2137,
+      "oos_annual": 0.7043,
+      "oos_sharpe": 3.5696,
+      "oos_mdd": -0.1174
+    },
+    {
+      "variant": "⑧ A016，ΔAR 仅在极端(>2.0)清仓",
+      "avg_equity": 0.22,
+      "annual_return": 0.2363,
+      "annual_vol": 0.1607,
+      "sharpe": 1.4702,
+      "max_drawdown": -0.1957,
+      "calmar": 1.2076,
+      "oos_annual": 0.6739,
+      "oos_sharpe": 3.4012,
+      "oos_mdd": -0.1174
+    },
+    {
+      "variant": "⑥ A016 + ΔAR 独占日半仓",
+      "avg_equity": 0.415,
+      "annual_return": 0.2817,
+      "annual_vol": 0.1978,
+      "sharpe": 1.4241,
+      "max_drawdown": -0.2146,
+      "calmar": 1.3129,
+      "oos_annual": 0.6872,
+      "oos_sharpe": 2.82,
+      "oos_mdd": -0.1276
+    },
+    {
+      "variant": "③ 相乘（当前）",
+      "avg_equity": 0.182,
+      "annual_return": 0.2105,
+      "annual_vol": 0.1528,
+      "sharpe": 1.3777,
+      "max_drawdown": -0.2411,
+      "calmar": 0.873,
+      "oos_annual": 0.6364,
+      "oos_sharpe": 3.2619,
+      "oos_mdd": -0.1174
+    },
+    {
+      "variant": "⑤ 等权平均",
+      "avg_equity": 0.47,
+      "annual_return": 0.2968,
+      "annual_vol": 0.2206,
+      "sharpe": 1.3451,
+      "max_drawdown": -0.2366,
+      "calmar": 1.2543,
+      "oos_annual": 0.8064,
+      "oos_sharpe": 2.974,
+      "oos_mdd": -0.1272
+    },
+    {
+      "variant": "④ 取并集 max",
+      "avg_equity": 0.759,
+      "annual_return": 0.3652,
+      "annual_vol": 0.3297,
+      "sharpe": 1.1075,
+      "max_drawdown": -0.3347,
+      "calmar": 1.0911,
+      "oos_annual": 0.9446,
+      "oos_sharpe": 2.3724,
+      "oos_mdd": -0.2416
+    },
+    {
+      "variant": "⑦ A016 + ΔAR 独占日全仓(≈OR)",
+      "avg_equity": 0.605,
+      "annual_return": 0.2831,
+      "annual_vol": 0.2771,
+      "sharpe": 1.0218,
+      "max_drawdown": -0.2862,
+      "calmar": 0.9893,
+      "oos_annual": 0.659,
+      "oos_sharpe": 1.8895,
+      "oos_mdd": -0.2311
+    },
+    {
+      "variant": "② 只用 ΔAR(1.5)",
+      "avg_equity": 0.717,
+      "annual_return": 0.3132,
+      "annual_vol": 0.3245,
+      "sharpe": 0.9653,
+      "max_drawdown": -0.3417,
+      "calmar": 0.9167,
+      "oos_annual": 0.901,
+      "oos_sharpe": 2.2711,
+      "oos_mdd": -0.2416
+    }
+  ],
+  "quadrants": {
+    "两者都开": {
+      "days": 781,
+      "mean_daily": 0.00296,
+      "excess_vs_unconditional": 0.00164
+    },
+    "只 ΔAR 开": {
+      "days": 885,
+      "mean_daily": 0.00063,
+      "excess_vs_unconditional": -0.00068
+    },
+    "只 A016 开": {
+      "days": 250,
+      "mean_daily": 0.00338,
+      "excess_vs_unconditional": 0.00207
+    },
+    "两者都关": {
+      "days": 409,
+      "mean_daily": -0.00163,
+      "excess_vs_unconditional": -0.00294
+    }
+  }
+}

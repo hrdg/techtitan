@@ -1,0 +1,10 @@
+$ /Users/hsh/Documents/Quant/科技轮动/.venv/bin/python -m pytest tests -q
+cwd=/Users/hsh/Documents/Quant/科技轮动
+started=2026-10-06T23:58:03.065506+08:00
+returncode=0
+--- stdout ---
+...........                                                              [100%]
+11 passed in 0.20s
+
+--- stderr ---
+

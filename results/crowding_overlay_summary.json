@@ -1,0 +1,99 @@
+{
+  "criterion": "风险调整后效率为主，样本外不得明显恶化；平均敞口一并披露",
+  "figure1_reproduction": {
+    "2026-07-10": 46.07,
+    "report": 46.5,
+    "2026H1_mean": 35.51,
+    "report_h1": "接近 37"
+  },
+  "results": [
+    {
+      "variant": "C0 基准：ΔAR(1.5)",
+      "avg_equity": 0.717,
+      "annual_return": 0.3142,
+      "annual_vol": 0.3244,
+      "sharpe": 0.9684,
+      "max_drawdown": -0.3417,
+      "calmar": 0.9194,
+      "oos_annual": 0.901,
+      "oos_sharpe": 2.2711
+    },
+    {
+      "variant": "C1b 选行业剔除拥挤(换手z>2)",
+      "avg_equity": 0.717,
+      "annual_return": 0.284,
+      "annual_vol": 0.3201,
+      "sharpe": 0.8873,
+      "max_drawdown": -0.3483,
+      "calmar": 0.8155,
+      "oos_annual": 0.652,
+      "oos_sharpe": 1.691
+    },
+    {
+      "variant": "C1 选行业剔除拥挤(top20%换手z)",
+      "avg_equity": 0.717,
+      "annual_return": 0.2299,
+      "annual_vol": 0.3004,
+      "sharpe": 0.7652,
+      "max_drawdown": -0.3713,
+      "calmar": 0.619,
+      "oos_annual": 0.3489,
+      "oos_sharpe": 0.9927
+    },
+    {
+      "variant": "C2 板块拥挤z>2 减半仓",
+      "avg_equity": 0.684,
+      "annual_return": 0.2349,
+      "annual_vol": 0.3114,
+      "sharpe": 0.7542,
+      "max_drawdown": -0.349,
+      "calmar": 0.673,
+      "oos_annual": 0.8315,
+      "oos_sharpe": 2.1789
+    },
+    {
+      "variant": "C4 C1+C2 组合",
+      "avg_equity": 0.684,
+      "annual_return": 0.2078,
+      "annual_vol": 0.3076,
+      "sharpe": 0.6756,
+      "max_drawdown": -0.3831,
+      "calmar": 0.5425,
+      "oos_annual": 0.587,
+      "oos_sharpe": 1.5888
+    },
+    {
+      "variant": "C3 敞口×(1-拥挤z/4)缩放",
+      "avg_equity": 0.598,
+      "annual_return": 0.1455,
+      "annual_vol": 0.2706,
+      "sharpe": 0.5377,
+      "max_drawdown": -0.3865,
+      "calmar": 0.3765,
+      "oos_annual": 0.4041,
+      "oos_sharpe": 1.3296
+    },
+    {
+      "variant": "C2c 板块占比分位>90% 减半仓",
+      "avg_equity": 0.637,
+      "annual_return": 0.15,
+      "annual_vol": 0.289,
+      "sharpe": 0.5191,
+      "max_drawdown": -0.3626,
+      "calmar": 0.4138,
+      "oos_annual": 0.4328,
+      "oos_sharpe": 1.2927
+    },
+    {
+      "variant": "C2b 板块拥挤z>2 清仓",
+      "avg_equity": 0.652,
+      "annual_return": 0.1571,
+      "annual_vol": 0.3072,
+      "sharpe": 0.5116,
+      "max_drawdown": -0.3937,
+      "calmar": 0.3991,
+      "oos_annual": 0.7575,
+      "oos_sharpe": 2.01
+    }
+  ]
+}

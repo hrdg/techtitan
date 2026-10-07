@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "run_id": "swsc_tech_rotation_260910",
+  "mode": "baseline",
+  "target": "local",
+  "created_at": "2026-10-06T14:48:26.243293+00:00",
+  "primary_model_requested": "gpt-6-sol",
+  "primary_model_actual": null,
+  "budgets": {
+    "max_parallel_subagents": 2,
+    "max_local_repair_rounds": 2,
+    "total_token_limit": null,
+    "total_currency_limit": null
+  },
+  "current_stage": "evidence",
+  "blockers": []
+}

@@ -1,0 +1,1140 @@
+{
+  "schema_version": "1.0",
+  "source_documents": [
+    {
+      "id": "D1",
+      "file": "../../../西南证券-因子选股系列：科技成长景气轮动与量化择时模型-260910(1).pdf",
+      "sha256": "f3fe0e678ea60307229a2a17d09fc64127a8c13a754a39c6f1f15cd57b907734",
+      "page_numbering": "PDF 物理页 1-20；印刷页 = 物理页 - 3（物理页 4 = 印刷页 1）",
+      "extracted_text": "research/raw/report_text.txt（pdfplumber 文本层，未 OCR）",
+      "accessibility": "文本层完整可读；图 1-图 12 为矢量图，仅图表标题与正文描述可读"
+    },
+    {
+      "id": "D2",
+      "file": "../../../data/raw/industry_panel_proxy_manifest.json",
+      "sha256": "517f07214e83b9d358d340f9c5400a34cdaebb780ccdc11c46b6a16d0a5abd73",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "文本/JSON 可读"
+    },
+    {
+      "id": "D3",
+      "file": "../../../data/raw/proxy_validation.csv",
+      "sha256": "9d50dcc11f8209a2849dbc56b052938e43e86bf6fdd2be1e578ee0392f4977ae",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "文本/JSON 可读"
+    },
+    {
+      "id": "D4",
+      "file": "../../../results/holdings_proxy.csv",
+      "sha256": "01854ea7edeb28c4c2fb38eabef3bdbcdcffb810c01184a53382a139076fdf86",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "文本/JSON 可读"
+    },
+    {
+      "id": "D5",
+      "file": "../../../data/raw/jq_sw2_members_raw.json",
+      "sha256": "00ac46e05818eb582f97bd35c84894982a4f3c24ae29a968959c5156e75b689b",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "文本/JSON 可读"
+    },
+    {
+      "id": "D6",
+      "file": "../../../results/spec_sensitivity.csv",
+      "sha256": "34536a3a2f90a8efa666feea9733f215916a931c74c1aa992be5cbff001eb2b3",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "文本/CSV/JSON 可读"
+    },
+    {
+      "id": "D7",
+      "file": "../../../data/raw/industry_panel_final_manifest.json",
+      "sha256": "f9e97f4631156a77f4724521e1d3a67329afce07b7b24b91f234a2aa6fdd2562",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "文本/CSV/JSON 可读"
+    },
+    {
+      "id": "D8",
+      "file": "../../../results/grid_k1k2_final.csv",
+      "sha256": "81a3d1fc6fd9e02bded4d7c22e93c2a20e4f8f752eb8b62233c5f54724deb077",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "文本/CSV/JSON 可读"
+    },
+    {
+      "id": "D9",
+      "file": "../../../results/etf_weekly_holdings.json",
+      "sha256": "f30d0856c6bc8514c25577b4bb1fd41e7ad35794b238804670bac6e31fa1b370",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "JSON 可读"
+    },
+    {
+      "id": "D10",
+      "file": "../../../results/crowding_overlay.csv",
+      "sha256": "9b196b6469e60418f9633429b6c81aa538b1a93018bcdb5dbc8baef51eb59938",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "CSV/JSON 可读"
+    },
+    {
+      "id": "D11",
+      "file": "../../../results/crowding_overlay_summary.json",
+      "sha256": "20918a24e4ba7a1ac40b2b6fdf27b49f58f606a262d4b0553fb6bd292a3b4b27",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "CSV/JSON 可读"
+    },
+    {
+      "id": "D12",
+      "file": "../../../results/tech_as_growth_leg.csv",
+      "sha256": "bfc903cc1c901c6d77b4d0fa800d392e3298f09a08a5e6cee1e270f7f91cf5d9",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "CSV 可读"
+    },
+    {
+      "id": "D13",
+      "file": "../../../results/combine_tech_v33.csv",
+      "sha256": "075da9a48f789b0c8bbdd273bb2c856be64fbecf7a79bd97d82903c9914dd40e",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "CSV 可读"
+    },
+    {
+      "id": "D14",
+      "file": "../../../results/crowding_overlay.csv",
+      "sha256": "9b196b6469e60418f9633429b6c81aa538b1a93018bcdb5dbc8baef51eb59938",
+      "page_numbering": "n/a（本机产物）",
+      "accessibility": "CSV 可读"
+    }
+  ],
+  "facts": [
+    {
+      "id": "F001",
+      "key": "research.object",
+      "value": "科技成长板块内部行业轮动 + 系统性风险择时；样本为 10 个申万二级行业指数",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 4 页 / 印刷页 1 / 摘要与 1.1 节",
+          "excerpt": "本文以 10 个申万二级行业指数为样本"
+        }
+      ]
+    },
+    {
+      "id": "F002",
+      "key": "universe.definition",
+      "value": [
+        "半导体",
+        "消费电子",
+        "电池",
+        "光伏设备",
+        "军工电子Ⅱ",
+        "计算机设备",
+        "IT服务Ⅱ",
+        "通信设备",
+        "汽车零部件",
+        "自动化设备"
+      ],
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 4-5 页 / 印刷页 1-2 / 表 2",
+          "excerpt": "代码 指数简称 成分股数量 所属一级行业代码"
+        }
+      ]
+    },
+    {
+      "id": "F003",
+      "key": "universe.codes",
+      "value": {
+        "801081.SL": "半导体",
+        "801085.SL": "消费电子",
+        "801737.SL": "电池",
+        "801735.SL": "光伏设备",
+        "801745.SL": "军工电子Ⅱ",
+        "801101.SL": "计算机设备",
+        "801103.SL": "IT服务Ⅱ",
+        "801102.SL": "通信设备",
+        "801093.SL": "汽车零部件",
+        "801078.SL": "自动化设备"
+      },
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 4-5 页 / 印刷页 1-2 / 表 2"
+        }
+      ],
+      "notes": "Wind 后缀 .SL 为申万指数后缀；申万宏源官网/akshare 使用不带后缀的 6 位代码。"
+    },
+    {
+      "id": "F004",
+      "key": "data.range",
+      "value": "2015-01 至 2026-07，日度",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 10 页 / 印刷页 7 / 2.3 节末",
+          "excerpt": "数据区间为 2015年 1月至 2026年 7月，剔除 2年回望期"
+        }
+      ]
+    },
+    {
+      "id": "F005",
+      "key": "backtest.period",
+      "value": "2017-01 至 2026-07（剔除约 2 年回望期，主要由 500 日 PB 窗口决定）",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 10 页 / 印刷页 7 / 2.3 节末"
+        }
+      ]
+    },
+    {
+      "id": "F006",
+      "key": "factor.pca.window",
+      "value": "125 个交易日滚动窗口，对 10 个行业指数日度收益率矩阵做主成分分析",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 9 页 / 印刷页 6 / 2.1 节",
+          "excerpt": "本文取 m=2（前 2个主成分），并以 125 个交易日为窗口，对 AR 进行日度滚动计算"
+        }
+      ]
+    },
+    {
+      "id": "F007",
+      "key": "factor.pca.components",
+      "value": 2,
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 9 页 / 印刷页 6 / 2.1 节"
+        }
+      ]
+    },
+    {
+      "id": "F008",
+      "key": "factor.pca.decay",
+      "value": "PCA 前的收益率预处理：半衰期 λ=125 交易日 的指数衰减权重 w=0.5^((T-t)/λ)",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 9 页 / 印刷页 6 / 2.1 节末"
+        }
+      ],
+      "notes": "原文给出权重公式，但未说明权重在 PCA 中的具体施加方式（加权中心化/加权缩放/样本权重），属实现层歧义，见 F014。"
+    },
+    {
+      "id": "F009",
+      "key": "factor.pca.mktcap_weight",
+      "value": "用前一天的行业流通市值的平方根对行业收益率进行加权",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 9 页 / 印刷页 6 / 2.1 节末"
+        }
+      ],
+      "notes": "原文写“流通市值”，未说明是行业加总口径还是其他口径。"
+    },
+    {
+      "id": "F010",
+      "key": "factor.concentration.formula",
+      "value": "AR_j,t = σ²_j / Σ_i σ²_i（主成分方差解释率）；C_i,t = Σ_j ( AR_j × |EV^j_i,t| / Σ_i|EV^j_i,t| ) / Σ_j AR_j",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 8-9 页 / 印刷页 5-6 / 2.1 节",
+          "excerpt": "以原始向量在主成分上的暴露（系数）的绝对值为权重，计算行业的“集中度”指标"
+        }
+      ],
+      "notes": "Σ_i C_i = 1；分母 Σ_j AR_j 为前 m 个主成分吸收比率之和。"
+    },
+    {
+      "id": "F011",
+      "key": "factor.concentration.delta",
+      "value": "ΔC_i,t = ( mean_15(C_i) - mean_125(C_i) ) / std_125(C_i)",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 9 页 / 印刷页 6 / 2.1 节",
+          "excerpt": "C̄S 为短周期行业集中度均值，即为过去 15个交易日…；C̄L 为过去 125个交易日…；σ 为过去 125 个交易日…标准差"
+        }
+      ]
+    },
+    {
+      "id": "F012",
+      "key": "factor.relative_valuation.formula",
+      "value": "SPB_i,t = PB_i,t / mean_500(PB_i)；RV_i,t = SPB_i,t / mean_{j≠i}(SPB_j,t)",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 9 页 / 印刷页 6 / 2.2 节",
+          "excerpt": "将每个行业在 t 时刻的市净率除以其过去 T 个交易日的平均值…再除以 t 时刻其余行业标准化市净率的平均值"
+        }
+      ],
+      "notes": "原文“其余行业”存在两解：剔除本行业 vs 全部行业；T=500。"
+    },
+    {
+      "id": "F013",
+      "key": "factor.relative_valuation.window",
+      "value": "时序标准化窗口 T = 500 个交易日",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 9 页 / 印刷页 6 / 2.2 节"
+        }
+      ]
+    },
+    {
+      "id": "F014",
+      "key": "factor.preprocessing.ambiguity",
+      "value": "衰减权重与市值平方根权重的叠加顺序、是否标准化收益率、协方差 ddof 原文未说明",
+      "status": "ambiguous",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 9 页 / 印刷页 6 / 2.1 节末"
+        }
+      ],
+      "notes": "需在 strategy.json 中以决策项固化，并做敏感性对照。"
+    },
+    {
+      "id": "F015",
+      "key": "portfolio.selection",
+      "value": "每月第一个交易日，按上月末的集中度 ΔC 与相对估值 RV 从大到小排序；高估值组合=RV 前 k1；高集中度组合=ΔC 前 k2；高集中度高估值=同时位列 RV 前 k1 且 ΔC 前 k2；交集为空时保持上一期持仓",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 10 页 / 印刷页 7 / 2.3 节",
+          "excerpt": "如果调仓时没有行业同时满足“高集中度”和“高估值”要求，则保持上一期持仓"
+        }
+      ]
+    },
+    {
+      "id": "F016",
+      "key": "portfolio.params",
+      "value": "k1 = 2（相对估值排名前 2），k2 = 4（集中度排名前 4）",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 10 页 / 印刷页 7 / 2.3 节",
+          "excerpt": "选择最优参数 k1=2、k2=4，组合内等权重分配；样本内为 2017年至 2024年"
+        }
+      ],
+      "notes": "k1/k2 为样本内（2017-2024）选出的参数。"
+    },
+    {
+      "id": "F017",
+      "key": "portfolio.weights",
+      "value": "组合内等权重",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 10 页 / 印刷页 7 / 2.3 节"
+        }
+      ]
+    },
+    {
+      "id": "F018",
+      "key": "execution.rebalance",
+      "value": "月度换仓，以每月第一个交易日开盘价计算调仓",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 10 页 / 印刷页 7 / 2.3 节"
+        }
+      ]
+    },
+    {
+      "id": "F019",
+      "key": "costs.model",
+      "value": "未披露交易成本/费用",
+      "status": "unknown",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "全文未提及"
+        }
+      ],
+      "notes": "默认按零成本复现，并在结论中标注为费前收益。"
+    },
+    {
+      "id": "F020",
+      "key": "timing.AR.definition",
+      "value": "AR_t = Σ_{j=1..m} σ²_j / Σ_{i=1..n} σ²_i，即前 m=2 个主成分的方差解释率之和（总吸收比率）",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 12 页 / 印刷页 9 / 3.1 节"
+        }
+      ]
+    },
+    {
+      "id": "F021",
+      "key": "timing.dAR.formula",
+      "value": "ΔAR_t = ( mean_15(AR) - mean_125(AR) ) / std_125(AR)",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 13 页 / 印刷页 10 / 3.2 节"
+        }
+      ]
+    },
+    {
+      "id": "F022",
+      "key": "timing.signal.rule",
+      "value": "signal=0（预警）当 ΔAR > threshold；signal=1（入场）当 ΔAR < 0；0 ≤ ΔAR ≤ threshold 时保持原仓位。下一交易日执行：预警→100% 国债指数，入场→100% 策略组合。初始底仓为策略组合，日度跟踪",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 14 页 / 印刷页 11 / 3.3 节"
+        }
+      ]
+    },
+    {
+      "id": "F023",
+      "key": "timing.threshold",
+      "value": "全样本/样本内最优 threshold = 1.5；文中建议长期取 1-1.5",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 17 页 / 印刷页 14 / 4.2 节",
+          "excerpt": "在样本内，预警信号阈值最优参数为 1.5"
+        }
+      ]
+    },
+    {
+      "id": "F024",
+      "key": "timing.treasury_asset",
+      "value": "“国债指数”，未指明具体指数、亦未说明是否为全价/财富指数",
+      "status": "unknown",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 14 页 / 印刷页 11 / 3.3 节"
+        }
+      ],
+      "notes": "复现代理：主口径中证国债指数 H11006.CSI（净价），敏感性对照上证国债指数 000012.SH。"
+    },
+    {
+      "id": "F025",
+      "key": "backtest.benchmark",
+      "value": "中证A500、科技50、10 行业等权组合",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 11 页 / 印刷页 8 / 表 4"
+        }
+      ],
+      "notes": "“科技50”经中证指数官网检索匹配为 931380.CSI“科技50”（50 只成分股，2019-11-25 发布，含回算历史）。"
+    },
+    {
+      "id": "F026",
+      "key": "results.rotation.nav",
+      "value": "期末净值（回测区间 2017-01~2026-07）：高集中度高估值 18.55、高估值 7.98、高集中度 3.43、科技50 2.83、行业等权 2.44",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 10 页 / 印刷页 7 / 2.4 节"
+        }
+      ]
+    },
+    {
+      "id": "F027",
+      "key": "results.table4",
+      "value": {
+        "中证A500": {
+          "cum": 0.545,
+          "ann": 0.0483,
+          "vol": 0.1923,
+          "sharpe": 0.3414,
+          "mdd": 0.443,
+          "calmar": 0.109
+        },
+        "科技50": {
+          "cum": 1.8343,
+          "ann": 0.1195,
+          "vol": 0.2744,
+          "sharpe": 0.5483,
+          "mdd": 0.6305,
+          "calmar": 0.1895
+        },
+        "行业等权重": {
+          "cum": 1.4427,
+          "ann": 0.1016,
+          "vol": 0.2772,
+          "sharpe": 0.4879,
+          "mdd": 0.4647,
+          "calmar": 0.2187
+        },
+        "高估值": {
+          "cum": 6.9782,
+          "ann": 0.2524,
+          "vol": 0.3539,
+          "sharpe": 0.8131,
+          "mdd": 0.5447,
+          "calmar": 0.4633
+        },
+        "高集中度": {
+          "cum": 2.4314,
+          "ann": 0.1429,
+          "vol": 0.3033,
+          "sharpe": 0.5926,
+          "mdd": 0.5082,
+          "calmar": 0.2813
+        },
+        "高集中度高估值": {
+          "cum": 17.551,
+          "ann": 0.3723,
+          "vol": 0.3726,
+          "sharpe": 1.0358,
+          "mdd": 0.549,
+          "calmar": 0.6781
+        }
+      },
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 11 页 / 印刷页 8 / 表 4"
+        }
+      ]
+    },
+    {
+      "id": "F028",
+      "key": "results.table5",
+      "value": {
+        "高估值_无择时": {
+          "cum": 6.9782,
+          "ann": 0.2524,
+          "vol": 0.3539,
+          "sharpe": 0.8131,
+          "mdd": 0.5447,
+          "calmar": 0.4633
+        },
+        "高估值_择时": {
+          "cum": 16.1045,
+          "ann": 0.3603,
+          "vol": 0.3081,
+          "sharpe": 1.153,
+          "mdd": 0.351,
+          "calmar": 1.0265
+        },
+        "高集中度_无择时": {
+          "cum": 2.4314,
+          "ann": 0.1429,
+          "vol": 0.3033,
+          "sharpe": 0.5926,
+          "mdd": 0.5082,
+          "calmar": 0.2813
+        },
+        "高集中度_择时": {
+          "cum": 5.2867,
+          "ann": 0.2205,
+          "vol": 0.261,
+          "sharpe": 0.8943,
+          "mdd": 0.3344,
+          "calmar": 0.6593
+        },
+        "高集中度高估值_无择时": {
+          "cum": 17.551,
+          "ann": 0.3723,
+          "vol": 0.3726,
+          "sharpe": 1.0358,
+          "mdd": 0.549,
+          "calmar": 0.6781
+        },
+        "高集中度高估值_择时": {
+          "cum": 35.8395,
+          "ann": 0.4782,
+          "vol": 0.3229,
+          "sharpe": 1.3724,
+          "mdd": 0.3274,
+          "calmar": 1.4606
+        }
+      },
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 15 页 / 印刷页 12 / 表 5"
+        }
+      ]
+    },
+    {
+      "id": "F029",
+      "key": "results.table3.insample_threshold",
+      "value": {
+        "0": {
+          "ann": 0.1921,
+          "sharpe": 0.78,
+          "mdd": 0.3857,
+          "calmar": 0.5
+        },
+        "0.25": {
+          "ann": 0.1882,
+          "sharpe": 0.76,
+          "mdd": 0.3346,
+          "calmar": 0.56
+        },
+        "0.5": {
+          "ann": 0.2001,
+          "sharpe": 0.8,
+          "mdd": 0.3269,
+          "calmar": 0.61
+        },
+        "0.75": {
+          "ann": 0.2669,
+          "sharpe": 0.95,
+          "mdd": 0.3535,
+          "calmar": 0.76
+        },
+        "1": {
+          "ann": 0.2763,
+          "sharpe": 0.98,
+          "mdd": 0.3619,
+          "calmar": 0.76
+        },
+        "1.25": {
+          "ann": 0.2905,
+          "sharpe": 1.01,
+          "mdd": 0.3423,
+          "calmar": 0.85
+        },
+        "1.5": {
+          "ann": 0.3558,
+          "sharpe": 1.16,
+          "mdd": 0.3274,
+          "calmar": 1.09
+        },
+        "1.75": {
+          "ann": 0.3464,
+          "sharpe": 1.13,
+          "mdd": 0.3919,
+          "calmar": 0.88
+        },
+        "2": {
+          "ann": 0.2588,
+          "sharpe": 0.87,
+          "mdd": 0.549,
+          "calmar": 0.47
+        }
+      },
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 10 页 / 印刷页 7 / 表 3"
+        }
+      ],
+      "notes": "样本内 = 2017-2024，对“高集中度高估值”组合。"
+    },
+    {
+      "id": "F030",
+      "key": "results.table6.full_sample_threshold",
+      "value": {
+        "0.0": {
+          "cum": 9.1263,
+          "ann": 0.2852,
+          "vol": 0.2915,
+          "sharpe": 1.0065,
+          "mdd": 0.3857,
+          "calmar": 0.7394
+        },
+        "0.25": {
+          "cum": 9.9694,
+          "ann": 0.2963,
+          "vol": 0.2956,
+          "sharpe": 1.0261,
+          "mdd": 0.3346,
+          "calmar": 0.8856
+        },
+        "0.5": {
+          "cum": 14.331,
+          "ann": 0.3442,
+          "vol": 0.2989,
+          "sharpe": 1.1395,
+          "mdd": 0.3269,
+          "calmar": 1.0532
+        },
+        "0.75": {
+          "cum": 24.0042,
+          "ann": 0.4174,
+          "vol": 0.3114,
+          "sharpe": 1.2763,
+          "mdd": 0.3535,
+          "calmar": 1.181
+        },
+        "1.0": {
+          "cum": 22.6037,
+          "ann": 0.4086,
+          "vol": 0.3136,
+          "sharpe": 1.2497,
+          "mdd": 0.3619,
+          "calmar": 1.129
+        },
+        "1.25": {
+          "cum": 24.6433,
+          "ann": 0.4213,
+          "vol": 0.3157,
+          "sharpe": 1.2719,
+          "mdd": 0.3423,
+          "calmar": 1.2307
+        },
+        "1.5": {
+          "cum": 35.8395,
+          "ann": 0.4782,
+          "vol": 0.3229,
+          "sharpe": 1.3724,
+          "mdd": 0.3274,
+          "calmar": 1.4606
+        },
+        "1.75": {
+          "cum": 26.442,
+          "ann": 0.4318,
+          "vol": 0.3266,
+          "sharpe": 1.2626,
+          "mdd": 0.3919,
+          "calmar": 1.1016
+        },
+        "2.0": {
+          "cum": 19.0159,
+          "ann": 0.3836,
+          "vol": 0.3502,
+          "sharpe": 1.1026,
+          "mdd": 0.549,
+          "calmar": 0.6988
+        }
+      },
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 17 页 / 印刷页 14 / 表 6"
+        }
+      ],
+      "notes": "全样本 = 2017-01~2026-07。"
+    },
+    {
+      "id": "F031",
+      "key": "results.table7.oos_threshold",
+      "value": {
+        "0.0": {
+          "cum": 1.6058,
+          "ann": 0.8904,
+          "vol": 0.3725,
+          "sharpe": 1.8977,
+          "mdd": 0.2466,
+          "calmar": 3.6105
+        },
+        "0.25": {
+          "cum": 1.8965,
+          "ann": 1.0281,
+          "vol": 0.3788,
+          "sharpe": 2.0586,
+          "mdd": 0.2466,
+          "calmar": 4.169
+        },
+        "0.5": {
+          "cum": 2.7482,
+          "ann": 1.4073,
+          "vol": 0.3886,
+          "sharpe": 2.4584,
+          "mdd": 0.2466,
+          "calmar": 5.7064
+        },
+        "0.75": {
+          "cum": 3.0216,
+          "ann": 1.5227,
+          "vol": 0.3911,
+          "sharpe": 2.5653,
+          "mdd": 0.2466,
+          "calmar": 6.1742
+        },
+        "1.0": {
+          "cum": 2.5865,
+          "ann": 1.3377,
+          "vol": 0.3978,
+          "sharpe": 2.337,
+          "mdd": 0.2466,
+          "calmar": 5.4243
+        },
+        "1.25": {
+          "cum": 2.577,
+          "ann": 1.3336,
+          "vol": 0.3978,
+          "sharpe": 2.3325,
+          "mdd": 0.2466,
+          "calmar": 5.4076
+        },
+        "1.5": {
+          "cum": 2.5091,
+          "ann": 1.3041,
+          "vol": 0.4094,
+          "sharpe": 2.2467,
+          "mdd": 0.2466,
+          "calmar": 5.2879
+        },
+        "1.75": {
+          "cum": 1.759,
+          "ann": 0.9636,
+          "vol": 0.4223,
+          "sharpe": 1.8111,
+          "mdd": 0.313,
+          "calmar": 3.0789
+        },
+        "2.0": {
+          "cum": 2.3836,
+          "ann": 1.2489,
+          "vol": 0.4479,
+          "sharpe": 2.0357,
+          "mdd": 0.313,
+          "calmar": 3.9907
+        }
+      },
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 17 页 / 印刷页 14 / 表 7"
+        }
+      ],
+      "notes": "样本外 = 2025-01~2026-07，最优阈值 0.75。"
+    },
+    {
+      "id": "F032",
+      "key": "metrics.calmar_definition",
+      "value": "卡玛比率 = 年化收益率 / 最大回撤（已用表 4-表 7 全部行复算，相对误差 < 1e-3）",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 11、15、17 页 / 表 4、5、6"
+        }
+      ]
+    },
+    {
+      "id": "F033",
+      "key": "metrics.annualization",
+      "value": "年化收益率 = (1+累计收益)^(250/N) - 1，N 为回测交易日数（由表 4/表 6 反算 N≈2306，与 2017-01 至 2026-07 交易日数一致）",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 11 页 / 表 4 复算"
+        }
+      ]
+    },
+    {
+      "id": "F034",
+      "key": "metrics.sharpe_definition",
+      "value": "夏普比率无法由同表“年化收益率/年化波动率”一致复算（隐含无风险利率在 -3.7%~+3.5% 间漂移），原文未给出定义",
+      "status": "ambiguous",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 11、15、17 页 / 表 4、5、6"
+        }
+      ],
+      "notes": "复现口径：几何年化超额收益（rf=0）/ 年化波动率；同时报告算术日均口径以便对照。"
+    },
+    {
+      "id": "F035",
+      "key": "timing.riskoff_windows",
+      "value": "择时避开的主要风险规避区间：2018-02~2019-01、2022-03~2022-08、2023-09~2024-06、2024-10~2025-02、2026-07-13 至今",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 15 页 / 印刷页 12 / 3.4 节和图 10"
+        }
+      ]
+    },
+    {
+      "id": "F036",
+      "key": "universe.equal_weight_drawdown",
+      "value": "10 行业等权组合年度最大回撤：2015 年 53.45%、2018 年 38.34%、2022 年 37.20%，近年 17%-25%",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 7-8 页 / 印刷页 4-5 / 1.2.3 节和图 4"
+        }
+      ]
+    },
+    {
+      "id": "F037",
+      "key": "universe.turnover_share",
+      "value": "10 行业成交额占全市场比例：2015 年约 12%、2019 年 20% 以上、2026 上半年接近 37%、2026-07-10 峰值 46.5%",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D1",
+          "locator": "PDF 第 5 页 / 印刷页 2 / 1.2.1 节和图 1"
+        }
+      ],
+      "notes": "可作为数据口径的辅助校验（需全市场成交额，本次未复现）。"
+    },
+    {
+      "id": "F038",
+      "key": "data.joinquant_probe",
+      "value": "聚宽研究工作区（jqcli research exec，经用户批准）：finance.SW1_DAILY_PRICE 存在（申万一级，1999-12-30 起）；无 SW2_DAILY_PRICE 表；get_price('801737.XSHG') 报“找不到标的”；get_industry_stocks('801737') 在 2019-06-28 返回 0 个成分股，2022-06-30 返回 59 个；get_index_valuation 不可用且只覆盖 9 个交易所指数。",
+      "status": "confirmed",
+      "basis": "research/scripts/jq_probe_sw2.py 与 jq_probe_sw2b.py 的真实执行输出",
+      "sources": [
+        {
+          "document_id": "D5",
+          "locator": "research/scripts/jq_probe_sw2.py / jq_probe_sw2b.py 经 jqcli research exec 的执行输出",
+          "excerpt": "no SW2_DAILY_PRICE; 找不到标的801737.XSHG; sw2_members_2019-06-28: n=0"
+        }
+      ],
+      "evidence_ids": [
+        "F003"
+      ],
+      "decision_id": "DEC-001",
+      "notes": "结论：聚宽同样无法提供申万二级行业指数 2021-12-13 之前的历史。"
+    },
+    {
+      "id": "F039",
+      "key": "data.local_lake_window",
+      "value": "本机 qlib cn_data：5,572 只个股日线（open/high/low/close/volume/amount/change/factor），日历 2016-01-04~2026-09-22，无行业指数与估值；quantdb：同一起点，个股 valuation 含 pb/float_mv/total_mv/equity，index_daily 仅约 30-63 条宽基/风格/中证行业/主题指数，无 801xxx 申万行业指数、无国债指数。",
+      "status": "confirmed",
+      "basis": "本地目录核验（/Users/hsh/quantmind/.../data/qlib/cn_data、data/quantdb）",
+      "sources": [
+        {
+          "document_id": "D2",
+          "locator": "/Users/hsh/quantmind/QuantMind_src/QuantMind-master/data/{qlib/cn_data,quantdb}",
+          "excerpt": "calendars/day.txt 2016-01-04~2026-09-22；index_daily 仅 30 条指数；无 801xxx"
+        }
+      ],
+      "evidence_ids": [],
+      "decision_id": "DEC-001",
+      "notes": "两处数据湖起点均为 2016-01-04，晚于研报所需 2015-01。"
+    },
+    {
+      "id": "F040",
+      "key": "data.proxy_panel_construction",
+      "value": "用 quantdb 2016-01-04~2026-07-31 个股数据按申万2021版成分股重建 10 行业：行业收益=前一日流通市值加权、个股为除权调整后的价格收益；行业PB=Σ总市值/Σ净资产（整体法）；行业流通市值=Σ流通市值。成分股名单取自聚宽 get_industry_stocks(sw_l2)，2021-12-13 起按抽样日阶梯，此前冻结在该日名单。",
+      "status": "confirmed",
+      "basis": "research/scripts/build_industry_panel.py 与 data/raw/industry_panel_proxy_manifest.json",
+      "sources": [
+        {
+          "document_id": "D2",
+          "locator": "data/raw/industry_panel_proxy_manifest.json",
+          "excerpt": "construction.industry_return = float_mv(t-1) weighted, split-adjusted price return"
+        }
+      ],
+      "evidence_ids": [
+        "F038"
+      ],
+      "decision_id": "DEC-001",
+      "notes": "属代理口径，非申万官方回溯；已知偏误为成分股名单前推与加权细节差异。"
+    },
+    {
+      "id": "F041",
+      "key": "data.proxy_panel_validation",
+      "value": "代理面板与申万官方在 2021-12-13~2026-07-31 重合期：日收益相关系数 0.968~0.997（中位 0.994）、年化跟踪误差 2.9%~9.4%（除消费电子 801085 为 9.4% 外均 ≤4.1%）、PB 相关系数 0.941~0.998、Σ流通市值与官方口径比值中位数在 1.47e8~2.23e8（元/亿元同量级，差异 ≤10% 量级）。",
+      "status": "confirmed",
+      "basis": "research/scripts/validate_proxy_panel.py → data/raw/proxy_validation.csv",
+      "sources": [
+        {
+          "document_id": "D3",
+          "locator": "data/raw/proxy_validation.csv",
+          "excerpt": "ret_corr 0.968~0.997; tracking_error_ann 0.029~0.094; pb_corr 0.941~0.998"
+        }
+      ],
+      "evidence_ids": [
+        "F040"
+      ],
+      "decision_id": "DEC-001",
+      "notes": "消费电子（801085）为最弱项，代理年化 12.2% vs 官方 3.6%。"
+    },
+    {
+      "id": "F042",
+      "key": "results.reproduction_holdings",
+      "value": "复现的“高集中度高估值”持仓路径与研报 2.4 节文字描述一致的主要节点：2020-2021 持有光伏设备+电池；2022 年单行业阶段含汽车零部件；2023 年聚焦通信设备与 IT服务Ⅱ；2024 下半年转向消费电子/通信设备/半导体。",
+      "status": "confirmed",
+      "basis": "results/holdings_proxy.csv",
+      "sources": [
+        {
+          "document_id": "D4",
+          "locator": "results/holdings_proxy.csv",
+          "excerpt": "2020-10-09 801735,801737；2023-03-01 801102,801103；2024-07-01 801085,801102"
+        }
+      ],
+      "evidence_ids": [
+        "F015",
+        "F035"
+      ],
+      "decision_id": null,
+      "notes": "持仓维度定性复现成功；收益维度仍有差距（见 validation.json）。"
+    },
+    {
+      "id": "F043",
+      "key": "data.joinquant_fq_consistency",
+      "value": "聚宽按月分块取 get_price(fq='post') 与整段取数的日收益完全一致（3 只样本股最大绝对差 0.0，电平比值 1.0），排除了分块导致复权基准漂移的假设。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D5",
+          "locator": "research/scripts/jq_probe_fq.py 输出",
+          "excerpt": "max_abs_diff_ret=0.0, level_ratio=1.0"
+        }
+      ],
+      "notes": "该探针用于定位 2016 年跨源不一致的原因。"
+    },
+    {
+      "id": "F044",
+      "key": "data.local_panel_fix",
+      "value": "本地重建面板的除权调整原先只累计面板内可见的送转事件，忽略了 2016 年之前的事件，导致有历史送转的个股在首个面板内除权日出现虚假跳变（例：300077.SZ 2016-04-01 被算成 +134.9%，行业单日 +62.9%）。改用面板起点前的累计比例作为基准后，该日行业收益为 -3.8%，与聚宽 2016 重合期相关性由 0.48~0.95 提升到 0.885~0.963、年化 TE 由 11%~69% 降到 10.5%~19.1%。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D7",
+          "locator": "industry_panel_final_manifest.json → overlap_2016_cross_source",
+          "excerpt": "ret_corr 0.885~0.963, tracking_error_ann 0.105~0.191"
+        }
+      ],
+      "notes": "属实现缺陷修复，非研报口径问题。"
+    },
+    {
+      "id": "F045",
+      "key": "data.coverage_comparison",
+      "value": "2016-2020 年每个行业的可用成分股中位数：聚宽 36/48/55/56/65（2016-2020）对本地 22/33/40/47/56；聚宽覆盖更全。2021-12-13 起本地面板与申万官方重合期 TE 3%~4%，是已验证的可信口径。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D7",
+          "locator": "jq_panel_1520.json 与 industry_panel_proxy.parquet 的 n_used 统计",
+          "excerpt": "2016 JQ 36 vs local 22"
+        }
+      ],
+      "notes": "决定：2015-2016 用聚宽暖机，2017 起用本地净值段。"
+    },
+    {
+      "id": "F046",
+      "key": "results.spec_sensitivity",
+      "value": "PCA 预处理五个变体（市值×衰减 / 仅衰减 / 仅市值 / 加等方差标准化 / 无加权）的 AR1 均值 0.733~0.742、前两主成分合计均值 0.819~0.839，全部落在研报图 8 的 0.7-0.9 区间内；组合（k1=2,k2=4）年化在 21.7%~31.6% 间移动，均未达到研报的 37.2%。相对估值剔除本行业与用全行业均值两种口径给出逐位相同的持仓与指标。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D6",
+          "locator": "spec_sensitivity.csv",
+          "excerpt": "V0..V4 ann 0.289/0.274/0.282/0.217/0.316"
+        }
+      ],
+      "notes": "结论：研报图 8 无法区分预处理口径；剩余收益差距不是 DEC-003/DEC-002 口径选择造成的。"
+    },
+    {
+      "id": "F047",
+      "key": "results.grid_shape",
+      "value": "复现网格：k1=2 是唯一整体最优的相对估值排名（各 k2 下夏普 0.78~1.06，全样本最优 k2=6 为 1.06，(2,4) 为 0.97）；但 2≤k1,k2≤5 区域夏普最低 0.67，并非研报所述“全部在 1.0 以上”。样本内最优为 (7,1)。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D8",
+          "locator": "grid_k1k2_final.csv",
+          "excerpt": "k1=2 行 sharpe 0.88/1.03/0.95/0.97/1.03/1.06/1.01/0.98"
+        }
+      ],
+      "notes": "k1=2 与研报一致；k2 最优值差异与整体夏普水平偏低同时出现，指向数据层面而非参数层面。"
+    },
+    {
+      "id": "F048",
+      "key": "extension.etf_weekly_holdings",
+      "value": "把「高集中度高估值 + ΔAR 择时(1.5)」落到 ETF 载体的周频扩展变体（非研报原口径）：490 次周频调仓中 291 次买入 1 只行业 ETF、199 次买入 2 只，从不超过 2 只；按交易日统计持 1 只 1372 天 / 2 只 953 天；叠加择时后约 28.3% 的交易日整仓为 1 只国债 ETF（511010）。周频用到的行业 ETF 共 9 只（自动化设备从未入选）。周频年化 26.62%、最大回撤 −36.14%，差于月频的 31.51% / −34.10%。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D9",
+          "locator": "results/etf_weekly_holdings.json",
+          "excerpt": "rebalance 490; {1:291, 2:199}; risk_off_share 0.283"
+        }
+      ],
+      "notes": "ETF 映射中 计算机设备 801101 / IT服务Ⅱ 801103 / 军工电子Ⅱ 801745 无对应二级行业 ETF，用一级或兄弟二级 ETF 代理（已在 D9 标注 tracking=代理）。"
+    },
+    {
+      "id": "F049",
+      "key": "results.figure1_reproduced",
+      "value": "用成分股重建的 10 行业成交额占全市场比重复现了研报图 1：2026-07-10 峰值 46.1%（研报 46.5%）、2026 上半年均值 35.5%（研报“接近 37%”）、2017 年均值 15.2%、2021 年均值 21.7%（研报 2019 年 >20%）。此前该项记为未复现，现已复现。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D11",
+          "locator": "crowding_overlay_summary.json → figure1_reproduction",
+          "excerpt": "2026-07-10: 46.1 vs report 46.5"
+        }
+      ],
+      "notes": "申万官方 bargainsumrate 字段分母不同（同期合计 56.7%），不用；改用自建口径。"
+    },
+    {
+      "id": "F050",
+      "key": "results.crowding_extension_failed",
+      "value": "在“高集中度高估值+ΔAR(1.5)”上叠加拥挤度：8 个结构变体（选行业剔除最热行业、板块拥挤度 z>2 减半仓/清仓、占比分位>90% 减半、按拥挤度缩放敞口、组合）与 6 个“变化量”变体（与 ΔAR 同构）全部未能提高夏普。基准夏普 0.97/年化 31.4%/回撤 −34.2%；最好的拥挤度变体夏普 0.89（板块占比变化 z(20/125)>1.5），多数变体回撤同步恶化。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D10",
+          "locator": "crowding_overlay.csv",
+          "excerpt": "C0 sharpe 0.968 vs C1b 0.887 / C2 0.754 / C2b 0.512 / C3 0.538"
+        }
+      ],
+      "notes": "机制：ΔC 本身就是资金聚集速度，策略定位是“在热点中选最强”，外生拥挤度过滤与 alpha 相冲；且拥挤度与 ΔAR 相关性仅 −0.006，不是冗余问题。"
+    },
+    {
+      "id": "F051",
+      "key": "extension.tech_as_growth_leg",
+      "value": "把科技池（研报 10 行业「高集中度高估值」组合）接进风格轮动 v3.3 的成长腿（价值腿 512890 红利低波ETF），窗口 2021-01-04~2026-07-31：无 A016 闸时年化 54.6%/夏普 1.89/回撤 −37.2%，明显优于用通用成长载体（159915+588000）的 38.0%/1.49/−23.3%；叠加分腿 A016（成长日用 exp_im、2022-07 前用 exp_ic，价值日用 exp_if）后为 23.4%/1.67/−8.6%/Calmar 2.73，也优于原版成长腿的 20.1%/1.43/−10.6%/Calmar 1.90。分腿 A016 把波动从 28.9% 压到 14.0%、回撤从 −37.2% 压到 −8.6%，代价是平均敞口仅约 0.2。ΔAR 在加入 A016 后无增量（夏普 1.671 vs 1.669）。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D12",
+          "locator": "tech_as_growth_leg.csv",
+          "excerpt": "科技池成长腿 54.6%/1.89 vs 原版 38.0%/1.49（无闸）"
+        }
+      ],
+      "notes": "扩展实验（非研报原口径）；科技池为指数口径、原始腿与价值腿为 ETF 复权价。"
+    },
+    {
+      "id": "F052",
+      "key": "extension.tech_v33_two_sleeve",
+      "value": "作为并列袖子（50/60/70% 权重）混合科技袖（+ΔAR 或 +分腿A016）与 v3.3 袖：科技+分腿A016 单袖夏普 1.92/回撤 −11.7%；加 40% v3.3分腿A016 后夏普 1.94、Calmar 2.80→3.12、回撤收窄到 −7.6%、年化 32.9%→23.8%。两袖日收益相关性 0.324（v3.3 若无闸则 0.548）。不去掉 A016 的整组（v3.3 无闸及其混合）夏普仅 0.49~0.94。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D13",
+          "locator": "combine_tech_v33.csv",
+          "excerpt": "60%科技+分腿A016 夏普 1.937 / Calmar 3.117"
+        }
+      ],
+      "notes": "窗口受 v3.3 信号起点限制为 2021-01 起；风格袖含成本、科技袖零成本。"
+    }
+  ],
+  "unread_ranges": [
+    {
+      "range": "图 1-图 12 的曲线数值",
+      "reason": "PDF 内为矢量图形，文本层仅含标题与正文转述；净值/回撤曲线只能通过表 3-表 7 与正文文字核验，未做图形数值提取。"
+    },
+    {
+      "range": "表 1 科技成长板块相关政策文件",
+      "reason": "与本复现的量化实现无关，未提取。"
+    }
+  ]
+}

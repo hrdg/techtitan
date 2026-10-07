@@ -1,0 +1,42 @@
+{
+  "requested_range": [
+    "20150101",
+    "20260731"
+  ],
+  "fetched_at": "2026-10-06T22:52:16.292028+08:00",
+  "csi_series": [
+    {
+      "source": "csindex.com.cn via akshare.stock_zh_index_hist_csindex",
+      "code": "000510",
+      "name": "中证A500",
+      "rows": 2812,
+      "date_min": "2015-01-01",
+      "date_max": "2026-07-31",
+      "sha256": "29f8a3f3dee8af889672a9ed08e90dafafae8b11ae6cf7af0e18615b998bc4bb"
+    },
+    {
+      "source": "csindex.com.cn via akshare.stock_zh_index_hist_csindex",
+      "code": "931380",
+      "name": "科技50",
+      "rows": 2814,
+      "date_min": "2015-01-01",
+      "date_max": "2026-07-31",
+      "sha256": "044ea3efb10772474854b6dac1609fc15be8a79e6191486802c17b7249b0dffd"
+    },
+    {
+      "source": "csindex.com.cn via akshare.stock_zh_index_hist_csindex",
+      "code": "H11006",
+      "name": "中证国债",
+      "rows": 2814,
+      "date_min": "2015-01-01",
+      "date_max": "2026-07-31",
+      "sha256": "0fc01dabb2d75c90133167ee5aeb8ae32b6d47af422d8024d1e1e93de7bd0581"
+    }
+  ],
+  "sse_treasury": {
+    "source": "finance.sina.com.cn via akshare.stock_zh_index_daily(sh000012)",
+    "rows": 2813,
+    "date_min": "2015-01-05",
+    "date_max": "2026-07-31"
+  }
+}

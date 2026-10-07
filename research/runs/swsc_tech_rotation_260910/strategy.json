@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "swsc_tech_rotation_260910-v1",
+  "mode": "baseline",
+  "status": "frozen",
+  "parent_version": null,
+  "requirements": [
+    {
+      "key": "universe.definition",
+      "value": "10 个申万二级行业指数：半导体 801081、消费电子 801085、电池 801737、光伏设备 801735、军工电子Ⅱ 801745、计算机设备 801101、IT服务Ⅱ 801103、通信设备 801102、汽车零部件 801093、自动化设备 801078",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F002",
+        "F003"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "固定 10 行业面板，全期不调整成分（研报未提到行业进出）。"
+    },
+    {
+      "key": "universe.history",
+      "value": "申万官方接口（index_publish/trend 与 index_analysis/index_analysis_report）对 801737/801735/801745/801103/801078 仅提供 2021-12-13 起日度数据；其余 5 条自 1999-12-30。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F003",
+        "F038"
+      ],
+      "decision_id": "DEC-001",
+      "critical": true,
+      "notes": "与研报 2015-01 起样本冲突，须由 DEC-001 决定补齐方式。"
+    },
+    {
+      "key": "data.fields",
+      "value": "行业指数日度：开高低收、成交额；市净率 PB；流通市值（亿元）；成分股数量。基准：中证A500(000510)、科技50(931380)、中证国债(H11006)；代理对照上证国债(000012)。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F002",
+        "F010",
+        "F012",
+        "F020",
+        "F025"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "研报原始数据源为万得（不可达）；改用申万宏源官网与中证指数官网，属已记录的数据源替代。"
+    },
+    {
+      "key": "data.availability",
+      "value": "行业层 2015-01-05~2026-07-31（5 条仅 2021-12-13 起）；基准层 2015-01-01~2026-07-31；上证国债 2015-01-05~2026-07-31。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F004",
+        "F039"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "本机 qlib cn_data 与 quantdb 均自 2016-01-04 起，且无申万二级行业指数与国债指数。"
+    },
+    {
+      "key": "data.revisions",
+      "value": "使用滚动窗口时按 as-of 截断，不使用未来数据；申万行业指数为申万宏源发布口径，无修订历史可用。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": [
+        "F039"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "由数据可得性推导：申万/聚宽/qlib/quantdb 均无行业指数修订历史，只能用滚动窗口按 as-of 截断；不模拟修订。"
+    },
+    {
+      "key": "data.adjustment",
+      "value": "行业指数为价格指数，不做复权；PB 与流通市值直接取申万发布值（亿元）。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F009",
+        "F012"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "若研报用全收益口径，策略与基准的分红处理会整体平移，本次统一用价格指数。"
+    },
+    {
+      "key": "factor.formula",
+      "value": "集中度 C_i,t = Σ_{j=1..2}( AR_j × |EV^j_i,t| / Σ_i|EV^j_i,t| ) / Σ_{j=1..2} AR_j，AR_j = λ_j / Σ_j λ_j；ΔC_i,t = (mean_15(C_i) − mean_125(C_i)) / std_125(C_i)。相对估值 RV_i,t = (PB_i,t / mean_500(PB_i)) / mean_{j≠i}(PB_j,t / mean_500(PB_j))。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F010",
+        "F011",
+        "F012",
+        "F013"
+      ],
+      "decision_id": "DEC-002",
+      "critical": true,
+      "notes": "“其余行业”取剔除本行业的横截面均值（DEC-002）。"
+    },
+    {
+      "key": "factor.preprocessing",
+      "value": "PCA 前对窗口内日收益做两步加权：半衰期 125 日指数衰减 w=0.5^((T−t)/125)；乘以 √(前一交易日行业流通市值)。随后按列去均值，用 SVD 取前 2 个主成分，AR 用奇异值平方占比（等价 λ_j/Σλ，trace 不变）。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": [
+        "F008",
+        "F009"
+      ],
+      "decision_id": "DEC-003",
+      "critical": true,
+      "notes": "研报只给出衰减权重与 √市值加权公式、未说明施加方式；本值由该公式推导为：收益×半衰期125日衰减×√(前一日流通市值)，列去均值、不做等方差标准化（DEC-003）。"
+    },
+    {
+      "key": "signal.clock",
+      "value": "月度信号：每月第一个交易日调仓，使用上一月最后一个交易日的 ΔC 与 RV。择时信号：日度跟踪，ΔAR 与信号在收盘后确认，下一交易日执行。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F015",
+        "F018",
+        "F022"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "收益按开盘到开盘计算，与“以每月第一个交易日开盘价调仓”一致。"
+    },
+    {
+      "key": "portfolio.selection",
+      "value": "高估值组合=RV 前 2；高集中度组合=ΔC 前 4；高集中度高估值=同时满足两者；交集为空时沿用上一期持仓（不空仓）。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F015",
+        "F016"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "排序均为从大到小。"
+    },
+    {
+      "key": "portfolio.weights",
+      "value": "组合内等权重；持仓行业数可为 1-2 个。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F017"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": ""
+    },
+    {
+      "key": "execution.rebalance",
+      "value": "月度换仓，每月第一个交易日开盘价成交；择时层可在任意交易日开盘切换股票组合/国债指数。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F018",
+        "F022"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": ""
+    },
+    {
+      "key": "execution.fill",
+      "value": "以指数开盘价全额成交，无滑点、无冲击成本、无手数约束。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": [
+        "F018"
+      ],
+      "decision_id": null,
+      "critical": false,
+      "notes": "研报只说明“每月第一个交易日开盘价调仓”，未给成交模型；本值推导为指数层面按开盘价全额成交、无滑点与冲击成本。"
+    },
+    {
+      "key": "execution.constraints",
+      "value": "无涨跌停、停牌、容量约束（行业指数层面）。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": [
+        "F018"
+      ],
+      "decision_id": null,
+      "critical": false,
+      "notes": "对象为行业指数而非个股，故无涨跌停/停牌/手数约束；由标的层级推导。"
+    },
+    {
+      "key": "costs.model",
+      "value": "零成本（费前）。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": [
+        "F018"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "研报未披露任何费用，故推导为零成本费前口径；换手与费后影响未评估（见 validation.json 限制）。"
+    },
+    {
+      "key": "backtest.period",
+      "value": "2017-01-03~2026-07-31（样本内 2017-2024，样本外 2025-01~2026-07）。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F005"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "实际起点受 DEC-001 影响：若行业面板自 2021-12-13 起，回测起点顺延至满足 500 日 PB 窗口的首日。"
+    },
+    {
+      "key": "backtest.benchmark",
+      "value": "中证A500(000510)、科技50(931380)、10 行业等权组合。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F025",
+        "F027"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "科技50 经中证官网确认代码 931380（全称“中证科技50指数”）。"
+    },
+    {
+      "key": "metrics.definitions",
+      "value": "累积收益=Π(1+r)−1；年化=(1+累计)^(250/N)−1；年化波动=std(r,ddof=1)×√250；最大回撤=min(NAV/cummax(NAV)−1)；卡玛=年化/|最大回撤|；夏普=年化收益/年化波动（rf=0）。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": [
+        "F032",
+        "F033"
+      ],
+      "decision_id": "DEC-004",
+      "critical": true,
+      "notes": "卡玛与年化口径由表 4-表 7 复算确定（F032/F033）；夏普口径原文自相矛盾（F034，state=ambiguous），故推导为几何年化/年化波动（rf=0）并在结果中并列算术口径。"
+    },
+    {
+      "key": "timing.rule",
+      "value": "ΔAR_t = (mean_15(AR) − mean_125(AR)) / std_125(AR)，AR_t = 前 2 个主成分方差解释率之和；signal=1 若 ΔAR<0（持有策略组合）；signal=0 若 ΔAR>1.5（次日 100% 国债指数）；否则维持原仓位。初始底仓为策略组合。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": [
+        "F020",
+        "F021",
+        "F022",
+        "F023"
+      ],
+      "decision_id": "DEC-005",
+      "critical": true,
+      "notes": "DEC-005 主口径 threshold=1.5，国债用中证国债 H11006（净价）；上证国债 000012 作敏感性对照。"
+    },
+    {
+      "key": "missing_data.policy",
+      "value": "任一行业或基准当日缺值则不产生信号（保持原仓位）；窗口不足 125/500 日时该日因子为 NaN，不参与排序。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": [
+        "F040"
+      ],
+      "decision_id": null,
+      "critical": false,
+      "notes": "由代理面板构造决定：任一行业缺值则该日不产生信号、窗口不足则该日因子为 NaN，不填充、不外推。"
+    },
+    {
+      "key": "validation.acceptance",
+      "value": "对表 4/表 5 的关键行做分项对照（累计/年化/波动/最大回撤/卡玛，相对偏差阈值 20%）；夏普按 DEC-004 口径报告并标注与原文不可比；表 6/表 7 阈值敏感性方向与最优阈值需一致（全样本最优 1.5、样本外最优 0.75）。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": [
+        "F027",
+        "F028",
+        "F030",
+        "F031"
+      ],
+      "decision_id": null,
+      "critical": true,
+      "notes": "由研报表 4-表 7 的关键行推导为分项对照阈值；夏普因原文口径不可复算（F034）只作量级参考。"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "key": "universe.history",
+      "status": "chosen",
+      "question": "电池/光伏设备/军工电子Ⅱ/IT服务Ⅱ/自动化设备 五条申万二级行业指数缺少 2021-12-13 之前的历史，如何补齐以使回测覆盖研报 2017-01 起点？",
+      "options": [
+        "A：用本地 quantdb 股票级数据（2016-01-04 起，含 pb/float_mv/equity）按申万2021版成分股 + 流通市值加权自建行业指数、行业PB（整体法）与行业流通市值，形成 2017-2026 近似面板，标注为代理回溯口径",
+        "B：只用申万官方序列，接受 10 行业公共窗口自 2021-12-13 起，回测顺延至满足 500 日 PB 窗口之后",
+        "C：经用户批准后用 jqcli research exec 从聚宽取申万二级行业指数全历史（若聚宽带回溯则口径最接近研报）",
+        "D：仅复现 5 个具 1999 起长历史的行业，其余标记 BLOCKED"
+      ],
+      "chosen": "A（用本地 quantdb 股票级数据按申万2021版成分股重建 10 行业面板，并以申万官方数据做重合期校验）",
+      "evidence_ids": [
+        "F003",
+        "F004"
+      ],
+      "notes": "用户先选择 C（聚宽取全历史），但实测聚宽同样无申万二级行业指数 2021-12-13 之前的数据（F038），故回落到 A。代理面板重合期校验见 F041。"
+    },
+    {
+      "id": "DEC-002",
+      "key": "factor.relative_valuation.formula",
+      "status": "chosen",
+      "question": "“t 时刻其余行业标准化市净率的平均值”是否剔除本行业？",
+      "options": [
+        "剔除本行业（leave-one-out）",
+        "全部 10 个行业"
+      ],
+      "chosen": "剔除本行业（leave-one-out）",
+      "evidence_ids": [
+        "F012"
+      ],
+      "notes": "“其余行业”字面含义；全行业口径作为敏感性对照留档。"
+    },
+    {
+      "id": "DEC-003",
+      "key": "factor.preprocessing",
+      "status": "chosen",
+      "question": "衰减权重与 √流通市值权重如何施加到 PCA 输入？",
+      "options": [
+        "x_{i,s} = r_{i,s} × 0.5^((T−s)/125) × √MC_{i,s−1}，列去均值，不标准化",
+        "先对窗口内收益做加权标准化，再 PCA",
+        "以样本权重形式施加衰减（不加权列值）"
+      ],
+      "chosen": "x_{i,s} = r_{i,s} × 0.5^((T−s)/125) × √MC_{i,s−1}，列去均值，不标准化",
+      "evidence_ids": [
+        "F008",
+        "F009",
+        "F014"
+      ],
+      "notes": "原文只给权重公式未给施加方式；该口径的 AR 与 C 的量级与研报图 8（前 2 个主成分总吸收比率 0.7-0.9）可比。"
+    },
+    {
+      "id": "DEC-004",
+      "key": "metrics.sharpe_definition",
+      "status": "chosen",
+      "question": "研报夏普比率无法由表内年化收益与波动率一致复算，复现采用何种口径？",
+      "options": [
+        "几何年化收益率 / 年化波动率（rf=0）",
+        "算术日均×250 / 年化波动率"
+      ],
+      "chosen": "几何年化收益率 / 年化波动率（rf=0）",
+      "evidence_ids": [
+        "F034"
+      ],
+      "notes": "同时输出算术口径列，便于读者自行对齐；两者与原文均可能不一致。"
+    },
+    {
+      "id": "DEC-005",
+      "key": "timing.treasury_asset",
+      "status": "chosen",
+      "question": "“国债指数”用哪条序列？",
+      "options": [
+        "中证国债指数 H11006（净价，中证官网）",
+        "上证国债指数 000012（新浪）"
+      ],
+      "chosen": "中证国债指数 H11006（净价，中证官网）",
+      "evidence_ids": [
+        "F024"
+      ],
+      "notes": "研报基准体系同为中证系列；上证国债作敏感性对照。"
+    }
+  ],
+  "blockers": [],
+  "known_limitations": [
+    {
+      "id": "BLK-001",
+      "status": "mitigated",
+      "detail": "5 个申万2021版二级行业指数缺少 2015-2021 历史（申万官方、聚宽、qlib、quantdb 四处均无）。已按 DEC-001 选择 A：用成分股重建代理面板并做重合期校验；残余偏误（成分名单前推、非官方加权细节、消费电子 801085 弱项）写入结论限制。"
+    },
+    {
+      "id": "BLK-002",
+      "status": "mitigated",
+      "detail": "研报原始数据源为万得；本机不可达，已用申万宏源官网 + 中证指数官网 + quantdb 替代。中证A500/科技50 的波动率与最大回撤与研报表 4 一致（19.22%/44.30%、27.48%/63.05%），累计收益低于研报（约 1.0-1.5pp 年化），推测研报用全收益口径；已在结论中标注。"
+    },
+    {
+      "id": "L-003",
+      "status": "open",
+      "detail": "point_in_time 与 metrics_comparison 分项验收为 PARTIAL（见 validation.json）；未做统计显著性与过拟合审计。"
+    }
+  ]
+}

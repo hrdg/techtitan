@@ -1,0 +1,11 @@
+$ /Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/make_charts.py
+cwd=/Users/hsh/Documents/Quant/科技轮动
+started=2026-10-06T23:59:06.461888+08:00
+returncode=0
+--- stdout ---
+wrote /Users/hsh/Documents/Quant/科技轮动/results/reproduction_overview.png
+wrote /Users/hsh/Documents/Quant/科技轮动/results/threshold_comparison.png
+wrote /Users/hsh/Documents/Quant/科技轮动/results/spec_sensitivity.png
+
+--- stderr ---
+
