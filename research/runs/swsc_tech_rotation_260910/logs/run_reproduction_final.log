@@ -1,6 +1,6 @@
 $ /Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/run_reproduction.py --panel final
 cwd=/Users/hsh/Documents/Quant/科技轮动
-started=2026-10-06T23:58:03.371061+08:00
+started=2026-10-13T23:08:30.463898+08:00
 returncode=0
 --- stdout ---
 panel final (2813, 10) 2015-01-05 2026-07-31

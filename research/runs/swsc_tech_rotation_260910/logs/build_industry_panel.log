@@ -1,6 +1,6 @@
 $ /Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/build_industry_panel.py
 cwd=/Users/hsh/Documents/Quant/科技轮动
-started=2026-10-06T23:58:32.526197+08:00
+started=2026-10-13T23:08:54.796926+08:00
 returncode=0
 --- stdout ---
 union symbols: 1173
@@ -12,7 +12,19 @@ union symbols: 1173
   loaded 20260422 2501
 valuation rows 1999232 price rows 1999232
 matrices (2569, 1173)
-wrote /Users/hsh/Documents/Quant/科技轮动/data/raw/industry_panel_proxy.parquet (25690, 10)
+wrote /Users/hsh/Documents/Quant/科技轮动/data/raw/industry_panel_proxy.parquet (25690, 13)
 
 --- stderr ---
+/Users/hsh/Documents/Quant/科技轮动/research/scripts/build_industry_panel.py:166: RuntimeWarning: divide by zero encountered in divide
+  "turnover_pct": (ind_amt.to_numpy() * 1e4 / ind_fmv.to_numpy()) * 100,
+/Users/hsh/Documents/Quant/科技轮动/research/scripts/build_industry_panel.py:166: RuntimeWarning: divide by zero encountered in divide
+  "turnover_pct": (ind_amt.to_numpy() * 1e4 / ind_fmv.to_numpy()) * 100,
+/Users/hsh/Documents/Quant/科技轮动/research/scripts/build_industry_panel.py:166: RuntimeWarning: divide by zero encountered in divide
+  "turnover_pct": (ind_amt.to_numpy() * 1e4 / ind_fmv.to_numpy()) * 100,
+/Users/hsh/Documents/Quant/科技轮动/research/scripts/build_industry_panel.py:166: RuntimeWarning: divide by zero encountered in divide
+  "turnover_pct": (ind_amt.to_numpy() * 1e4 / ind_fmv.to_numpy()) * 100,
+/Users/hsh/Documents/Quant/科技轮动/research/scripts/build_industry_panel.py:166: RuntimeWarning: divide by zero encountered in divide
+  "turnover_pct": (ind_amt.to_numpy() * 1e4 / ind_fmv.to_numpy()) * 100,
+/Users/hsh/Documents/Quant/科技轮动/research/scripts/build_industry_panel.py:166: RuntimeWarning: divide by zero encountered in divide
+  "turnover_pct": (ind_amt.to_numpy() * 1e4 / ind_fmv.to_numpy()) * 100,
 

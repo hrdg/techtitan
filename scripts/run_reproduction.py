@@ -43,8 +43,10 @@ def _naive(s):
 
 
 def load_panel(kind: str):
-    if kind in ("proxy", "final"):
-        fname = "industry_panel_final.parquet" if kind == "final" else "industry_panel_proxy.parquet"
+    if kind in ("proxy", "final", "delisted"):
+        fname = {"final": "industry_panel_final.parquet",
+                 "proxy": "industry_panel_proxy.parquet",
+                 "delisted": "industry_panel_final_delisted.parquet"}[kind]
         df = pd.read_parquet(RAW / fname)
         df["date"] = _naive(df["date"])
         df = df.sort_values(["date", "code"])
@@ -79,7 +81,7 @@ def benchmarks(dates: pd.DatetimeIndex, ret: pd.DataFrame):
 def main() -> None:
     global BACKTEST_START
     ap = argparse.ArgumentParser()
-    ap.add_argument("--panel", default="final", choices=["final", "proxy", "official"])
+    ap.add_argument("--panel", default="final", choices=["final", "proxy", "official", "delisted"])
     ap.add_argument("--threshold", type=float, default=1.5)
     ap.add_argument("--start", default=BACKTEST_START, help="backtest start date")
     args = ap.parse_args()

@@ -1,0 +1,24 @@
+{
+  "panel": "delisted",
+  "threshold": 1.5,
+  "first_valid": {
+    "C": "2015-07-09",
+    "dC": "2016-01-11",
+    "RV": "2016-01-11",
+    "dAR": "2016-01-11"
+  },
+  "best_k_in_sample": [
+    8,
+    1
+  ],
+  "best_k_full": [
+    2,
+    5
+  ],
+  "best_k_oos": [
+    2,
+    2
+  ],
+  "best_threshold_full": 1.25,
+  "best_threshold_oos": 1.0
+}

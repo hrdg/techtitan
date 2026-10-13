@@ -1,6 +1,6 @@
 $ /Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/spec_sensitivity.py
 cwd=/Users/hsh/Documents/Quant/科技轮动
-started=2026-10-06T23:59:03.302491+08:00
+started=2026-10-13T23:09:23.535575+08:00
 returncode=0
 --- stdout ---
 done V0_市值×衰减（当前 DEC-003）

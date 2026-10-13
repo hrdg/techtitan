@@ -99,6 +99,34 @@
       "sha256": "9b196b6469e60418f9633429b6c81aa538b1a93018bcdb5dbc8baef51eb59938",
       "page_numbering": "n/a（本机产物）",
       "accessibility": "CSV 可读"
+    },
+    {
+      "id": "D15",
+      "file": "../../../results/delisted_bias_by_industry.csv",
+      "sha256": "1baafe44be5b7d09ec4b63eb8f44e4df3f0b6cb80c5dcfac4422241f66bdc41d",
+      "page_numbering": "n/a（本机/聚宽产物）",
+      "accessibility": "CSV/JSON 可读"
+    },
+    {
+      "id": "D16",
+      "file": "../../../results/delisted_bias_by_strategy.csv",
+      "sha256": "3b5f35439ff8496d05889b859757d59fb0d692c5c69529af38f591b075e3f046",
+      "page_numbering": "n/a（本机/聚宽产物）",
+      "accessibility": "CSV/JSON 可读"
+    },
+    {
+      "id": "D17",
+      "file": "../../../data/raw/industry_panel_final_delisted_manifest.json",
+      "sha256": "79edcb3e4bcfeef1e6d96a2751a0acb56195dcf637befc0b7fe91bafa7b62e01",
+      "page_numbering": "n/a（本机/聚宽产物）",
+      "accessibility": "CSV/JSON 可读"
+    },
+    {
+      "id": "D18",
+      "file": "../../../data/raw/delisted_mapping_20261013.csv",
+      "sha256": "39b516e37f571c61e17e2088e9460d114fa42940dcdd7576531a54f9ceac91cc",
+      "page_numbering": "n/a（本机/聚宽产物）",
+      "accessibility": "CSV/JSON 可读"
     }
   ],
   "facts": [
@@ -1125,6 +1153,48 @@
         }
       ],
       "notes": "窗口受 v3.3 信号起点限制为 2021-01 起；风格袖含成本、科技袖零成本。"
+    },
+    {
+      "id": "F053",
+      "key": "audit.delisted_universe_check",
+      "value": "本线行业面板的数据源 quantdb 是纯存续股面板：最新日 5573 只、最早日 2355 只，最早日出现的标的在最新日全部仍在（退出 0 只）；7 只已知退市股（600401 海润光伏、002450 康得新、300372 欣泰电气、600485 信威集团、000939 凯迪生态、600806 昆明机床、000693 华泽钴镍）在 quantdb 中均不存在。成员名单取自聚宽 2021-12-13 之后的抽样日期，先天不含更早退市的股票。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D17",
+          "locator": "industry_panel_final_delisted_manifest.json",
+          "excerpt": "n_delisted=31, 6 个行业"
+        }
+      ],
+      "notes": "两条独立机制共同造成幸存者偏差，见 AUDIT_delisted_survivorship_20261013.md 第一节。"
+    },
+    {
+      "id": "F054",
+      "key": "audit.delisted_industry_impact",
+      "value": "补齐 31 只退市股（全市场 300 只退市股中落在本线 6 个行业的部分；通信设备 17、计算机设备 5、汽车零部件 5、光伏设备 2、消费电子 1、电池 1、半导体 0）。行业累计收益（2016-2026）变化：通信设备 583.2%→343.9%（-239.4pp，退市股最大占行业流通市值 37.9%、年化跟踪差 3.55%）、光伏设备 -38.3pp、计算机设备 -23.4pp、电池 -11.1pp、汽车零部件 -8.4pp、消费电子 -7.5pp。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D15",
+          "locator": "delisted_bias_by_industry.csv",
+          "excerpt": "801102 cum 5.8322 -> 3.4385"
+        }
+      ],
+      "notes": "通信设备是唯一被显著扭曲的行业：任何以 5.8 倍累计收益为依据的行业层判断需按 3.4 倍重写。"
+    },
+    {
+      "id": "F055",
+      "key": "audit.delisted_strategy_impact",
+      "value": "策略层（2017-01-03~2026-07-31，复核口径）补齐前后：高集中度高估值无择时 年化 28.90%→31.35%、夏普 0.753→0.811、回撤 -48.88%→-45.85%；叠加 ΔAR(1.5) 后 31.51%→32.20%、夏普 0.971→0.988、回撤 -34.10%→-34.99%；高估值无择时 23.38%→24.14%；高集中度无择时 16.33%→15.24%；10 行业等权 10.75%→9.99%。所有组合年化变化在 ±2.5pp、夏普在 ±0.06 以内。",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "D16",
+          "locator": "delisted_bias_by_strategy.csv",
+          "excerpt": "组合 ann +2.45pp, sharpe +0.058"
+        }
+      ],
+      "notes": "与另一条线 25.66%→2.63% 的崩塌机制不同：本线是 1-2 个行业的等权集中轮动，另一条线是宽截面 ML 选股。"
     }
   ],
   "unread_ranges": [

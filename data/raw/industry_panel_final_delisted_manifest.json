@@ -1,0 +1,93 @@
+{
+  "purpose": "在行业序列中并入已退市股票的贡献（幸存者偏差补齐）",
+  "mapping": {
+    "000622.XSHE": "801093",
+    "000687.XSHE": "801102",
+    "000748.XSHE": "801101",
+    "000760.XSHE": "801093",
+    "000836.XSHE": "801102",
+    "000851.XSHE": "801102",
+    "000971.XSHE": "801102",
+    "002089.XSHE": "801102",
+    "002231.XSHE": "801102",
+    "002308.XSHE": "801101",
+    "002359.XSHE": "801102",
+    "002417.XSHE": "801102",
+    "002610.XSHE": "801735",
+    "002684.XSHE": "801093",
+    "300028.XSHE": "801102",
+    "300038.XSHE": "801102",
+    "300116.XSHE": "801737",
+    "300202.XSHE": "801101",
+    "300282.XSHE": "801085",
+    "300312.XSHE": "801102",
+    "300367.XSHE": "801101",
+    "300742.XSHE": "801093",
+    "600093.XSHG": "801093",
+    "600260.XSHG": "801102",
+    "600355.XSHG": "801102",
+    "600401.XSHG": "801735",
+    "600462.XSHG": "801102",
+    "600485.XSHG": "801102",
+    "600680.XSHG": "801102",
+    "600804.XSHG": "801102",
+    "688086.XSHG": "801101"
+  },
+  "per_industry": {
+    "801085": {
+      "n_delisted": 1,
+      "n_delisted_days": 2075,
+      "cum_old": 4.5799,
+      "cum_new": 4.5046,
+      "ret_corr": 0.9999,
+      "te_ann": 0.0038,
+      "max_float_mv_share": 0.0219
+    },
+    "801093": {
+      "n_delisted": 5,
+      "n_delisted_days": 8892,
+      "cum_old": 0.9491,
+      "cum_new": 0.865,
+      "ret_corr": 0.9998,
+      "te_ann": 0.0061,
+      "max_float_mv_share": 0.042
+    },
+    "801101": {
+      "n_delisted": 5,
+      "n_delisted_days": 7356,
+      "cum_old": 1.2253,
+      "cum_new": 0.9909,
+      "ret_corr": 0.9995,
+      "te_ann": 0.0103,
+      "max_float_mv_share": 0.1356
+    },
+    "801102": {
+      "n_delisted": 17,
+      "n_delisted_days": 31071,
+      "cum_old": 5.8322,
+      "cum_new": 3.4385,
+      "ret_corr": 0.9959,
+      "te_ann": 0.0355,
+      "max_float_mv_share": 0.3787
+    },
+    "801735": {
+      "n_delisted": 2,
+      "n_delisted_days": 2947,
+      "cum_old": 1.7391,
+      "cum_new": 1.3564,
+      "ret_corr": 0.9992,
+      "te_ann": 0.0159,
+      "max_float_mv_share": 0.1652
+    },
+    "801737": {
+      "n_delisted": 1,
+      "n_delisted_days": 2079,
+      "cum_old": 4.7136,
+      "cum_new": 4.6021,
+      "ret_corr": 0.9994,
+      "te_ann": 0.0126,
+      "max_float_mv_share": 0.0509
+    }
+  },
+  "panel": "industry_panel_final_delisted.parquet"
+}

@@ -3,13 +3,13 @@
   "strategy_sha256": "1340a31c4730e8a46b16491ca49b1f88c85b0d7fff4af06234e6b8ca6f007e75",
   "code_revision": {
     "src/tech_rotation/factors.py": "7a50af7645847edc6880abd086f03ef115394ef7b76045b7220ab43573472a73",
-    "src/tech_rotation/backtest.py": "15512e73f5a9303a801852320cfb976008b5754ac1d0da402fc9cb26e20f876e",
-    "scripts/run_reproduction.py": "94573323c5a5c782a8cfc2a94692eddc5da0849c3123765e49e7e2a67df1e80c"
+    "src/tech_rotation/backtest.py": "b4687aa1b2a0f7cd68f8b3b6d47673a6286db4b590e862a547fec9c2fa53431d",
+    "scripts/run_reproduction.py": "eabde823b337a4c9631f4a5f50f0ecccdfc9a257c24b5e7450f9d48ca6d452ae"
   },
   "data_snapshot": {
     "sw_l2_daily.parquet": "6de13b000e11d8eeb0c9c171a1fa9752023af8d338515dfbf84774e86dea30e0",
     "industry_panel_final.parquet": "ac9c2c55ba1faa409d1d9fccbf3e743fa10a01941e2c1b80417bb2bce1e8a811",
-    "industry_panel_proxy.parquet": "37aa9f984788d6a9a17d2f1eb703fa026bd75ba3b8577c53f191d6be5f07d118",
+    "industry_panel_proxy.parquet": "043b956331b09bdf51a4c64a25355cef4793d4817a314d7298dd74e964ca1ce0",
     "jq_panel_1520.json": "2f8a15fb4d63ec9c98cd49d3ea0ccc43bda9e3dbfff6eff26cdb7e06f11ba296",
     "benchmark_csi_daily.parquet": "e62002b68ed12f9de7c97f74765435578a7738473f90c124e5375053510975e7",
     "sw2_members.json": "4398ea3603532e8865c7ad5f384a296ff069cea05727c9e0d52d571fdd4c00a0"
@@ -53,7 +53,7 @@
         },
         {
           "path": "../../../tests/test_backtest.py",
-          "note": "组合/择时/指标验算；pytest 结果: 11 passed in 0.20s"
+          "note": "组合/择时/指标验算；pytest 结果: 25 passed in 0.25s"
         }
       ],
       "reason": null
@@ -164,78 +164,102 @@
       "criterion": "表 4/表 5 关键行分项对照",
       "evidence": [
         {
-          "path": "../../../results/table4_5_proxy.csv",
+          "path": "../../../results/table4_5_final.csv",
           "note": "复现指标表"
         },
         {
-          "path": "../../../results/threshold_sensitivity_proxy.csv",
+          "path": "../../../results/threshold_sensitivity_final.csv",
           "note": "阈值敏感性对照"
         }
       ],
       "reason": "单因子腿（高估值）与基准波动率/回撤高度一致，但组合腿与择时后收益仍低于研报，主要来自数据源替代与样本起点差异。"
+    },
+    {
+      "id": "delisted_survivorship",
+      "status": "PASS",
+      "criterion": "面板是否含退市股已核查，并给出补齐前后的量化影响",
+      "evidence": [
+        {
+          "path": "AUDIT_delisted_survivorship_20261013.md",
+          "note": "审计报告：偏差来源、补齐方法、行业层与策略层影响"
+        },
+        {
+          "path": "../../../results/delisted_bias_by_industry.csv",
+          "note": "行业层补齐前后对照"
+        },
+        {
+          "path": "../../../results/delisted_bias_by_strategy.csv",
+          "note": "策略层补齐前后对照"
+        },
+        {
+          "path": "../../../data/raw/industry_panel_final_delisted_manifest.json",
+          "note": "补齐面板清单与映射"
+        }
+      ],
+      "reason": null
     }
   ],
   "command_evidence": [
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python -m pytest tests -q",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:58:03.065506+08:00",
+      "executed_at": "2026-10-13T23:08:30.115412+08:00",
       "exit_code": 0,
       "log_path": "logs/pytest.log"
     },
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/run_reproduction.py --panel final",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:58:03.371061+08:00",
+      "executed_at": "2026-10-13T23:08:30.463898+08:00",
       "exit_code": 0,
       "log_path": "logs/run_reproduction_final.log"
     },
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/run_reproduction.py --panel official --start 2023-01-01",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:58:09.810450+08:00",
+      "executed_at": "2026-10-13T23:08:36.661592+08:00",
       "exit_code": 0,
       "log_path": "logs/run_reproduction_official.log"
     },
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/fetch_sw_l2.py",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:58:12.496031+08:00",
+      "executed_at": "2026-10-13T23:08:39.188335+08:00",
       "exit_code": 0,
       "log_path": "logs/fetch_sw_l2.log"
     },
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/build_industry_panel.py",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:58:32.526197+08:00",
+      "executed_at": "2026-10-13T23:08:54.796926+08:00",
       "exit_code": 0,
       "log_path": "logs/build_industry_panel.log"
     },
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/validate_proxy_panel.py",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:59:02.761449+08:00",
+      "executed_at": "2026-10-13T23:09:23.020220+08:00",
       "exit_code": 0,
       "log_path": "logs/validate_proxy_panel.log"
     },
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/build_final_panel.py",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:59:02.994247+08:00",
+      "executed_at": "2026-10-13T23:09:23.238624+08:00",
       "exit_code": 0,
       "log_path": "logs/build_final_panel.log"
     },
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/spec_sensitivity.py",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:59:03.302491+08:00",
+      "executed_at": "2026-10-13T23:09:23.535575+08:00",
       "exit_code": 0,
       "log_path": "logs/spec_sensitivity.log"
     },
     {
       "command": "/Users/hsh/Documents/Quant/科技轮动/.venv/bin/python scripts/make_charts.py",
       "cwd": "/Users/hsh/Documents/Quant/科技轮动",
-      "executed_at": "2026-10-06T23:59:06.461888+08:00",
+      "executed_at": "2026-10-13T23:09:26.684928+08:00",
       "exit_code": 0,
       "log_path": "logs/make_charts.log"
     }
@@ -478,6 +502,27 @@
         "rel_dev_sharpe": 0.2923,
         "note_sharpe": "研报夏普口径无法由表内数据复算（F034），此处仅作量级参考"
       }
+    }
+  ],
+  "supersessions": [
+    {
+      "id": "SUP-2026-10-13-delisted",
+      "date": "2026-10-13",
+      "status": "SUPERSEDED_BY_DELISTED_AUGMENTED",
+      "scope": "metric_comparison 中 6 条组合/等权记录（原口径面板 industry_panel_final.parquet）",
+      "reason": "跨线审计确认行业面板只含存续股；补齐 31 只退市股后，组合层年化变化在 ±2.5pp 以内、夏普在 ±0.06 以内，但行业层出现显著下修（通信设备累计 583.2% → 343.9%）。旧行保留不删，新口径数值另存。",
+      "replacement_artifacts": [
+        "results/table4_5_delisted.csv",
+        "results/delisted_bias_by_strategy.csv",
+        "results/delisted_bias_by_industry.csv",
+        "data/raw/industry_panel_final_delisted.parquet"
+      ],
+      "report": "research/runs/swsc_tech_rotation_260910/AUDIT_delisted_survivorship_20261013.md",
+      "evidence_ids": [
+        "F053",
+        "F054",
+        "F055"
+      ]
     }
   ],
   "sensitivity_comparison": {

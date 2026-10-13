@@ -1,6 +1,6 @@
 $ /Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/fetch_sw_l2.py
 cwd=/Users/hsh/Documents/Quant/科技轮动
-started=2026-10-06T23:58:12.496031+08:00
+started=2026-10-13T23:08:39.188335+08:00
 returncode=0
 --- stdout ---
 801081 半导体: 2797 rows 2015-01-05..2026-07-31

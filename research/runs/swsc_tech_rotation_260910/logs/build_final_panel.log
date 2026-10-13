@@ -1,6 +1,6 @@
 $ /Users/hsh/Documents/Quant/科技轮动/.venv/bin/python research/scripts/build_final_panel.py
 cwd=/Users/hsh/Documents/Quant/科技轮动
-started=2026-10-06T23:59:02.994247+08:00
+started=2026-10-13T23:09:23.238624+08:00
 returncode=0
 --- stdout ---
 local gaps patched from joinquant: ret 0, float_mv 0
