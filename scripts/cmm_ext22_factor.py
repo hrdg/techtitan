@@ -137,6 +137,18 @@ def main() -> None:
     mom = level / level.shift(252) - 1
     vol20 = ret.rolling(20).std(ddof=1) * np.sqrt(250)
 
+    # TIP 综合动量闸（28/84/168/364 日收益均值 > 0，严格前一日）
+    tip = pd.read_parquet(RAW / "tip_daily.parquet")
+    tip["date"] = pd.to_datetime(tip["date"])
+    tp = tip.set_index("date")["close"].sort_index()
+    tp.index = pd.DatetimeIndex(tp.index).astype("datetime64[ns]")
+    tsc = pd.concat([tp / tp.shift(d) - 1 for d in (28, 84, 168, 364)], axis=1).mean(axis=1)
+    tg = pd.Series(np.where(tsc > 0, 1.0, 0.0), index=tp.index)
+    tg[tsc.isna()] = np.nan
+    mt = pd.merge_asof(pd.DataFrame({"date": ret.index}), tg.dropna().rename("tip").reset_index(),
+                       on="date", direction="backward", allow_exact_matches=False).set_index("date")
+    tip_gate = mt["tip"].shift(1).reindex(ret.index).fillna(0.0)
+
     # 状态条件 CMM（3 个市场状态变量，S* 由过去 IC 估计，不足回退 MOM）
     mkt_amt = amt.sum(axis=1)
     z = (mkt_amt - mkt_amt.rolling(244).mean()) / mkt_amt.rolling(244).std(ddof=1)
@@ -238,6 +250,38 @@ def main() -> None:
                      "annual_vol": round(m["annual_vol"], 4), "sharpe": round(m["sharpe"], 4),
                      "max_drawdown": round(m["max_drawdown"], 4), "calmar": round(m["calmar"], 4)})
         navs[label] = nav_curve(timed.dropna())
+
+    # 叠加 TIP：敞口 = ΔAR × TIP × 选行业结果
+    for mode, label in [("base", "⑤ ΔAR×TIP：基准 ΔC∩RV"),
+                        ("gate", "⑥ ΔAR×TIP：+EXT22 第三闸"),
+                        ("gate_both", "⑦ ΔAR×TIP：+EXT22+CMM 第三闸")]:
+        w = weights(mode)
+        r = portfolio_returns(w, ret)
+        r = r[r.index >= START]
+        bass = bond_all.reindex(r.index)
+        st = run_timing_overlay(d_ar, r, bass, TH)[1].clip(0, 1)
+        eq = st * tip_gate.reindex(r.index).fillna(0.0)
+        rr = eq * r + (1 - eq) * bass
+        m = metrics(rr.dropna())
+        rows.append({"variant": label, "annual_return": round(m["annual_return"], 4),
+                     "annual_vol": round(m["annual_vol"], 4), "sharpe": round(m["sharpe"], 4),
+                     "max_drawdown": round(m["max_drawdown"], 4), "calmar": round(m["calmar"], 4)})
+        navs[label] = nav_curve(rr.dropna())
+
+    # ⑧ 在 ⑥ 基础上总敞口×0.7
+    w = weights("gate")
+    r = portfolio_returns(w, ret)
+    r = r[r.index >= START]
+    bass = bond_all.reindex(r.index)
+    st = run_timing_overlay(d_ar, r, bass, TH)[1].clip(0, 1)
+    eq = st * tip_gate.reindex(r.index).fillna(0.0) * 0.7
+    rr = eq * r + (1 - eq) * bass
+    m = metrics(rr.dropna())
+    rows.append({"variant": "⑧ ΔAR×TIP×EXT22 + 敞口×70%",
+                 "annual_return": round(m["annual_return"], 4),
+                 "annual_vol": round(m["annual_vol"], 4), "sharpe": round(m["sharpe"], 4),
+                 "max_drawdown": round(m["max_drawdown"], 4), "calmar": round(m["calmar"], 4)})
+    navs["⑧ ΔAR×TIP×EXT22 + 敞口×70%"] = nav_curve(rr.dropna())
     t = pd.DataFrame(rows).sort_values("sharpe", ascending=False)
     t.to_csv(OUT / "cmm_ext22_comparison.csv", index=False)
     pd.DataFrame(navs).to_csv(OUT / "cmm_ext22_nav.csv")

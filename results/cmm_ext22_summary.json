@@ -31,6 +31,38 @@
   "weighting": "过去24期正IC均值加权（IC<=0记0），不足6期等权",
   "results": [
     {
+      "variant": "⑧ ΔAR×TIP×EXT22 + 敞口×70%",
+      "annual_return": 0.2966,
+      "annual_vol": 0.1933,
+      "sharpe": 1.5343,
+      "max_drawdown": -0.1854,
+      "calmar": 1.5998
+    },
+    {
+      "variant": "⑥ ΔAR×TIP：+EXT22 第三闸",
+      "annual_return": 0.4071,
+      "annual_vol": 0.2769,
+      "sharpe": 1.4703,
+      "max_drawdown": -0.2591,
+      "calmar": 1.5711
+    },
+    {
+      "variant": "⑦ ΔAR×TIP：+EXT22+CMM 第三闸",
+      "annual_return": 0.4026,
+      "annual_vol": 0.2829,
+      "sharpe": 1.4233,
+      "max_drawdown": -0.2697,
+      "calmar": 1.4925
+    },
+    {
+      "variant": "⑤ ΔAR×TIP：基准 ΔC∩RV",
+      "annual_return": 0.3933,
+      "annual_vol": 0.2947,
+      "sharpe": 1.3348,
+      "max_drawdown": -0.2841,
+      "calmar": 1.3843
+    },
+    {
       "variant": "③ EXT22作为第三闸",
       "annual_return": 0.3224,
       "annual_vol": 0.3049,
