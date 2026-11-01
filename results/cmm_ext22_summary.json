@@ -1,0 +1,66 @@
+{
+  "window": [
+    "2017-01-03",
+    "2026-10-30"
+  ],
+  "n_features": 22,
+  "features": [
+    "vol_60",
+    "vol_120",
+    "log_amount_60",
+    "log_amount_252",
+    "amihud_60",
+    "amount_trend",
+    "ret_21d",
+    "ret_126d",
+    "max_ret_21d",
+    "skew_60",
+    "kurt_60",
+    "price_to_high_252",
+    "beta_252",
+    "idio_vol_60",
+    "zero_ret_ratio_60",
+    "mean_abs_ret_60",
+    "LTRSTR",
+    "RSTR",
+    "HALPHA",
+    "CMRA",
+    "DASTD",
+    "HSIGMA"
+  ],
+  "weighting": "过去24期正IC均值加权（IC<=0记0），不足6期等权",
+  "results": [
+    {
+      "variant": "③ EXT22作为第三闸",
+      "annual_return": 0.3224,
+      "annual_vol": 0.3049,
+      "sharpe": 1.0572,
+      "max_drawdown": -0.3207,
+      "calmar": 1.0054
+    },
+    {
+      "variant": "④ EXT22+CMM 作为第三闸",
+      "annual_return": 0.3256,
+      "annual_vol": 0.3107,
+      "sharpe": 1.0478,
+      "max_drawdown": -0.3207,
+      "calmar": 1.0153
+    },
+    {
+      "variant": "① 基准 ΔC∩RV",
+      "annual_return": 0.3198,
+      "annual_vol": 0.3243,
+      "sharpe": 0.9862,
+      "max_drawdown": -0.341,
+      "calmar": 0.9376
+    },
+    {
+      "variant": "② EXT22综合动量前2+VOL20",
+      "annual_return": 0.1262,
+      "annual_vol": 0.2479,
+      "sharpe": 0.5089,
+      "max_drawdown": -0.2966,
+      "calmar": 0.4254
+    }
+  ]
+}
