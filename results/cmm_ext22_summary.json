@@ -31,6 +31,14 @@
   "weighting": "过去24期正IC均值加权（IC<=0记0），不足6期等权",
   "results": [
     {
+      "variant": "⑨ ⑧ + 宏观剪刀差软性分",
+      "annual_return": 0.2084,
+      "annual_vol": 0.1308,
+      "sharpe": 1.5932,
+      "max_drawdown": -0.1427,
+      "calmar": 1.4599
+    },
+    {
       "variant": "⑧ ΔAR×TIP×EXT22 + 敞口×70%",
       "annual_return": 0.2966,
       "annual_vol": 0.1933,

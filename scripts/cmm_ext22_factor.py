@@ -206,6 +206,21 @@ def main() -> None:
         a, c = score_at(T), score_cmm(T)
         return ((a + c) / 2).rank(pct=True)
 
+    # 诊断：两种第三闸的前 4 名重合度
+    diffs, cors = 0, []
+    for T in me:
+        a, b = score_at(T).dropna(), score_both(T).dropna()
+        common = set(a.index) & set(b.index)
+        if len(common) < 5:
+            continue
+        common = list(common)
+        ta, tb = set(a[common].nlargest(4).index), set(b[common].nlargest(4).index)
+        if ta != tb:
+            diffs += 1
+        cors.append(a[common].rank().corr(b[common].rank()))
+    print(f"两种第三闸前4名不同的月份: {diffs}/{len(cors)} ({diffs/max(len(cors),1):.1%})；"
+          f"两分数秩相关均值 {np.mean(cors):.2f}")
+
     def select(T, mode):
         d, r = dc.loc[T].dropna(), rv.loc[T].dropna()
         base = set(d.nlargest(4).index) & set(r.nlargest(2).index)
@@ -282,6 +297,24 @@ def main() -> None:
                  "annual_vol": round(m["annual_vol"], 4), "sharpe": round(m["sharpe"], 4),
                  "max_drawdown": round(m["max_drawdown"], 4), "calmar": round(m["calmar"], 4)})
     navs["⑧ ΔAR×TIP×EXT22 + 敞口×70%"] = nav_curve(rr.dropna())
+
+    # ⑨ 在 ⑧ 上再叠宏观剪刀差软性分（floor 0.3）
+    money = pd.read_parquet(Path("/Users/hsh/Documents/Quant/风格轮动/style-rotation/local/data/"
+                                 "prepared_joinquant_20261001/macro_money.parquet"))
+    money["stat_month"] = pd.to_datetime(money["stat_month"])
+    money = money.set_index("stat_month").sort_index()
+    sci = (money["m1_yoy"] - money["m2_yoy"]).shift(1)
+    s3 = sci.diff(3)
+    zz = (s3 - s3.rolling(36).mean()) / s3.rolling(36).std(ddof=1)
+    soft = (0.3 + 0.7 / (1 + np.exp(-zz))).reindex(r.index, method="ffill").fillna(1.0)
+    eq9 = st * tip_gate.reindex(r.index).fillna(0.0) * 0.7 * soft.reindex(r.index)
+    rr9 = eq9 * r + (1 - eq9) * bass
+    m9 = metrics(rr9.dropna())
+    rows.append({"variant": "⑨ ⑧ + 宏观剪刀差软性分",
+                 "annual_return": round(m9["annual_return"], 4),
+                 "annual_vol": round(m9["annual_vol"], 4), "sharpe": round(m9["sharpe"], 4),
+                 "max_drawdown": round(m9["max_drawdown"], 4), "calmar": round(m9["calmar"], 4)})
+    navs["⑨ ⑧ + 宏观剪刀差软性分"] = nav_curve(rr9.dropna())
     t = pd.DataFrame(rows).sort_values("sharpe", ascending=False)
     t.to_csv(OUT / "cmm_ext22_comparison.csv", index=False)
     pd.DataFrame(navs).to_csv(OUT / "cmm_ext22_nav.csv")

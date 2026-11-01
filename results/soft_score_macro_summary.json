@@ -1,0 +1,59 @@
+{
+  "window": [
+    "2017-01-03",
+    "2026-10-30"
+  ],
+  "signal": "M1-M2 剪刀差 3 个月变化，z 用过去 36 个月标准化，公布滞后一月",
+  "hypotheses": {
+    "H1": "软性分优于硬闸",
+    "H2": "尾部硬切+中间软缩放优于两者",
+    "H3": "软性分与 ΔAR×TIP 重叠，增量有限"
+  },
+  "results": [
+    {
+      "variant": "③ 软性分 floor=0.3",
+      "avg_equity": 0.363,
+      "annual_return": 0.2809,
+      "annual_vol": 0.1982,
+      "sharpe": 1.4175,
+      "max_drawdown": -0.2125,
+      "calmar": 1.322
+    },
+    {
+      "variant": "⑤ 闸+软性分（z<-1 硬切）",
+      "avg_equity": 0.332,
+      "annual_return": 0.2735,
+      "annual_vol": 0.1956,
+      "sharpe": 1.3985,
+      "max_drawdown": -0.2125,
+      "calmar": 1.2869
+    },
+    {
+      "variant": "④ 软性分 floor=0.5",
+      "avg_equity": 0.42,
+      "annual_return": 0.3137,
+      "annual_vol": 0.2246,
+      "sharpe": 1.3966,
+      "max_drawdown": -0.2324,
+      "calmar": 1.3496
+    },
+    {
+      "variant": "① 基线 ΔAR×TIP",
+      "avg_equity": 0.561,
+      "annual_return": 0.3933,
+      "annual_vol": 0.2947,
+      "sharpe": 1.3348,
+      "max_drawdown": -0.2841,
+      "calmar": 1.3843
+    },
+    {
+      "variant": "② 硬闸（z>0 才持有）",
+      "avg_equity": 0.279,
+      "annual_return": 0.2645,
+      "annual_vol": 0.2116,
+      "sharpe": 1.2499,
+      "max_drawdown": -0.2452,
+      "calmar": 1.0786
+    }
+  ]
+}
