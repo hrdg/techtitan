@@ -1,0 +1,83 @@
+{
+  "window": [
+    "2017-01-03",
+    "2026-10-30"
+  ],
+  "results": [
+    {
+      "variant": "① 基准 ΔC∩RV",
+      "annual_return": 0.3933,
+      "annual_vol": 0.2947,
+      "sharpe": 1.3348,
+      "max_drawdown": -0.2841,
+      "calmar": 1.3843
+    },
+    {
+      "variant": "⑤ 基准 + 剪刀差闸",
+      "annual_return": 0.2306,
+      "annual_vol": 0.2095,
+      "sharpe": 1.1006,
+      "max_drawdown": -0.2452,
+      "calmar": 0.9403
+    },
+    {
+      "variant": "③ +盈利修正(净利加速)",
+      "annual_return": 0.3354,
+      "annual_vol": 0.3062,
+      "sharpe": 1.0954,
+      "max_drawdown": -0.3022,
+      "calmar": 1.1099
+    },
+    {
+      "variant": "② +景气(营收加速)",
+      "annual_return": 0.2448,
+      "annual_vol": 0.2817,
+      "sharpe": 0.8691,
+      "max_drawdown": -0.3122,
+      "calmar": 0.7842
+    },
+    {
+      "variant": "⑥ 基准 + 信用利差闸（对照）",
+      "annual_return": 0.1733,
+      "annual_vol": 0.2069,
+      "sharpe": 0.838,
+      "max_drawdown": -0.2912,
+      "calmar": 0.5954
+    },
+    {
+      "variant": "⑧ 基准 + 两者同时",
+      "annual_return": 0.1161,
+      "annual_vol": 0.1434,
+      "sharpe": 0.8099,
+      "max_drawdown": -0.1929,
+      "calmar": 0.602
+    },
+    {
+      "variant": "④ +景气+盈利修正",
+      "annual_return": 0.2207,
+      "annual_vol": 0.2759,
+      "sharpe": 0.7999,
+      "max_drawdown": -0.3122,
+      "calmar": 0.7069
+    },
+    {
+      "variant": "⑦ +景气 + 剪刀差闸",
+      "annual_return": 0.1357,
+      "annual_vol": 0.2011,
+      "sharpe": 0.6744,
+      "max_drawdown": -0.3017,
+      "calmar": 0.4496
+    }
+  ],
+  "hypotheses": {
+    "H1": "营收增速加速的行业次月超额更高",
+    "H2": "净利增速加速（盈利修正代理）的行业次月超额更高",
+    "H3": "M1-M2 剪刀差走阔且信用利差收窄时风险偏好上升"
+  },
+  "corr_with_dc": {
+    "rev_accel": 0.025,
+    "prof_accel": 0.049
+  },
+  "macro_gate_share": 0.435,
+  "note": "本地无分析师一致预期，H2 用净利增速加速代理；宏观闸只用已公布月份"
+}
