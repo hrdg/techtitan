@@ -1,0 +1,7 @@
+{
+  "source": "akshare.stock_us_daily(symbol='TIP', adjust='qfq')",
+  "rows": 5491,
+  "date_min": "2005-01-03",
+  "date_max": "2026-10-30",
+  "sha256": "cb2a7cb5e4510ddac4c9de956b254a9eb17e58fac6a9ec4a24dceb3c72f28386"
+}

@@ -1,0 +1,124 @@
+{
+  "window": [
+    "2017-01-03",
+    "2026-07-31"
+  ],
+  "definitions": {
+    "tip": "mean(28/84/168/364d returns) > 0",
+    "ma200": "等权行业指数 > 200DMA",
+    "vol_target": "63d 实现波动率目标，缩放 clip 0.3-1"
+  },
+  "cost": "5bp × |Δ敞口|",
+  "results": [
+    {
+      "variant": "⑩ +TIP+15%目标",
+      "avg_equity": 0.263,
+      "annual_return": 0.1952,
+      "annual_vol": 0.1423,
+      "sharpe": 1.3714,
+      "max_drawdown": -0.2066,
+      "calmar": 0.9447,
+      "switches": 1194
+    },
+    {
+      "variant": "⑦ +TIP+200D+15%目标(相乘)",
+      "avg_equity": 0.188,
+      "annual_return": 0.1698,
+      "annual_vol": 0.1256,
+      "sharpe": 1.3519,
+      "max_drawdown": -0.2093,
+      "calmar": 0.8114,
+      "switches": 989
+    },
+    {
+      "variant": "⑪ 综合·仅最严生效(min)",
+      "avg_equity": 0.188,
+      "annual_return": 0.1698,
+      "annual_vol": 0.1256,
+      "sharpe": 1.3519,
+      "max_drawdown": -0.2093,
+      "calmar": 0.8114,
+      "switches": 989
+    },
+    {
+      "variant": "⑧ +TIP+200D+20%目标(相乘)",
+      "avg_equity": 0.246,
+      "annual_return": 0.2038,
+      "annual_vol": 0.162,
+      "sharpe": 1.2585,
+      "max_drawdown": -0.2448,
+      "calmar": 0.8325,
+      "switches": 987
+    },
+    {
+      "variant": "② +TIP综合动量",
+      "avg_equity": 0.575,
+      "annual_return": 0.3728,
+      "annual_vol": 0.2966,
+      "sharpe": 1.257,
+      "max_drawdown": -0.2817,
+      "calmar": 1.3236,
+      "switches": 24
+    },
+    {
+      "variant": "⑨ +200D+15%目标",
+      "avg_equity": 0.221,
+      "annual_return": 0.1611,
+      "annual_vol": 0.133,
+      "sharpe": 1.2117,
+      "max_drawdown": -0.2093,
+      "calmar": 0.7698,
+      "switches": 1118
+    },
+    {
+      "variant": "⑥ +TIP+200D",
+      "avg_equity": 0.436,
+      "annual_return": 0.3144,
+      "annual_vol": 0.2772,
+      "sharpe": 1.1343,
+      "max_drawdown": -0.258,
+      "calmar": 1.2186,
+      "switches": 30
+    },
+    {
+      "variant": "④ +15%波动率目标",
+      "avg_equity": 0.338,
+      "annual_return": 0.1649,
+      "annual_vol": 0.162,
+      "sharpe": 1.0179,
+      "max_drawdown": -0.2066,
+      "calmar": 0.7981,
+      "switches": 1482
+    },
+    {
+      "variant": "⑤ +20%波动率目标",
+      "avg_equity": 0.434,
+      "annual_return": 0.2039,
+      "annual_vol": 0.2044,
+      "sharpe": 0.9976,
+      "max_drawdown": -0.2488,
+      "calmar": 0.8197,
+      "switches": 1464
+    },
+    {
+      "variant": "③ +200D趋势",
+      "avg_equity": 0.496,
+      "annual_return": 0.2856,
+      "annual_vol": 0.2897,
+      "sharpe": 0.9858,
+      "max_drawdown": -0.3506,
+      "calmar": 0.8145,
+      "switches": 40
+    },
+    {
+      "variant": "① 基准：组合+ΔAR(1.5)",
+      "avg_equity": 0.717,
+      "annual_return": 0.3211,
+      "annual_vol": 0.3259,
+      "sharpe": 0.9851,
+      "max_drawdown": -0.3506,
+      "calmar": 0.9159,
+      "switches": 13
+    }
+  ]
+}

@@ -27,7 +27,7 @@ import pandas as pd
 QUANTDB = Path(os.environ.get("QUANTDB_DIR", "/Users/hsh/quantmind/QuantMind_src/QuantMind-master/data/quantdb"))
 ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "data" / "raw"
-START, END = "20160104", "20260731"
+START, END = "20160104", None      # END=None 时取 quantdb 最新可用日
 
 
 def membership_frame(raw: dict) -> dict[str, dict[str, list[str]]]:
@@ -52,7 +52,12 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--members", default="sw2_members.json")
     ap.add_argument("--out", default="industry_panel_proxy.parquet")
+    ap.add_argument("--end", default=None, help="YYYYMMDD；缺省取 quantdb 最新日")
     args = ap.parse_args()
+    global END
+    END = args.end or Path(
+        sorted(glob.glob(str(QUANTDB / "5_technical_derived/valuation/dt=*")))[-1]).name.split("=")[1]
+    print("panel end date:", END)
     raw = json.loads((RAW / args.members).read_text(encoding="utf-8"))
     by_date_all = {
         c: {d: [to_qdb(s) for s in lst] for d, lst in v.items()}

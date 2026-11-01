@@ -1,0 +1,51 @@
+{
+  "window": [
+    "2017-01-03",
+    "2026-10-30"
+  ],
+  "momentum": "12 个月（252 日）收益率，截面排名",
+  "vol_filter": "VOL20：剔除截面波动最高 30%",
+  "note": "HA_EXT22 标签本机无原文，按同项目 12M/月频/Top2/VOL20 语义实现等价版本，IC 赋权未复刻",
+  "results": [
+    {
+      "variant": "① 基准：ΔC∩RV",
+      "annual_return": 0.3198,
+      "annual_vol": 0.3243,
+      "sharpe": 0.9862,
+      "max_drawdown": -0.341,
+      "calmar": 0.9376
+    },
+    {
+      "variant": "② 三因子交集（+动量前4）",
+      "annual_return": 0.3008,
+      "annual_vol": 0.3234,
+      "sharpe": 0.9301,
+      "max_drawdown": -0.341,
+      "calmar": 0.8819
+    },
+    {
+      "variant": "④ 综合打分（三因子排名均值）",
+      "annual_return": 0.2823,
+      "annual_vol": 0.3094,
+      "sharpe": 0.9122,
+      "max_drawdown": -0.3724,
+      "calmar": 0.758
+    },
+    {
+      "variant": "③ 动量门槛（剔除动量后30%）",
+      "annual_return": 0.2876,
+      "annual_vol": 0.3206,
+      "sharpe": 0.8971,
+      "max_drawdown": -0.4116,
+      "calmar": 0.6987
+    },
+    {
+      "variant": "⑤ 动量前2+低波（VOL20）",
+      "annual_return": 0.1425,
+      "annual_vol": 0.2592,
+      "sharpe": 0.5496,
+      "max_drawdown": -0.3135,
+      "calmar": 0.4544
+    }
+  ]
+}
