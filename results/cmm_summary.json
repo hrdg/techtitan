@@ -1,0 +1,46 @@
+{
+  "window": [
+    "2017-01-03",
+    "2026-10-30"
+  ],
+  "states": [
+    "量价相关性(10d corr of EW ret vs 244d amount z)",
+    "20日上涨行业占比",
+    "截面离散度"
+  ],
+  "S_star": "各状态取过去24期截面IC均值最大者；不足6期回退MOM",
+  "results": [
+    {
+      "variant": "① 基准 ΔC∩RV",
+      "annual_return": 0.3198,
+      "annual_vol": 0.3243,
+      "sharpe": 0.9862,
+      "max_drawdown": -0.341,
+      "calmar": 0.9376
+    },
+    {
+      "variant": "④ CMM作为第三闸",
+      "annual_return": 0.3025,
+      "annual_vol": 0.3115,
+      "sharpe": 0.9713,
+      "max_drawdown": -0.3207,
+      "calmar": 0.9435
+    },
+    {
+      "variant": "③ CMM前2+VOL20",
+      "annual_return": 0.1602,
+      "annual_vol": 0.2523,
+      "sharpe": 0.6349,
+      "max_drawdown": -0.269,
+      "calmar": 0.5956
+    },
+    {
+      "variant": "② MOM前2+VOL20",
+      "annual_return": 0.1425,
+      "annual_vol": 0.2592,
+      "sharpe": 0.5496,
+      "max_drawdown": -0.3135,
+      "calmar": 0.4544
+    }
+  ]
+}
