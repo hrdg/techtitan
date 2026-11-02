@@ -18,7 +18,7 @@ import pandas as pd
 warnings.filterwarnings("ignore")
 
 OUT = Path(__file__).resolve().parents[2] / "data" / "raw"
-START, END = "20150101", "20260731"
+START, END = "20150101", "20261031"
 CSI = {"000510": "中证A500", "931380": "科技50", "H11006": "中证国债"}
 
 

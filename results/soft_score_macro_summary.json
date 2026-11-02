@@ -13,47 +13,47 @@
     {
       "variant": "③ 软性分 floor=0.3",
       "avg_equity": 0.363,
-      "annual_return": 0.2809,
-      "annual_vol": 0.1982,
-      "sharpe": 1.4175,
+      "annual_return": 0.2745,
+      "annual_vol": 0.1958,
+      "sharpe": 1.4023,
       "max_drawdown": -0.2125,
-      "calmar": 1.322
+      "calmar": 1.2916
     },
     {
       "variant": "⑤ 闸+软性分（z<-1 硬切）",
       "avg_equity": 0.332,
-      "annual_return": 0.2735,
-      "annual_vol": 0.1956,
-      "sharpe": 1.3985,
+      "annual_return": 0.2673,
+      "annual_vol": 0.1932,
+      "sharpe": 1.3837,
       "max_drawdown": -0.2125,
-      "calmar": 1.2869
+      "calmar": 1.2576
     },
     {
       "variant": "④ 软性分 floor=0.5",
       "avg_equity": 0.42,
-      "annual_return": 0.3137,
-      "annual_vol": 0.2246,
-      "sharpe": 1.3966,
+      "annual_return": 0.3062,
+      "annual_vol": 0.2218,
+      "sharpe": 1.3806,
       "max_drawdown": -0.2324,
-      "calmar": 1.3496
+      "calmar": 1.3176
     },
     {
       "variant": "① 基线 ΔAR×TIP",
       "avg_equity": 0.561,
-      "annual_return": 0.3933,
-      "annual_vol": 0.2947,
-      "sharpe": 1.3348,
+      "annual_return": 0.3834,
+      "annual_vol": 0.291,
+      "sharpe": 1.3175,
       "max_drawdown": -0.2841,
-      "calmar": 1.3843
+      "calmar": 1.3494
     },
     {
       "variant": "② 硬闸（z>0 才持有）",
       "avg_equity": 0.279,
-      "annual_return": 0.2645,
-      "annual_vol": 0.2116,
-      "sharpe": 1.2499,
+      "annual_return": 0.2585,
+      "annual_vol": 0.209,
+      "sharpe": 1.237,
       "max_drawdown": -0.2452,
-      "calmar": 1.0786
+      "calmar": 1.0543
     }
   ]
 }
