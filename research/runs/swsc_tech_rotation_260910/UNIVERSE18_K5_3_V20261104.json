@@ -1,0 +1,47 @@
+{
+  "strategy_tag": "UNIVERSE18_K5_3_V20261104",
+  "status": "FROZEN_CANDIDATE",
+  "frozen_at": "2026-11-04T00:00:00+08:00",
+  "role": "candidate for forward shadow tracking; the 10-industry v2 baseline stays the reference",
+  "parent": "BASE_DC_RV_DARxTIP_CALENDAR_H11006_V20261104",
+  "control": {
+    "strategy_tag": "BASE_DC_RV_DARxTIP_CALENDAR_H11006_V20261104",
+    "universe": "10 SW L2 tech industries",
+    "k": "deltaC top4 (40%), RV top2 (20%)"
+  },
+  "candidate": {
+    "universe": {
+      "n": 18,
+      "codes": ["801081","801082","801083","801084","801085","801086","801093","801101","801102","801103","801104","801223","801735","801737","801745","801764","801767","801078"],
+      "names": {"801081":"半导体","801082":"其他电子","801083":"元件","801084":"光学光电子","801085":"电子制造","801086":"电子化学品","801093":"汽车零部件","801101":"计算机设备","801102":"通信设备","801103":"IT服务","801104":"软件开发","801223":"通信运营","801735":"光伏设备","801737":"电池","801745":"军工电子","801764":"游戏","801767":"数字媒体","801078":"自动化设备"},
+      "panel": "data/raw/industry_panel_18.parquet",
+      "members": "data/raw/sw2_members_18.json (joinquant sw_l2, 11 PIT dates)",
+      "builder": "research/scripts/build_industry_panel.py"
+    },
+    "k": {"deltaC": 5, "rv": 3, "pct_deltaC": 0.278, "pct_rv": 0.167},
+    "factors": "unchanged: 125d PCA, half-life 125d, 2 components, sqrt float-mv; deltaC 15/125 z; RV 500d leave-one-out",
+    "timing": "unchanged: deltaAR(1.5) hysteresis x TIP 21/63/126/252 calendar gate, next-day effect",
+    "risk_off_asset": "H11006",
+    "execution": "per selected industry, 250d correlation vs the industry index, corr>=0.80, top8 by correlation, then rank by 0.5*beta_rank + 0.5*HA77_composite_rank",
+    "cost": 0
+  },
+  "evidence": {
+    "comparison_file": "results/compare_10_vs_18.json",
+    "segments": {
+      "10tech_k4_2": {"2019-2023": 1.016, "2024-2026": 2.015, "full": 1.388},
+      "10tech_k3_2": {"2019-2023": 0.954, "2024-2026": 2.021, "full": 1.352},
+      "18tech_k5_3": {"2019-2023": 1.196, "2024-2026": 2.573, "full": 1.687},
+      "18tech_k5_4": {"2019-2023": 1.104, "2024-2026": 2.424, "full": 1.585}
+    },
+    "yearly_win_rate_vs_control": "6 of 8 years",
+    "implementation": "single code path, scripts/compare_10_vs_18.py"
+  },
+  "known_limitations": [
+    "all results are on inspected 2017-2026 history; not independent OOS",
+    "membership before 2021-12-13 is backfilled from the first PIT snapshot",
+    "new industries are small: digital media 14 members, electronic chemicals 38",
+    "ETF execution depends on the frozen HA 77-factor composite",
+    "zero cost, close-to-close approximation"
+  ],
+  "next": "forward shadow tracking from 2026-11; do not promote to reference until 12 months of live signals"
+}

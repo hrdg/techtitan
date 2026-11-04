@@ -8,7 +8,23 @@
 规格与验收：design.md（可读规格视图）、research/runs/swsc_tech_rotation_260910/（evidence / strategy /
 validation / logs）。**这是一个部分复现**，与原文的差距、原因与限制都写在 design.md 第 6-7 节。
 
+
+## 当前策略分层（2026-11-04）
+
+| 角色 | 标签 | 池子 | k（分位） | 全期Sharpe | 说明 |
+| --- | --- | --- | --- | ---: | --- |
+| 参考基准 | `BASE_DC_RV_DARxTIP_CALENDAR_H11006_V20261104` | 10 行业 | 4/2（40%/20%） | 1.269 | TIP 已改为日历口径（21/63/126/252 A股交易日） |
+| 候选 | `UNIVERSE18_K5_3_V20261104` | 18 行业 | 5/3（28%/17%） | 1.687 | 待12个月前瞻跟踪后再决定是否替换基准 |
+
+18 行业候选新增 8 个纯科技二级行业（其他电子、元件、光学光电子、电子化学品、软件开发、游戏、数字媒体、通信运营），
+成分来自聚宽 `get_industry_stocks(sw_l2)` 的 11 个时点快照。ETF 执行统一为「250日相关≥0.80 取前8，再按 beta 与
+HA 77因子综合动量各 50% 排名」。同代码对比见 `results/compare_10_vs_18.json`：18 行业在 2019–2023 与 2024–2026
+两个分段都领先，8 年中 6 年胜出，但 2019 年落后 14.6pp，且全部结果仍在已查看历史上，**不是独立样本外**。
+
+冻结规格：`research/runs/swsc_tech_rotation_260910/UNIVERSE18_K5_3_V20261104.json`。
+
 ## 快速开始
+
 
         uv venv --python 3.12 .venv
         uv pip install --python .venv/bin/python akshare pyarrow pytest matplotlib

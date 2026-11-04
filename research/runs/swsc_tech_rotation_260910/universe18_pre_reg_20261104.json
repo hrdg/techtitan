@@ -1,0 +1,36 @@
+{
+  "experiment_id": "universe18_k5_3_prereg_20261104",
+  "registered_at": "2026-11-04T00:00:00+08:00",
+  "status": "frozen_before_run",
+  "parent": "BASE_DC_RV_DARxTIP_CALENDAR_H11006_V20261104",
+  "change": "expand the industry universe from 10 to 18 pure-tech SW2 industries and set k by percentile (deltaC top 5 of 18 = 28%, RV top 3 of 18 = 17%)",
+  "universe": {
+    "codes": ["801081","801082","801083","801084","801085","801086","801093","801101","801102","801103","801104","801223","801735","801737","801745","801764","801767","801078"],
+    "source": "joinquant get_industry_stocks(sw_l2), 11 PIT dates from 2021-12-13",
+    "panel": "data/raw/industry_panel_18.parquet (rebuilt with research/scripts/build_industry_panel.py)"
+  },
+  "unchanged": {
+    "pca": "125d window, half-life 125d, 2 components, sqrt float-mv weighting",
+    "delta": "15/125 z-score",
+    "rv": "500d PB mean, leave-one-out cross-section",
+    "timing": "deltaAR(1.5) hysteresis x TIP 21/63/126/252 calendar gate, next-day effect",
+    "risk_off_asset": "H11006",
+    "cost": 0
+  },
+  "execution": {
+    "etf_selection": "per industry, 250d correlation vs industry index, corr >= 0.80, top 8 by correlation, then rank by 0.5*beta_rank + 0.5*HA77_composite_rank",
+    "composite_source": "HA composite_scores_all.parquet (frozen)"
+  },
+  "required_checks": [
+    "2019-2023 vs 2024-2026 segment Sharpe",
+    "yearly returns",
+    "industry selection frequency",
+    "single-period dependence test: gain must not be confined to 2025-2026"
+  ],
+  "decision_rule": "adopt only if the 2019-2023 segment Sharpe is at least the 10-industry baseline and the yearly gain is positive in at least half of the years",
+  "known_limitations": [
+    "new industries have few members (digital media 14, electronic chemicals 38)",
+    "pre-2021-12 membership is backfilled",
+    "ETF execution relies on the frozen HA composite for ranking"
+  ]
+}
