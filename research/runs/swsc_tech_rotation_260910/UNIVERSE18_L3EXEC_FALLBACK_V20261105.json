@@ -1,0 +1,38 @@
+{
+  "strategy_tag": "UNIVERSE18_L3EXEC_FALLBACK_V20261105",
+  "status": "FROZEN_CANDIDATE",
+  "frozen_at": "2026-11-05T00:00:00+08:00",
+  "role": "combined candidate; run in parallel with the three controls for forward tracking",
+  "parents": ["UNIVERSE18_K5_3_V20261104", "UNIVERSE18_L3EXEC_V20261105"],
+  "selection": {
+    "universe": "18 SW L2 tech industries",
+    "k": {"deltaC": 5, "rv": 3},
+    "empty_intersection": "instead of holding the previous portfolio, take the single name with the highest deltaC among the RV top-3",
+    "rationale": "holding a stale name that satisfies neither condition is the main source of lag; the fallback guarantees every holding meets at least one current condition"
+  },
+  "execution": {
+    "l3_children": {"801081": ["850813","850814","850815","850817","850818"], "801102": ["851024","851025","851026","851027"]},
+    "rule": "if the selected industry is semis or communications, replace with its highest-deltaC L3 child; otherwise keep the L2",
+    "etf": "250d correlation vs the chosen index >= 0.80, top 8, then rank by 0.5*beta_rank + 0.5*HA77_composite_rank"
+  },
+  "timing": "unchanged: deltaAR(1.5) hysteresis x TIP 21/63/126/252 calendar gate, next-day effect, residual H11006",
+  "evidence": {
+    "18_base": {"2019-2023": 1.196, "2024-2026": 2.573, "full": 1.687, "full_ann": 0.4815, "full_mdd": -0.2478},
+    "plus_l3_exec": {"2019-2023": 1.304, "2024-2026": 2.475, "full": 1.727, "full_ann": 0.4876, "full_mdd": -0.2448},
+    "plus_fallback": {"2019-2023": 1.192, "2024-2026": 2.920, "full": 1.799, "full_ann": 0.5179, "full_mdd": -0.2478},
+    "combined": {"2019-2023": 1.300, "2024-2026": 2.772, "full": 1.825, "full_ann": 0.5196, "full_mdd": -0.2448},
+    "increments_full": {"l3": 0.040, "fallback": 0.112, "combined": 0.138},
+    "complementarity": "L3 execution lifts 2019-2023 (1.196 -> 1.304, MDD -24.8% -> -20.2%); the fallback lifts 2024-2026 (2.573 -> 2.920); the two act on different regimes"
+  },
+  "rejected_hypotheses": {
+    "looser_reentry": "opening at deltaAR<0.5 or <1.0, and 60/120-day timeouts, all flat or worse (1.539 -> 1.527 / 1.449 / 1.521)",
+    "single_name_cap": "capping at one holding drops full Sharpe to 1.207"
+  },
+  "known_limitations": [
+    "1.825 is the product of sequential in-sample tuning across 5-6 decisions; realistic out-of-sample expectation is lower",
+    "max drawdown stays near -24.5%: all gains are on the return side, nothing addresses the all-bond regime",
+    "L3 membership before 2021-12-13 is backfilled",
+    "ETF ranking uses the HA 77-factor composite frozen at 2026-06-30"
+  ],
+  "next": "run four versions in parallel (18 flat / +L3 / +fallback / combined) for forward shadow tracking; choose on live evidence, not more history"
+}
