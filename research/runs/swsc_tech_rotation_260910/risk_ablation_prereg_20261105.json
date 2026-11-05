@@ -1,0 +1,15 @@
+{
+  "experiment_id": "risk_gate_variants_20261105",
+  "registered_at": "2026-11-05T00:00:00+08:00",
+  "status": "frozen_before_run",
+  "parent": "UNIVERSE18_L3EXEC_FALLBACK_V20261105",
+  "base_gate": "close when deltaAR > 1.5; open when deltaAR < 0; hold otherwise; multiplied by TIP>0; next-day effect",
+  "variants": {
+    "V1_threshold_1p0": "close when deltaAR > 1.0 (other rules unchanged)",
+    "V2_rate_of_change": "close when deltaAR > 1.5 OR (deltaAR_t - deltaAR_{t-5}) > 0.5",
+    "V2b_change_only": "close only when (deltaAR_t - deltaAR_{t-5}) > 0.5 (diagnostic, not a candidate)"
+  },
+  "evaluation": "same 18-industry + empty-intersection fallback selection, index returns, 2019-08-01~2026-07-31; report 2019-2023, 2024-2026, full and yearly",
+  "decision_rule": "adopt only if the gain is not confined to a single year and full-period Sharpe is not lower than the base",
+  "note": "both variants were suggested after inspecting the base; treat any gain as exploratory"
+}
