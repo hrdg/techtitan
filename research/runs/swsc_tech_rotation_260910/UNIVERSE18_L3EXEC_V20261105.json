@@ -1,0 +1,44 @@
+{
+  "strategy_tag": "UNIVERSE18_L3EXEC_V20261105",
+  "status": "FROZEN_CANDIDATE",
+  "frozen_at": "2026-11-05T00:00:00+08:00",
+  "role": "candidate; the 18-industry flat version is the control",
+  "parent": "UNIVERSE18_K5_3_V20261104",
+  "selection": {
+    "universe": "18 SW L2 tech industries (unchanged)",
+    "k": {"deltaC": 5, "rv": 3},
+    "note": "industry selection stays at L2 because the deltaC concentration semantics are calibrated there"
+  },
+  "execution": {
+    "rule": "if the selected industry is 801081 (semis) or 801102 (communications), replace it with the L3 child whose deltaC is highest at that month-end; otherwise keep the L2",
+    "children": {
+      "801081": ["850813","850814","850815","850817","850818"],
+      "801102": ["851024","851025","851026","851027"]
+    },
+    "child_panel": "data/raw/industry_panel_l3children.parquet",
+    "etf_selection": "250d correlation vs the chosen index >= 0.80, top 8, then rank by 0.5*beta_rank + 0.5*HA77_composite_rank"
+  },
+  "timing": "unchanged: deltaAR(1.5) hysteresis x TIP 21/63/126/252 calendar gate, next-day effect, residual in H11006",
+  "evidence": {
+    "panel_comparison": {
+      "10tech_k4_2": {"2019-2023": 1.016, "2024-2026": 2.015, "full": 1.388},
+      "18tech_k5_3": {"2019-2023": 1.196, "2024-2026": 2.573, "full": 1.687},
+      "25tech_k6_4_flat": {"2019-2023": 1.337, "2024-2026": 1.904, "full": 1.545},
+      "18sel_l3exec_semi_comm": {"2019-2023": 1.304, "2024-2026": 2.475, "full": 1.727},
+      "18sel_l3exec_plus_battery_pv": {"2019-2023": 1.122, "2024-2026": 2.475, "full": 1.607}
+    },
+    "files": {"hier_semi_comm": "results/hier25_test.json", "hier_plus_battery_pv": "results/hier_l3children_test.json", "panel_compare": "results/compare_10_18_25.json"}
+  },
+  "boundary": {
+    "finding": "extending L3 execution to battery (801737) and PV (801735) is negative: full Sharpe 1.727 -> 1.607, 2019-2023 1.304 -> 1.122, 2024-2026 unchanged",
+    "mechanism": "semis and communications have genuinely diverging sub-sector cycles (equipment vs materials vs design); battery and PV sub-sectors move together, so ranking them by deltaC picks noise",
+    "rule": "only enable L3 execution for L2s whose children show real dispersion; do not apply mechanically to all industries"
+  },
+  "known_limitations": [
+    "all results are on inspected history; not independent OOS",
+    "L3 membership before 2021-12-13 is backfilled",
+    "small L3 industries (封测 14, 线缆 13, 加工设备 12) have noisy deltaC",
+    "ETF execution depends on the frozen HA composite (stale after 2026-06-30)"
+  ],
+  "next": "forward shadow tracking from 2026-11 alongside the 18-industry flat control; no further pool expansion"
+}
