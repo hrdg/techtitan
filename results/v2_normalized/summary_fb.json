@@ -1,0 +1,59 @@
+{
+ "variant": "V2_18K53_ETF_NORMALIZED_FALLBACK",
+ "window": {
+  "start": "2019-08-01",
+  "end": "2026-07-31",
+  "cost": 0.0005,
+  "fallback": true,
+  "weight_rule": "unique ETF equal weight, sum=1",
+  "l3": false,
+  "stale_days": 45,
+  "k_rv": 3,
+  "k_deltaC": 5,
+  "stickiness": 0.1
+ },
+ "full": {
+  "sharpe": 1.799,
+  "ann": 0.568,
+  "vol": 0.3157,
+  "mdd": -0.2453,
+  "calmar": 2.316
+ },
+ "2019-2023": {
+  "sharpe": 1.24,
+  "ann": 0.342,
+  "vol": 0.2758,
+  "mdd": -0.2453,
+  "calmar": 1.395
+ },
+ "2024-2026": {
+  "sharpe": 2.804,
+  "ann": 1.049,
+  "vol": 0.3741,
+  "mdd": -0.2435,
+  "calmar": 4.308
+ },
+ "pre2019": {
+  "sharpe": null,
+  "ann": null,
+  "vol": null,
+  "mdd": null,
+  "calmar": null
+ },
+ "yearly": {
+  "2019": 0.2682,
+  "2020": 0.5885,
+  "2021": 0.4471,
+  "2022": 0.0043,
+  "2023": 0.2073,
+  "2024": 0.2958,
+  "2025": 1.1074,
+  "2026": 1.1944
+ },
+ "avg_exposure": 0.987,
+ "avg_etf_turnover_month": 1.064,
+ "avg_execution_turnover_month": 1.559,
+ "months_duplicate_etf": 11,
+ "months_partial_fill": 25,
+ "months_with_stale_momentum": 0
+}

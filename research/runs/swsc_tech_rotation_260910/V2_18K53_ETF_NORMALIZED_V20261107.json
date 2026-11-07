@@ -1,0 +1,74 @@
+{
+  "strategy_tag": "V2_18K53_ETF_NORMALIZED_V20261107",
+  "status": "RESEARCH_CANDIDATE_AUDIT_CORRECTED",
+  "role": "replaces UNIVERSE18_L3EXEC_FALLBACK_V20261105 as the ETF-execution control; not approved for production",
+  "supersedes": "UNIVERSE18_L3EXEC_FALLBACK_V20261105",
+  "changes_vs_parent": {
+    "weights": "unique ETF equal weight with sum = 1; when an industry has no tradable candidate the remaining ETFs take the full weight",
+    "l3_execution": "removed (negative in the only window with official child data: 1.776 -> 1.730)",
+    "momentum": "HA composite used only if its score date is within 45 days of the signal date, otherwise rank by beta alone",
+    "etf_stickiness": "keep the currently held ETF for that industry if its score is within 0.10 of the best candidate",
+    "cost": "5bp on one-way turnover, charged on actual ETF/bond execution weights including risk-off transitions"
+  },
+  "selection": {
+    "universe": "18 SW L2 tech industries",
+    "k": {"deltaC": 5, "rv": 3},
+    "empty_intersection": "hold previous portfolio (baseline); the RV-top3-highest-deltaC fallback is a separate shadow variant"
+  },
+  "execution": {
+    "etf_screen": "250d correlation with the selected industry >= 0.80, keep top 8 by correlation",
+    "etf_rank": "0.5 * beta percentile + 0.5 * momentum percentile, pick the best",
+    "weight": "equal across distinct ETFs, sum = 1"
+  },
+  "timing": "deltaAR(1.5) hysteresis x TIP 21/63/126/252 calendar gate, next-day effect, residual H11006",
+  "evidence": {
+    "window": "2019-08-01 ~ 2026-07-31",
+    "cost": 0.0005,
+    "baseline": {"full": 1.688, "2019-2023": 1.244, "2024-2026": 2.470, "ann": 0.5294, "mdd": -0.2456},
+    "conservative_anchor_no_stickiness": {"full": 1.617, "ann": 0.5008, "mdd": -0.2489},
+    "with_fallback_shadow": {"full": 1.799, "2019-2023": 1.240, "2024-2026": 2.804, "ann": 0.5680, "mdd": -0.2453},
+    "avg_exposure": 0.987,
+    "avg_monthly_execution_turnover": 1.534,
+    "avg_monthly_etf_target_turnover": 1.052,
+    "stickiness_plateau": {"0.00": 1.617, "0.05": 1.701, "0.10": 1.688, "0.20": 1.640},
+    "audit_reference": "AUDIT_UNIVERSE18_L3EXEC_FALLBACK_20261107.md"
+  },
+  "audit": {
+    "status": "PARTIAL",
+    "passed": [
+      "formal parameters exactly rerun from default command",
+      "ETF weights sum to one after duplicate mapping",
+      "execution cost now includes bond transitions",
+      "rolling factors and next-day timing avoid look-ahead"
+    ],
+    "blocked": [
+      "ETF pool is a current snapshot and omits delisted products",
+      "pre-2021 industry membership is backfilled",
+      "no data certificate for this derived ETF execution panel",
+      "no independent forward PIT record"
+    ]
+  },
+  "reproduction": {
+    "commands": [
+      ".venv/bin/python scripts/v2_etf_normalized_backtest.py",
+      "FB=1 .venv/bin/python scripts/v2_etf_normalized_backtest.py",
+      ".venv/bin/python scripts/v2_etf_normalized_sweep.py"
+    ],
+    "outputs": [
+      "results/v2_normalized/summary_nofb.json",
+      "results/v2_normalized/summary_fb.json",
+      "results/v2_normalized/grid_is_oos.csv"
+    ]
+  },
+  "known_limitations": [
+    "5 of the 18 industries are reconstructed before 2021-12-13 (DEC-001); the whole pre-2021 sample is a proxy",
+    "all results are in-sample; the fallback shadow variant differs from baseline in only 2 months (2025-05, 2026-05)",
+    "the 0.10 stickiness tolerance was chosen on this sample; 0.05 and 0.10 form a narrow plateau (1.701 vs 1.688)",
+    "58 of 81 months hold a single ETF; position sizing and ETF liquidity dominate execution risk",
+    "max drawdown stays at -24.9%; the 2022 all-bond regime is still a structural gap",
+    "the ETF pool is a current snapshot; delisted ETFs are absent (survivorship bias)",
+    "the HA composite ends 2026-06-30, so live signals after 2026-08 fall back to beta-only ranking",
+    "audit remains PARTIAL: point-in-time, historical universe, execution and data certification are not closed"
+  ],
+  "next": "collect independent forward PIT records for baseline vs fallback from 2026-11; do not tune further or promote to production"
+}
