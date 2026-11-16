@@ -1,0 +1,368 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS_WITH_LIMITATIONS",
+  "run_id": "MOM20_MOM_VOTE_ARCH_20261114",
+  "strategy_sha256": "02407cc62e70efb69847b9db25ad4d21d73ed501099ea51efbc2206f9d7dfeda",
+  "code_revision": {
+    "run.py": "1b8f339514b8c9c27e27eebd1f3689693c75cf26937c351443fb532be79868ea",
+    "validate.py": "c7af0201aa90a6caa87f6d61202bfec6efc4a0273da04ebe30264467ea2ab594",
+    "git_head": "37a67ef",
+    "working_tree": "dirty research workspace; hashes bind executed files"
+  },
+  "data_snapshot": {
+    "certificate": "data_certificate.json",
+    "data_id": "MOM20_MOM_VOTE_ARCH_20261114"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3"
+  },
+  "conclusions": {
+    "code_correctness": "PASS",
+    "methodological_validity": "PASS",
+    "report_reproduction": "PASS",
+    "live_profitability": "NOT_ASSESSED"
+  },
+  "checks": [
+    {
+      "id": "source_fidelity",
+      "status": "PASS",
+      "criterion": "The ablation changes only the MOM20 vote/multiplier architecture.",
+      "evidence": [
+        {
+          "path": "PREREG.md",
+          "locator": "候选架构"
+        },
+        {
+          "path": "evidence.json",
+          "locator": "F01-F03"
+        }
+      ]
+    },
+    {
+      "id": "formula_fixture",
+      "status": "PASS",
+      "criterion": "3-of-5 vote-threshold fixture passes.",
+      "evidence": [
+        {
+          "path": "logs/validation.log",
+          "locator": "threshold_fixture"
+        }
+      ]
+    },
+    {
+      "id": "point_in_time",
+      "status": "PASS",
+      "criterion": "Only frozen prior-close parent states are reused.",
+      "evidence": [
+        {
+          "path": "../mom20_10_vote2_20261113/validation.json",
+          "locator": "point_in_time"
+        },
+        {
+          "path": "artifacts/architecture_diagnostics.csv",
+          "locator": "all states"
+        }
+      ]
+    },
+    {
+      "id": "historical_universe",
+      "status": "PASS",
+      "criterion": "Every architecture uses the same frozen V2 target and bond splice.",
+      "evidence": [
+        {
+          "path": "strategy.json",
+          "locator": "universe.definition"
+        }
+      ]
+    },
+    {
+      "id": "execution",
+      "status": "PASS",
+      "criterion": "Architectures use the same timing and execution engine.",
+      "evidence": [
+        {
+          "path": "strategy.json",
+          "locator": "signal.clock and execution"
+        },
+        {
+          "path": "artifacts/exposures.csv",
+          "locator": "all architectures"
+        }
+      ]
+    },
+    {
+      "id": "accounting",
+      "status": "PASS",
+      "criterion": "Risky and bond weights sum to one and all turnover is charged.",
+      "evidence": [
+        {
+          "path": "artifacts/exposures.csv",
+          "locator": "all architectures"
+        },
+        {
+          "path": "artifacts/turnover.csv",
+          "locator": "all architectures"
+        }
+      ]
+    },
+    {
+      "id": "smoke_backtest",
+      "status": "PASS",
+      "criterion": "All seven architectures complete the full period.",
+      "evidence": [
+        {
+          "path": "logs/run_first.log",
+          "locator": "metrics and stress distribution"
+        }
+      ]
+    },
+    {
+      "id": "reproducibility",
+      "status": "PASS",
+      "criterion": "Two complete runs produce identical artifact hashes.",
+      "evidence": [
+        {
+          "path": "logs/output_hashes_first.txt",
+          "locator": "all artifacts"
+        },
+        {
+          "path": "logs/output_hashes_second.txt",
+          "locator": "all artifacts"
+        }
+      ]
+    },
+    {
+      "id": "metrics_comparison",
+      "status": "PASS",
+      "criterion": "All architectures use identical dates, costs and paired bootstrap.",
+      "evidence": [
+        {
+          "path": "artifacts/metrics.csv",
+          "locator": "all costs and arms"
+        },
+        {
+          "path": "artifacts/bootstrap.csv",
+          "locator": "paired vs both-half-vote"
+        }
+      ]
+    }
+  ],
+  "detailed_checks": {
+    "required_artifacts": {
+      "status": "PASS",
+      "actual": {
+        "missing": []
+      }
+    },
+    "threshold_fixture": {
+      "status": "PASS",
+      "actual": {
+        "gate": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    "current_reproduction": {
+      "status": "PASS",
+      "actual": {
+        "cagr": 0.0,
+        "vol": 5.551115123125783e-17,
+        "sharpe": 0.0,
+        "sortino": 0.0,
+        "mdd": 8.326672684688674e-17,
+        "calmar": 0.0,
+        "avg_exposure": 0.0
+      }
+    },
+    "exposure_bounds": {
+      "status": "PASS",
+      "actual": {
+        "min": 0.0,
+        "max": 1.0
+      }
+    },
+    "half_binary_vote_equivalence": {
+      "status": "PASS",
+      "actual": {
+        "vote_only_equal": true,
+        "both_equal": true
+      }
+    },
+    "vote_only_same_mdd": {
+      "status": "PASS",
+      "actual": {
+        "both_mdd": -0.2005139080546117,
+        "vote_only_mdd": -0.2005139080546116
+      }
+    },
+    "vote_only_risk_return": {
+      "status": "PASS",
+      "actual": {
+        "both": {
+          "cagr": 0.6778514854231166,
+          "sharpe": 2.397137655336046,
+          "sortino": 4.0896242997754575,
+          "mdd": -0.2005139080546117,
+          "calmar": 3.3805709140061126
+        },
+        "vote_only": {
+          "cagr": 0.7052585665639586,
+          "sharpe": 2.459057474385272,
+          "sortino": 4.205352262543878,
+          "mdd": -0.2005139080546116,
+          "calmar": 3.517255104178985
+        }
+      }
+    },
+    "cost_stress": {
+      "status": "PASS",
+      "actual": {
+        "both_10bp": {
+          "cost": 0.001,
+          "cagr": 0.6495093903365252,
+          "vol": 0.2828256841078771,
+          "sharpe": 2.2965007311315664,
+          "downside_vol": 0.1662881705129636,
+          "sortino": 3.9059266112130935,
+          "mdd": -0.2047432831814347,
+          "calmar": 3.172311102196001,
+          "final_nav": 29.881633152126195,
+          "n_days": 1697.0,
+          "avg_exposure": 0.4696523276370065,
+          "annual_turnover": 34.104301708898056
+        },
+        "vote_only_10bp": {
+          "cost": 0.001,
+          "cagr": 0.6755369642965243,
+          "vol": 0.2868382174306846,
+          "sharpe": 2.355114915814069,
+          "downside_vol": 0.1682457782041777,
+          "sortino": 4.015179290125865,
+          "mdd": -0.2043387174052766,
+          "calmar": 3.3059665484573504,
+          "final_nav": 33.2320737050573,
+          "n_days": 1697.0,
+          "avg_exposure": 0.4814378314672952,
+          "annual_turnover": 35.20919269298763
+        }
+      }
+    },
+    "multiplier_only_tradeoff": {
+      "status": "PASS",
+      "actual": {
+        "mdd": -0.1826581595439251,
+        "cagr": 0.4885311232750753,
+        "sharpe": 1.883293019692288
+      }
+    },
+    "stress_state_shift": {
+      "status": "PASS",
+      "actual": {
+        "both": {
+          "stress_days": 332.0,
+          "full_share": 0.0,
+          "half_share": 0.1204819277108433,
+          "zero_share": 0.8795180722891566,
+          "average_exposure": 0.0602409638554216
+        },
+        "vote_only": {
+          "stress_days": 332.0,
+          "full_share": 0.1204819277108433,
+          "half_share": 0.0,
+          "zero_share": 0.8795180722891566,
+          "average_exposure": 0.1204819277108433
+        }
+      }
+    },
+    "bootstrap_uncertainty": {
+      "status": "PASS",
+      "actual": {
+        "cagr_delta": 0.027407081140842,
+        "cagr_ci": [
+          -0.0109413126052711,
+          0.0743441223574307
+        ],
+        "sharpe_delta": 0.0619198190492258,
+        "sharpe_ci": [
+          -0.0709507520840199,
+          0.2002905044766514
+        ]
+      }
+    },
+    "exposure_matched": {
+      "status": "PASS",
+      "actual": {
+        "arm": "VOTE_ONLY_HALF",
+        "avg_exposure": 0.4814378314672952,
+        "arm_cagr": 0.7052585665639586,
+        "arm_sharpe": 2.459057474385272,
+        "arm_mdd": -0.2005139080546116,
+        "matched_cagr": 0.2111397132423642,
+        "matched_sharpe": 1.147025227254902,
+        "matched_mdd": -0.2379901914734797
+      }
+    }
+  },
+  "hypotheses": {
+    "both_is_superior_to_vote_only": "NOT_SUPPORTED_IN_SAMPLE",
+    "vote_only_keeps_same_mdd": "SUPPORTED_IN_SAMPLE",
+    "multiplier_only_2of4_adds_value": "NOT_SUPPORTED",
+    "multiplier_only_3of4_reduces_mdd_but_erodes_return": "SUPPORTED",
+    "binary_vs_half_vote_changes_result": "NOT_SUPPORTED"
+  },
+  "metric_comparison": {
+    "both": {
+      "cagr": 0.6778514854231166,
+      "sharpe": 2.397137655336046,
+      "sortino": 4.0896242997754575,
+      "mdd": -0.2005139080546117,
+      "calmar": 3.3805709140061126
+    },
+    "vote_only": {
+      "cagr": 0.7052585665639586,
+      "sharpe": 2.459057474385272,
+      "sortino": 4.205352262543878,
+      "mdd": -0.2005139080546116,
+      "calmar": 3.517255104178985
+    },
+    "multiplier_only_3of4": {
+      "cagr": 0.4885311232750753,
+      "sharpe": 1.883293019692288,
+      "mdd": -0.1826581595439251
+    }
+  },
+  "decision": {
+    "status": "KEEP_CURRENT_IN_PRODUCTION; VOTE_ONLY_SHADOW_PREFERRED",
+    "selected_arm": "BOTH_HALF_VOTE",
+    "shadow_arm": "VOTE_ONLY_HALF",
+    "production_change": false,
+    "reason": "Vote-only has the same full-sample MDD as the current dual-use architecture and better point-estimate CAGR, Sharpe, Sortino and Calmar. However the paired bootstrap interval crosses zero, so the simplification is a shadow candidate rather than an approved production replacement."
+  },
+  "limitations": [
+    "Historical proxy-inclusive data, not independent OOS.",
+    "Vote-only converts MOM stress days from half exposure to either full or zero depending on the other four votes.",
+    "The parent V2 ETF membership and PIT remain PARTIAL.",
+    "No alternative MOM thresholds or exposure scales were searched."
+  ],
+  "command_evidence": [
+    {
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "command": ".venv/bin/python research/runs/mom20_10_mom_vote_architecture_20261114/run.py",
+      "executed_at": "2026-11-14T00:40:00+08:00",
+      "exit_code": 0,
+      "log_path": "logs/run_first.log"
+    },
+    {
+      "cwd": "/Users/hsh/Documents/Quant/科技轮动",
+      "command": ".venv/bin/python research/runs/mom20_10_mom_vote_architecture_20261114/validate.py",
+      "executed_at": "2026-11-14T00:45:00+08:00",
+      "exit_code": 0,
+      "log_path": "logs/validation.log"
+    }
+  ]
+}

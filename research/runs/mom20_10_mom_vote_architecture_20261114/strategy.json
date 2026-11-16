@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "MOM20-MOM-ARCH-v1",
+  "status": "frozen",
+  "mode": "extension",
+  "parent_version": "MOM20-VOTE2-v1:VOTE2_MOM_3OF5",
+  "blockers": [],
+  "sample": ["2019-08-01", "2026-07-31"],
+  "baseline": "BOTH_HALF_VOTE: DAR+TIP+MA120+DD+MOM20 half-vote >=3, with MOM20 0.5 exposure multiplier",
+  "architectures": {
+    "BOTH_HALF_VOTE": "MOM20 contributes 0.5/1 vote and multiplies exposure by 0.5/1",
+    "VOTE_ONLY_HALF": "MOM20 contributes 0.5/1 vote but no exposure multiplier",
+    "VOTE_ONLY_BINARY": "MOM20 contributes 0/1 vote but no exposure multiplier",
+    "MULT_ONLY_2OF4": "MOM20 only scales exposure; four core votes require 2",
+    "MULT_ONLY_3OF4": "MOM20 only scales exposure; four core votes require 3",
+    "BOTH_BINARY": "MOM20 contributes 0/1 vote and also scales exposure"
+  },
+  "primary_cost_bps": 5,
+  "statistics": {
+    "bootstrap_block": 21,
+    "paths_per_seed": 5000,
+    "seeds": [20261114, 20261120]
+  },
+  "requirements": [
+    {
+      "key": "universe.definition",
+      "value": "Frozen V2 technology target plus 511260/511090 risk-off splice.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "No new universe."
+    },
+    {
+      "key": "universe.history",
+      "value": "All architectures inherit the same frozen V2 historical target.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "Historical membership is PARTIAL."
+    },
+    {
+      "key": "data.fields",
+      "value": "W13612/A015 mother exposure, MOM20 state, current core votes, V2 ETF returns and bond returns.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "Architecture ablation reuses frozen states."
+    },
+    {
+      "key": "data.availability",
+      "value": "All signals use prior close and affect the next A-share return.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "MOM state and vote fields inherit prior validation."
+    },
+    {
+      "key": "data.revisions",
+      "value": "Frozen local parent snapshots are used without complete vendor vintages.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F03"],
+      "notes": "Research-only; PIT certification remains partial."
+    },
+    {
+      "key": "data.adjustment",
+      "value": "ETF returns use parent adjusted prices; no rate levels are used.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "Common target and bond treatment."
+    },
+    {
+      "key": "factor.formula",
+      "value": "MOM20 scale is 1 or 0.5; vote-threshold, multiplier and both combinations are frozen in PREREG.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "No threshold or scale search."
+    },
+    {
+      "key": "factor.preprocessing",
+      "value": "No full-sample fitting; inherited rolling states remain causal.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "Parent strict lag applies."
+    },
+    {
+      "key": "signal.clock",
+      "value": "Prior close state for next close-to-close return.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "No same-day signal reuse."
+    },
+    {
+      "key": "portfolio.selection",
+      "value": "V2 industry and ETF selection is unchanged.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "Only the risk architecture changes."
+    },
+    {
+      "key": "portfolio.weights",
+      "value": "Exposure is mother exposure times architecture-specific vote and/or MOM multiplier.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "Bond receives residual weight."
+    },
+    {
+      "key": "execution.rebalance",
+      "value": "Daily when exposure changes; total target-weight turnover is charged.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "Bond splice cost is common."
+    },
+    {
+      "key": "execution.fill",
+      "value": "Local close-to-close research proxy.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "No intraday execution claim."
+    },
+    {
+      "key": "execution.constraints",
+      "value": "Long-only, no leverage, risky plus bond weights equal one.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "Exposure bounded in [0,1]."
+    },
+    {
+      "key": "costs.model",
+      "value": "One-way 0/5/10bp on turnover; 5bp primary.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "All architectures pay consistently."
+    },
+    {
+      "key": "backtest.period",
+      "value": "2019-08-01 through 2026-07-31, 1697 trading days.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "Same as parent."
+    },
+    {
+      "key": "backtest.benchmark",
+      "value": "BOTH_HALF_VOTE current version; BASE_MOM is an absolute reference.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "Paired bootstrap uses BOTH_HALF_VOTE."
+    },
+    {
+      "key": "missing_data.policy",
+      "value": "Frozen state coverage is asserted; no future filling.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "Parent coverage rules inherit."
+    },
+    {
+      "key": "validation.acceptance",
+      "value": "Baseline reproduction, formula/architecture fixtures, bounds, stress-state distribution, bootstrap, cost stress and two-run hashes.",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "Architecture is not promoted without independent confirmation."
+    }
+  ],
+  "decisions": [],
+  "production_change": false
+}

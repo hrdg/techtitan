@@ -1,0 +1,28 @@
+{
+  "data_id": "MOM20_MOM_VOTE_ARCH_20261114",
+  "intended_use": [
+    "research-only architecture ablation of the MOM20 vote and multiplier"
+  ],
+  "fields": [
+    "W13612, DAR and A015 states",
+    "MOM20 vote state",
+    "DAR, TIP, MA120 and DD vote states",
+    "frozen V2 target ETF weights and returns",
+    "511260 and 511090 returns"
+  ],
+  "frequency": "daily",
+  "date_range": ["2019-08-01", "2026-07-31"],
+  "decision_time": "prior close for the next A-share return",
+  "required_available_at": "strict prior close",
+  "minimum_coverage": {
+    "days": 1697,
+    "missing_state_days": 0,
+    "missing_active_returns": 0
+  },
+  "acceptance": [
+    "current both-half-vote baseline reproduces",
+    "all exposures bounded in [0,1]",
+    "all seven architectures retained at 0/5/10bp",
+    "two-run artifacts hashes match"
+  ]
+}

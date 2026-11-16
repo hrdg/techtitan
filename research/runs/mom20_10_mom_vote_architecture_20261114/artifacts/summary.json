@@ -1,0 +1,26 @@
+{
+  "evaluation_days": 1697,
+  "start": "2019-08-01",
+  "end": "2026-07-31",
+  "current_reproduction_error": {
+    "cagr": 0.0,
+    "vol": 5.551115123125783e-17,
+    "sharpe": 0.0,
+    "sortino": 0.0,
+    "mdd": 8.326672684688674e-17,
+    "calmar": 0.0,
+    "avg_exposure": 0.0
+  },
+  "mom_stress_days": 332,
+  "input_hashes": {
+    "vote_diagnostics": "88d83d9140d2e756e3526a74fc70484c5e6c054e284f1e0f2f2fab16b7a898ce",
+    "vote_exposures": "a526f648e4fd2852d15c433407ac4ff0e97bac7d3f0bb639a604240b4a60c5f4",
+    "vote_metrics": "42111c1c60b04b4ad1f35de55016818ad542482a7344ba22958c37042a934c20",
+    "run.py": "1b8f339514b8c9c27e27eebd1f3689693c75cf26937c351443fb532be79868ea"
+  },
+  "limitations": [
+    "Historical architecture comparison, not independent OOS.",
+    "Parent ETF membership and PIT remain PARTIAL.",
+    "No alternative MOM thresholds or vote thresholds were searched."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "source_documents": [
+    {
+      "id": "D1",
+      "title": "MOM20 architecture preregistration",
+      "file": "/Users/hsh/Documents/Quant/科技轮动/research/runs/mom20_10_mom_vote_architecture_20261114/PREREG.md",
+      "sha256": "7eba6202ee2b7d0b57060303a15a14fa4e3b89c4d71552fe567f6332cda39da0",
+      "page_numbering": "n/a",
+      "accessibility": "UTF-8 Markdown"
+    },
+    {
+      "id": "D2",
+      "title": "Frozen architecture specification",
+      "file": "/Users/hsh/Documents/Quant/科技轮动/research/runs/mom20_10_mom_vote_architecture_20261114/strategy.json",
+      "sha256": "02407cc62e70efb69847b9db25ad4d21d73ed501099ea51efbc2206f9d7dfeda",
+      "page_numbering": "n/a",
+      "accessibility": "UTF-8 JSON"
+    },
+    {
+      "id": "D3",
+      "title": "Frozen five-vote diagnostics",
+      "file": "/Users/hsh/Documents/Quant/科技轮动/research/runs/mom20_10_vote2_20261113/artifacts/vote_diagnostics.csv",
+      "sha256": "88d83d9140d2e756e3526a74fc70484c5e6c054e284f1e0f2f2fab16b7a898ce",
+      "page_numbering": "n/a",
+      "accessibility": "UTF-8 CSV"
+    },
+    {
+      "id": "D4",
+      "title": "Frozen parent exposures",
+      "file": "/Users/hsh/Documents/Quant/科技轮动/research/runs/mom20_10_vote2_20261113/artifacts/exposures.csv",
+      "sha256": "a526f648e4fd2852d15c433407ac4ff0e97bac7d3f0bb639a604240b4a60c5f4",
+      "page_numbering": "n/a",
+      "accessibility": "UTF-8 CSV"
+    },
+    {
+      "id": "D5",
+      "title": "Frozen current architecture metrics",
+      "file": "/Users/hsh/Documents/Quant/科技轮动/research/runs/mom20_10_vote2_20261113/artifacts/metrics.csv",
+      "sha256": "42111c1c60b04b4ad1f35de55016818ad542482a7344ba22958c37042a934c20",
+      "page_numbering": "n/a",
+      "accessibility": "UTF-8 CSV"
+    },
+    {
+      "id": "D6",
+      "title": "Frozen five-vote validation",
+      "file": "/Users/hsh/Documents/Quant/科技轮动/research/runs/mom20_10_vote2_20261113/validation.json",
+      "sha256": "9f1919f78b5d0381723656605530e77cecaa4daebc3a536997869dd1aef49ffa",
+      "page_numbering": "n/a",
+      "accessibility": "UTF-8 JSON"
+    }
+  ],
+  "facts": [
+    {
+      "id": "F01",
+      "key": "parent.exposure",
+      "value": "The parent exposure is recoverable as MOM_BASE exposure divided by the MOM20 0.5/1 scale.",
+      "status": "confirmed",
+      "sources": [
+        {"document_id": "D3", "locator": "MOM_SCALE and BASE_SCALE"},
+        {"document_id": "D4", "locator": "MOM_BASE and VOTE2_MOM_3OF5"}
+      ]
+    },
+    {
+      "id": "F02",
+      "key": "mom.state",
+      "value": "MOM20 contributes 1 normally and 0.5 after a 20-day basket return at or below -10%, restoring at -2%.",
+      "status": "confirmed",
+      "sources": [
+        {"document_id": "D3", "locator": "MOM_SCALE"},
+        {"document_id": "D2", "locator": "architectures"}
+      ]
+    },
+    {
+      "id": "F03",
+      "key": "current.validation",
+      "value": "The current architecture passed baseline reproduction, timing, exposure-bound and two-run reproducibility checks.",
+      "status": "confirmed",
+      "sources": [
+        {"document_id": "D6", "locator": "checks and detailed_checks"},
+        {"document_id": "D5", "locator": "VOTE2_MOM_3OF5 at 5bp"}
+      ]
+    }
+  ],
+  "scope": "Research-only architecture ablation of MOM20 as a half vote, binary vote, exposure multiplier, or both, from 2019-08-01 to 2026-07-31."
+}

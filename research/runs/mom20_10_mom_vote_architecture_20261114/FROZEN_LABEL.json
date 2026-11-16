@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "label": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1",
+  "status": "frozen_research_label",
+  "frozen_on": "2026-11-16",
+  "deployment_status": "shadow_only",
+  "production_change": false,
+  "architecture_arm": "VOTE_ONLY_BINARY",
+  "preferred_shadow_arm": "VOTE_ONLY_HALF",
+  "component_meaning": {
+    "W13612": "TIP 21/63/126/252 composite momentum gate, not a generic zero threshold",
+    "W13612_gate": "1[W13612 > 0.005]",
+    "A015": "strong shift-2 branch; parent exposure is max(DAR shift-1, A015Strong shift-2) under the W13612 gate",
+    "MOMBIN": "1[MOM_SCALE == 1], where MOM_SCALE is 0.5 in MOM20 stress and 1 otherwise",
+    "3OF5": "DAR + TIP + MA120 + DD + MOMBIN require at least three votes",
+    "VOTEONLY": "MOM state contributes a vote but does not multiply exposure",
+    "ETF": "ETF execution is retained",
+    "BC50": "frozen V2 BetaRank/CMMRank 50/50 ETF mapping",
+    "BOND30": "risk-off uses 511260 before 511090 has a valid return, then 511090"
+  },
+  "formula": {
+    "mother_exposure": "max((DAR*1[W13612>0.5%]).shift(1), (A015Strong*1[W13612>0.5%]).shift(2))",
+    "gate": "1[DAR + TIP + MA120 + DD + 1[MOM_SCALE==1] >= 3]",
+    "equity_exposure": "mother_exposure * gate",
+    "missing_vote_policy": "threshold=min(3, available); no votes available keeps the row enabled as in the frozen parent"
+  },
+  "comparison": {
+    "alternative_half_vote_arm": "VOTE_ONLY_HALF",
+    "current_production_arm": "BOTH_HALF_VOTE",
+    "sample": ["2019-08-01", "2026-07-31"],
+    "trading_days": 1697,
+    "primary_cost_bps": 5,
+    "frozen_binary_metrics": {
+      "cagr": 0.7052585665639586,
+      "sharpe": 2.459057474385272,
+      "sortino": 4.205352262543878,
+      "mdd": -0.20051390805461167,
+      "calmar": 3.517255104178985
+    },
+    "current_production_metrics": {
+      "cagr": 0.6778514854231166,
+      "sharpe": 2.397137655336046,
+      "sortino": 4.0896242997754575,
+      "mdd": -0.20051390805461178,
+      "calmar": 3.3805709140061126
+    }
+  },
+  "statistical_status": {
+    "half_vs_binary_sample_differences": 0,
+    "half_vs_binary_reason": "The frozen sample has no core_votes=2.5 and MOM_SCALE=0.5 day.",
+    "vote_only_vs_current_cagr_ci95": [-0.010941312605271177, 0.0743441223574307],
+    "vote_only_vs_current_sharpe_ci95": [-0.0709507520840199, 0.20029050447665142],
+    "independent_oos": false,
+    "future_profitability": "NOT_ASSESSED"
+  },
+  "evidence": {
+    "report": "REPORT.md",
+    "preregistration": "PREREG.md",
+    "strategy_spec": "strategy.json",
+    "validation": "validation.json",
+    "data_certificate": "data_certificate.json",
+    "metrics": "artifacts/metrics.csv",
+    "bootstrap": "artifacts/bootstrap.csv",
+    "diagnostics": "artifacts/architecture_diagnostics.csv"
+  },
+  "artifacts": {
+    "run_sha256": "1b8f339514b8c9c27e27eebd1f3689693c75cf26937c351443fb532be79868ea",
+    "report_sha256": "d4b668bcca7c103aa8b92bc165a9b0f175a0da80ecf13b8f75af6c66b53e8959",
+    "strategy_sha256": "02407cc62e70efb69847b9db25ad4d21d73ed501099ea51efbc2206f9d7dfeda",
+    "validation_sha256": "3a488a893fee2540c254c165aa9b818cc563445395ead17ad9559e7ac985ea7e"
+  }
+}

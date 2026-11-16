@@ -13,6 +13,12 @@ from .backtest import (  # noqa: F401
     portfolio_returns,
     run_timing_overlay,
 )
+from .vote_architecture import (  # noqa: F401
+    mom_vote,
+    threshold_gate,
+    vote_only_exposure,
+    vote_only_gate,
+)
 
 __all__ = [
     "absorption_and_concentration",
@@ -24,4 +30,8 @@ __all__ = [
     "metrics",
     "nav_curve",
     "portfolio_returns",
+    "mom_vote",
+    "threshold_gate",
+    "vote_only_exposure",
+    "vote_only_gate",
 ]
