@@ -1,0 +1,2 @@
+protocol_version,frozen_at,signal_date,effective_date,vix_last_observation,vix_value_used,vix_percentile_252,multiplier,base_exposure,shadow_exposure,evaluation_status,reason
+W13612-US-VIX-SHADOW-20261122-v1.0,2026-11-22T20:00:00+08:00,2026-11-20,2026-11-23,2026-11-18,24.56,0.9186507936507936,0.5,,,WAITING_FOR_VIX_REFRESH_AND_W_SOURCE_WIRING,W production refresh remains BLOCKED_W_SOURCE_NOT_WIRED; no forward return or target exposure is fabricated.

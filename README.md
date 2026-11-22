@@ -8,6 +8,19 @@
 规格与验收：design.md（可读规格视图）、research/runs/swsc_tech_rotation_260910/（evidence / strategy /
 validation / logs）。**这是一个部分复现**，与原文的差距、原因与限制都写在 design.md 第 6-7 节。
 
+## 科技轮动研究发布入口（2026-11-22）
+
+`techtitan` 是科技策略主库；`rotation/tech-rotation` 作为对外发布镜像保留。
+三个版本化研究包已非破坏性迁入
+[`research/releases/tech-rotation-20261122/`](research/releases/tech-rotation-20261122/)：
+
+- `EFFECTIVE_RANK_HIGH_W@R20261116`：W/V2有效秩选择器，65.44% / 2.282 / -26.15%；
+- `ER_RISK_VIX@20261122`：有效秩内叠行业VIX Beta守卫，67.41% / 2.405 / -23.26%；
+- `W13612-GLOBAL-VIX@20261116`：W最终敞口叠全球VIX状态，66.67% / 2.505 / -20.42%。
+
+三包均为历史已查看的 `SHADOW_ONLY` 研究，不是独立OOS或生产配置。全球VIX结果绑定
+刷新账本 `...-R20261116`，不能归因到冻结 `...-v1` 的 `70.53%` 原始账本。
+
 
 ## 当前策略分层（2026-11-04）
 

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "data_id": "W13612_GLOBAL_VIX_PUBLIC_20261116",
+  "product": "Frozen common-axis W, W+global VIX and ER/RISK_VIX returns",
+  "vendor": "Local research rebuild and CBOE VIX",
+  "version": "W13612-GLOBAL-VIX-20261116-v1",
+  "intended_use": ["historical comparison", "frozen replay", "forward signal monitoring"],
+  "coverage": {
+    "start": "2019-08-01",
+    "end": "2026-11-16",
+    "frequency": "daily",
+    "universe": "W13612 and published effective-rank strategy",
+    "fields": ["strategy net return", "VIX percentile", "VIX multiplier", "W exposure"],
+    "timezone": "Asia/Shanghai"
+  },
+  "snapshot": {
+    "retrieved_at": "2026-11-22T20:40:00+08:00",
+    "local_path": "data/daily_returns_common_axis_20261116.csv",
+    "sha256": "54a81076d5468639080ebde33c9ddac64346746f9f2f32c79b194215b7e4041e",
+    "row_count": 1767,
+    "source_url": null,
+    "query_parameters": {"lookback": 252, "threshold": 0.8, "multiplier": 0.5, "cost": 0.0005},
+    "license": "project-internal research data"
+  },
+  "classification": {"kind":"derived_research_panel","price_volume":true,"metadata_only":false},
+  "parents": [
+    {"source_id":"W13612_REFRESH","path":"original-local-workspace:research/runs/v2_voteonly_refresh_20261116/artifacts/voteonly_diagnostics.csv","sha256_at_build":"09cd186ca111e27825e73a19ce05fb18f9a1da727d2c3795412206eaf932429c","availability":"external-provenance-only; replay uses packaged common-axis data","purpose":"exact W data parent and accounting"},
+    {"source_id":"VIX","path":"original-local-workspace:data/raw/ha157_vix_daily.parquet","sha256_at_build":"05727128e10cd2cfd3cf90abdc8fb9e4b021f04b2ac326fed54441e309e7cc67","availability":"external-provenance-only; replay uses packaged VIX state","purpose":"VIX state"},
+    {"source_id":"ER_RISK_VIX","path":"rotation@6a9f0fa14:tech-rotation/effective-rank-riskvix-20261122/outputs/daily_returns_5bp.csv","sha256_at_build":"d74ccd45ef0b8940b6ecb49b16c1019c7f5443273e71e02d3494ea0b74fc07de","availability":"external-provenance-only; comparison ledger is packaged","purpose":"ER and RISK_VIX ledger"}
+  ],
+  "transform": {
+    "code_path":"code/replay_frozen.py",
+    "code_sha256":"186dcf5431613a241243146d4e2706dd9966ff55cfb39b28c90eebcd634d0884",
+    "version":"W13612-GLOBAL-VIX-20261116-v1",
+    "parameters":{"lookback":252,"minimum_observations":120,"threshold":0.8,"multiplier":0.5,"cost":0.0005},
+    "derived_hash":"54a81076d5468639080ebde33c9ddac64346746f9f2f32c79b194215b7e4041e"
+  },
+  "dimensions": {
+    "source_inventory":{"status":"PASS","criterion":"Published daily returns, VIX state and source hashes are present.","evidence":[{"path":"data/README.md"}],"reason":null},
+    "schema_keys_units":{"status":"PASS","criterion":"Dates are unique; returns are decimals and VIX rank is [0,1].","evidence":[{"path":"data/daily_returns_common_axis_20261116.csv"},{"path":"data/vix_state.csv"}],"reason":null},
+    "date_axis_calendar":{"status":"PASS","criterion":"All four series share the same 1767-day A-share axis.","evidence":[{"path":"outputs/common_axis_result.json"}],"reason":null},
+    "coverage_universe":{"status":"PASS","criterion":"All selected strategies cover through 2026-11-16.","evidence":[{"path":"outputs/performance_comparison_20261116.csv"}],"reason":null},
+    "asof_available_at":{"status":"PARTIAL","criterion":"VIX state is conservatively lagged and next-session executed.","evidence":[{"path":"reports/VALIDATION.md"}],"reason":"The VIX vendor publication timestamp and revision chain are not certified."},
+    "revision_vintage":{"status":"BLOCKED","criterion":"Production vintage requires a revision chain.","evidence":[{"path":"reports/VALIDATION.md"}],"reason":"Frozen snapshots only."},
+    "historical_membership":{"status":"PARTIAL","criterion":"Inherit W and ER histories without splice.","evidence":[{"path":"data/README.md"}],"reason":"ETF membership and vendor vintage remain partial."},
+    "mapping_taxonomy":{"status":"PARTIAL","criterion":"No new map is introduced.","evidence":[{"path":"ALGORITHM.md"}],"reason":"Inherited mapping remains research-grade."},
+    "derived_lineage":{"status":"PASS","criterion":"Source hashes, code hash, parameters and daily derived returns are recorded.","evidence":[{"path":"data_certificate.json","locator":"transform"}],"reason":null},
+    "reconciliation":{"status":"PASS","criterion":"W base reconstruction matches the source with zero error.","evidence":[{"path":"outputs/common_axis_result.json"}],"reason":null},
+    "reproducibility":{"status":"PASS","criterion":"Two replay runs produce identical outputs.","evidence":[{"path":"logs/replay_hash_diff.txt"}],"reason":null}
+  },
+  "pit":{"event_time_field":"date","available_at_field":"prior available VIX mapped to A-share date","timezone":"Asia/Shanghai","decision_cutoff":"A-share close","revision_policy":"frozen snapshots","candidate_rule":"252-day 80% VIX state","certified":false,"tests":["state bounds","future perturbation","common endpoint","hash replay"]},
+  "universe":{"historical_members":"inherited","delisted_included":"not re-evaluated","suspended_included":"not re-evaluated","survivorship_test":"not run"},
+  "mapping":{"taxonomy_version":"inherited","effective_dates":"inherited","explicit_vendor_crosswalk":"inherited","successor_policy":"none","unavailable_codes":[],"dedupe_policy":"none"},
+  "lineage":{"parent_source_ids":["W13612_REFRESH","VIX","ER_RISK_VIX"],"base_architecture_parent":"W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1","exact_data_parent":"W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116","transform_version":"W13612-GLOBAL-VIX-20261116-v1","transform_sha256":"186dcf5431613a241243146d4e2706dd9966ff55cfb39b28c90eebcd634d0884","derived_sha256":"54a81076d5468639080ebde33c9ddac64346746f9f2f32c79b194215b7e4041e","coverage":{"start":"2019-08-01","end":"2026-11-16","n_days":1767},"inheritance_checks":["W reconstruction zero"]},
+  "validation":{"commands":["python code/test_replay.py","python code/replay_frozen.py","python code/make_chart.py"],"artifacts":["outputs/performance_comparison_20261116.csv","outputs/robustness_metrics.csv"],"checks":["state mapping","future perturbation","common endpoint","hash replay"]},
+  "decision":{"status":"PARTIAL","scope":"research-only historical and shadow comparison","certified_for":["historical analysis","shadow monitoring"],"not_certified_for":["production trading","forward NAV","independent OOS","future profitability"],"blockers":["W production source blocked","VIX vintage incomplete","ETF membership partial"],"reviewed_at":"2026-11-22T20:42:00+08:00","reviewer":"Codex main-thread research audit"},
+  "revalidation":{"triggers":["W production wiring","new VIX vintage","ETF membership refresh","rule change"],"next_review":"after W source reconciliation"}
+}

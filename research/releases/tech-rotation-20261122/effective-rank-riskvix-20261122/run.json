@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "run_id": "effective-rank-riskvix-20261122",
+  "title": "有效秩选择器 + 行业 RISK_VIX 防守",
+  "created_at": "2026-11-22",
+  "data_cutoff": "2026-11-16",
+  "status": "EXPLORATORY_SHADOW_ONLY"
+}

@@ -1,0 +1,306 @@
+{
+  "benchmark": "W_CAUSAL_NEWDATA",
+  "effective_rank_existing_reproduction_max_abs_diff": 7.470152968425126e-17,
+  "strict_exceeders": [
+    {
+      "window": "selector_full",
+      "arm": "EFFECTIVE_RANK_HIGH_W"
+    },
+    {
+      "window": "selector_2024_2026",
+      "arm": "EFFECTIVE_RANK_HIGH_W"
+    },
+    {
+      "window": "portfolio_full",
+      "arm": "EFFECTIVE_RANK_HIGH_W"
+    },
+    {
+      "window": "portfolio_2019_2023",
+      "arm": "EFFECTIVE_RANK_HIGH_W"
+    },
+    {
+      "window": "portfolio_2024_2026",
+      "arm": "EFFECTIVE_RANK_HIGH_W"
+    },
+    {
+      "window": "portfolio_2024_2026",
+      "arm": "FLOOR_50_TREND63"
+    },
+    {
+      "window": "portfolio_2024_2026",
+      "arm": "FLOOR_25_TREND63"
+    },
+    {
+      "window": "selector_2026",
+      "arm": "EFFECTIVE_RANK_HIGH_W"
+    },
+    {
+      "window": "portfolio_2026",
+      "arm": "EFFECTIVE_RANK_HIGH_W"
+    },
+    {
+      "window": "portfolio_2026",
+      "arm": "FLOOR_25_TREND63"
+    }
+  ],
+  "full_selector": {
+    "W_CAUSAL_NEWDATA": {
+      "vs_W_strict_exceed": false,
+      "start": "2020-09-01",
+      "end": "2026-11-16",
+      "cagr": 0.6186158726142037,
+      "vol": 0.27735566322489796,
+      "sharpe": 2.2304064947561204,
+      "sortino": 3.844830254951711,
+      "mdd": -0.29051205392584656,
+      "calmar": 2.1293982960586755,
+      "final_nav": 18.08724806370947,
+      "n_days": 1503
+    },
+    "V2_NEWDATA": {
+      "vs_W_strict_exceed": false,
+      "start": "2020-09-01",
+      "end": "2026-11-16",
+      "cagr": 0.4622747137531138,
+      "vol": 0.30078435056807934,
+      "sharpe": 1.5368974911096076,
+      "sortino": 2.5219747894255815,
+      "mdd": -0.2445703493862128,
+      "calmar": 1.8901502774693,
+      "final_nav": 9.820965106646895,
+      "n_days": 1503
+    },
+    "AVG_CORR_HIGH_V2": {
+      "vs_W_strict_exceed": false,
+      "start": "2020-09-01",
+      "end": "2026-11-16",
+      "cagr": 0.6387904891757101,
+      "vol": 0.28854289446372644,
+      "sharpe": 2.213849314719529,
+      "sortino": 3.8027914385289425,
+      "mdd": -0.26146066227105846,
+      "calmar": 2.443160985010704,
+      "final_nav": 19.48564967252917,
+      "n_days": 1503
+    },
+    "EFFECTIVE_RANK_HIGH_W": {
+      "vs_W_strict_exceed": true,
+      "start": "2020-09-01",
+      "end": "2026-11-16",
+      "cagr": 0.6420368351653172,
+      "vol": 0.279872478971685,
+      "sharpe": 2.2940334738317474,
+      "sortino": 4.009662660016568,
+      "mdd": -0.2614606622710588,
+      "calmar": 2.455577177800121,
+      "final_nav": 19.71886738433516,
+      "n_days": 1503
+    }
+  },
+  "full_portfolio": {
+    "W_CAUSAL_NEWDATA": {
+      "vs_W_strict_exceed": false,
+      "start": "2019-08-02",
+      "end": "2026-11-16",
+      "cagr": 0.634327303337243,
+      "vol": 0.2846494734966682,
+      "sharpe": 2.2284506468432577,
+      "sortino": 3.7354806735937185,
+      "mdd": -0.290512053925847,
+      "calmar": 2.1834801508757864,
+      "final_nav": 32.1385997814902,
+      "n_days": 1766
+    },
+    "V2_NEWDATA": {
+      "vs_W_strict_exceed": false,
+      "start": "2019-08-02",
+      "end": "2026-11-16",
+      "cagr": 0.5014214042522072,
+      "vol": 0.30703091093817875,
+      "sharpe": 1.6331300412718683,
+      "sortino": 2.635832042117785,
+      "mdd": -0.24526132288288094,
+      "calmar": 2.044437330592275,
+      "final_nav": 17.65283194305286,
+      "n_days": 1766
+    },
+    "EFFECTIVE_RANK_HIGH_W": {
+      "vs_W_strict_exceed": true,
+      "start": "2019-08-02",
+      "end": "2026-11-16",
+      "cagr": 0.6544322375565614,
+      "vol": 0.2867362750806375,
+      "sharpe": 2.282348954182789,
+      "sortino": 3.8680687049067575,
+      "mdd": -0.261460662271059,
+      "calmar": 2.5029854658522384,
+      "final_nav": 35.0377672035677,
+      "n_days": 1766
+    },
+    "FLOOR_50_TREND63": {
+      "vs_W_strict_exceed": false,
+      "start": "2019-08-02",
+      "end": "2026-11-16",
+      "cagr": 0.6062981392474316,
+      "vol": 0.29146611898129793,
+      "sharpe": 2.080166783592212,
+      "sortino": 3.4556451256452503,
+      "mdd": -0.29051205392584645,
+      "calmar": 2.0869982193654173,
+      "final_nav": 28.441727286869714,
+      "n_days": 1766
+    },
+    "FLOOR_25_TREND63": {
+      "vs_W_strict_exceed": false,
+      "start": "2019-08-02",
+      "end": "2026-11-16",
+      "cagr": 0.6210520920211064,
+      "vol": 0.28635739711923736,
+      "sharpe": 2.1688005906915837,
+      "sortino": 3.627536573869129,
+      "mdd": -0.2905120539258461,
+      "calmar": 2.13778424553644,
+      "final_nav": 30.339317237899994,
+      "n_days": 1766
+    }
+  },
+  "recent_2026": [
+    {
+      "window": "selector_2026",
+      "arm": "W_CAUSAL_NEWDATA",
+      "vs_W_strict_exceed": false,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 0.8396719197612941,
+      "vol": 0.27851445773238004,
+      "sharpe": 3.0148234551188757,
+      "sortino": 5.256060080560402,
+      "mdd": -0.12140836165313873,
+      "calmar": 6.916096291293511,
+      "final_nav": 1.664650084757415,
+      "n_days": 209
+    },
+    {
+      "window": "selector_2026",
+      "arm": "V2_NEWDATA",
+      "vs_W_strict_exceed": false,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 1.389688470676007,
+      "vol": 0.38090320732244237,
+      "sharpe": 3.648403174246856,
+      "sortino": 6.153000298108554,
+      "mdd": -0.1504617055947849,
+      "calmar": 9.236160557814218,
+      "final_nav": 2.071539968322744,
+      "n_days": 209
+    },
+    {
+      "window": "selector_2026",
+      "arm": "AVG_CORR_HIGH_V2",
+      "vs_W_strict_exceed": false,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 1.2300198955120343,
+      "vol": 0.3609625609080515,
+      "sharpe": 3.407610729538676,
+      "sortino": 5.775489729363239,
+      "mdd": -0.1303140354625082,
+      "calmar": 9.438890378511188,
+      "final_nav": 1.9551771125877444,
+      "n_days": 209
+    },
+    {
+      "window": "selector_2026",
+      "arm": "EFFECTIVE_RANK_HIGH_W",
+      "vs_W_strict_exceed": true,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 1.4475985125131752,
+      "vol": 0.31468748072692576,
+      "sharpe": 4.600114720703961,
+      "sortino": 8.711418069435727,
+      "mdd": -0.11051763216332255,
+      "calmar": 13.09834896185542,
+      "final_nav": 2.113424759237325,
+      "n_days": 209
+    },
+    {
+      "window": "portfolio_2026",
+      "arm": "W_CAUSAL_NEWDATA",
+      "vs_W_strict_exceed": false,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 0.8396719197612941,
+      "vol": 0.27851445773238004,
+      "sharpe": 3.0148234551188757,
+      "sortino": 5.256060080560402,
+      "mdd": -0.12140836165313873,
+      "calmar": 6.916096291293511,
+      "final_nav": 1.664650084757415,
+      "n_days": 209
+    },
+    {
+      "window": "portfolio_2026",
+      "arm": "V2_NEWDATA",
+      "vs_W_strict_exceed": false,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 1.389688470676007,
+      "vol": 0.38090320732244237,
+      "sharpe": 3.648403174246856,
+      "sortino": 6.153000298108554,
+      "mdd": -0.1504617055947849,
+      "calmar": 9.236160557814218,
+      "final_nav": 2.071539968322744,
+      "n_days": 209
+    },
+    {
+      "window": "portfolio_2026",
+      "arm": "EFFECTIVE_RANK_HIGH_W",
+      "vs_W_strict_exceed": true,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 1.4475985125131756,
+      "vol": 0.3146874807269257,
+      "sharpe": 4.600114720703963,
+      "sortino": 8.711418069435728,
+      "mdd": -0.11051763216332255,
+      "calmar": 13.098348961855423,
+      "final_nav": 2.1134247592373256,
+      "n_days": 209
+    },
+    {
+      "window": "portfolio_2026",
+      "arm": "FLOOR_50_TREND63",
+      "vs_W_strict_exceed": false,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 1.1427639752617922,
+      "vol": 0.3089366600653119,
+      "sharpe": 3.6990235312966804,
+      "sortino": 6.318990216832219,
+      "mdd": -0.12731214240141542,
+      "calmar": 8.976080000748517,
+      "final_nav": 1.8910131335325726,
+      "n_days": 209
+    },
+    {
+      "window": "portfolio_2026",
+      "arm": "FLOOR_25_TREND63",
+      "vs_W_strict_exceed": true,
+      "start": "2026-01-05",
+      "end": "2026-11-16",
+      "cagr": 0.9901502020218624,
+      "vol": 0.2859109892152005,
+      "sharpe": 3.463141464900437,
+      "sortino": 5.997690637330828,
+      "mdd": -0.11483947921863602,
+      "calmar": 8.622036679013274,
+      "final_nav": 1.7777413526286505,
+      "n_days": 209
+    }
+  ],
+  "status": "EXPLORATORY_NOT_OOS",
+  "future_profitability": "NOT_ASSESSED"
+}

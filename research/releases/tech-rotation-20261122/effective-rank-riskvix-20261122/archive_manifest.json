@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "run_id": "effective-rank-riskvix-20261122",
+  "strategy_id": "ER-RISKVIX-HA009-20261122",
+  "strategy_sha256": "e318259a5138efb76674982a8613e8adece240c6ff5e045e6ccd48f8dfc2f73c",
+  "generated_at": "2026-11-22T04:57:45.655748+00:00",
+  "status": "complete",
+  "artifacts": [
+    {
+      "role": "communication",
+      "path": "ALGORITHM.md",
+      "sha256": "fb504dd53e47a22ff85f281be10bdb713d953ef7e7e222d9ed6fb194c8f1418a",
+      "description": "Human-readable implementation and archive guide."
+    },
+    {
+      "role": "evidence",
+      "path": "evidence.json",
+      "sha256": "f1f44b384baf916eb5ce0bcca4af69a6c5a143f168250226ae488dcfb1509618",
+      "description": "Source evidence ledger."
+    },
+    {
+      "role": "spec",
+      "path": "strategy.json",
+      "sha256": "e318259a5138efb76674982a8613e8adece240c6ff5e045e6ccd48f8dfc2f73c",
+      "description": "Frozen strategy specification."
+    },
+    {
+      "role": "validation",
+      "path": "validation.json",
+      "sha256": "4dd2bb36bdfcc48ceb3e56598d743647ad4ddf11479da307fd8b30e0afd364b7",
+      "description": "Recorded acceptance evidence and conclusions."
+    },
+    {
+      "role": "code",
+      "path": "code/replay_frozen.py",
+      "sha256": "5141ee8639a677e24dc78ab0f1dde1ae553afe679e1577c5e910ba6b75f3f392",
+      "description": "Executed code snapshot."
+    },
+    {
+      "role": "code",
+      "path": "code/generate_beta_panel.py",
+      "sha256": "f079dbf7fd8df7e420948c60f578f40ef4700163350632ed972ac9966f997313",
+      "description": "Executed code snapshot."
+    },
+    {
+      "role": "code",
+      "path": "code/generate_guard_panel.py",
+      "sha256": "22c1c7c33858549cdcef723289ff794bdd0d81ee2ab9f030cc783eef4c268632",
+      "description": "Executed code snapshot."
+    },
+    {
+      "role": "code",
+      "path": "code/test_replay.py",
+      "sha256": "28251bc0692ff6e793379cb85d7ee4b42aea13444a784a86a8f8381e2fd9ff28",
+      "description": "Executed code snapshot."
+    },
+    {
+      "role": "result",
+      "path": "outputs/performance_comparison.csv",
+      "sha256": "97585a8093d5ef4bf41f7e02e478324e4068eae562a29c0ac4fd95bce4d8201f",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/bootstrap_comparison.csv",
+      "sha256": "b170f21b4fef0a1c29034351056d160f719207feff5cd36b8007548358e8179c",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/metrics_5bp.csv",
+      "sha256": "932f00f7eacbf9c504165d4aae5359e5094eec5b53ae389d482850797fa37aa3",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/metrics_10bp.csv",
+      "sha256": "71107eb3cf03470e50a6c8689ab4e37db7c6a245ca2d3be32567a564e5e11126",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/guard_diagnostics.csv",
+      "sha256": "0ccfda7d90d095a9d1701c9aaf5113de5ea347d28848a4c647a779876ef4ba45",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "data",
+      "path": "data/branch_returns_5bp.csv",
+      "sha256": "1a588fac0ecefb95dbcf3e3ab0654a908b4703f67eea2e53d8cecbc42a968bc6",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "data",
+      "path": "data/branch_returns_10bp.csv",
+      "sha256": "764e0919178c6aa6adf2ed79d2ee4423061644c455aec7fa77ab221fc5a91cc6",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "data",
+      "path": "data/monthly_selections.csv",
+      "sha256": "018626ac3fdf3bc5fbafb2d4eb8e7257a9f00c9d765560672162071c733dbc9d",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "data",
+      "path": "data/industry_vix_beta.csv",
+      "sha256": "776b0a450e2e6f9fb8195a3ec75318d963ba5819c7380b28900488afadb0d413",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "data",
+      "path": "data/industry_beta_state.csv",
+      "sha256": "03942336ae5b17af12fd156f0e2c6e24f1e876e3aee2271894b0145164b44f16",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "report",
+      "path": "reports/REPORT.md",
+      "sha256": "51454d895fcc53fa9c735f317a900c44a24f3ad88a5371512966ff77676cf028",
+      "description": "Run report or research note."
+    },
+    {
+      "role": "report",
+      "path": "reports/VALIDATION.md",
+      "sha256": "8d3d8f86789352abda4012c56de7d455ba97681dc10642c3b75bb7f1ec9f00ea",
+      "description": "Run report or research note."
+    },
+    {
+      "role": "report",
+      "path": "reports/SOURCE_EVIDENCE.md",
+      "sha256": "3ecd4d3ca05d61f105ea017702f7629e5a6c9f2e90bac25f0c03ed4acaa578f1",
+      "description": "Run report or research note."
+    },
+    {
+      "role": "log",
+      "path": "logs/replay.log",
+      "sha256": "00278bd98f8363db828598965ffb8c20490f38fe4e861028259f66e6b957905f",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "log",
+      "path": "logs/test_replay.log",
+      "sha256": "cafe0befc6204d742636f5a24376ea4683600e3bfa4dbf7d1f6d93fa609e5024",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "log",
+      "path": "logs/generate_guard.log",
+      "sha256": "8c98a6d16afc08be5d026192948408a4a1c730d903551030bc8bde7eee456ffb",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "log",
+      "path": "logs/generate_beta.log",
+      "sha256": "2c84bae74be43433b65392f3c5bcf1ab8f1f47d3cf059553a627620127ff0ab0",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "log",
+      "path": "logs/replay_hash_diff.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "description": "Actual command or execution log."
+    }
+  ],
+  "external_inputs": [],
+  "notes": "Frozen replay package. Historical exploratory evidence only; SHADOW_ONLY."
+}

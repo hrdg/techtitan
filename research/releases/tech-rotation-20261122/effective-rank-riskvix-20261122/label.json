@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "label": "ER_RISK_VIX@20261122",
+  "status": "frozen_exploratory_shadow_only",
+  "parent": "EFFECTIVE_RANK_HIGH_W@R20261116",
+  "data_cutoff": "2026-11-16",
+  "production_change": false,
+  "independent_oos": false,
+  "future_profitability": "NOT_ASSESSED",
+  "costs": {
+    "primary_branch_turnover_bps": 5,
+    "stress_branch_turnover_bps": 10,
+    "selector_switch_bps": 10
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "data_id": "W13612_GLOBAL_VIX_PUBLIC_20261116",
+  "decision": "PARTIAL",
+  "dimensions": {
+    "source_inventory": "PASS",
+    "schema_keys_units": "PASS",
+    "date_axis_calendar": "PASS",
+    "coverage_universe": "PASS",
+    "asof_available_at": "PARTIAL",
+    "revision_vintage": "BLOCKED",
+    "historical_membership": "PARTIAL",
+    "mapping_taxonomy": "PARTIAL",
+    "derived_lineage": "PASS",
+    "reconciliation": "PASS",
+    "reproducibility": "PASS"
+  },
+  "errors": [],
+  "limitation": "Structure and declared gates only; this does not prove data correctness, PIT safety, lineage truth or strategy validity."
+}

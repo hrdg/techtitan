@@ -1,0 +1,6 @@
+{
+  "gate": "evidence",
+  "status": "STRUCTURE_PASS",
+  "errors": [],
+  "limitation": "Only record structure, references, hashes and recorded gate states are checked. This is not proof of honest evidence, an executed backtest, PIT safety, research validity or profitability."
+}

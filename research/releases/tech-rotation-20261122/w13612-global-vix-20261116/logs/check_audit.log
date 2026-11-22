@@ -1,0 +1,11 @@
+{
+  "gate": "audit",
+  "status": "BLOCKED",
+  "errors": [
+    "point_in_time: recorded gate is not passed (PARTIAL)",
+    "historical_universe: recorded gate is not passed (PARTIAL)",
+    "source_lineage: recorded gate is not passed (PARTIAL)",
+    "conclusions.methodological_validity: not passed or explicitly N/A"
+  ],
+  "limitation": "Only record structure, references, hashes and recorded gate states are checked. This is not proof of honest evidence, an executed backtest, PIT safety, research validity or profitability."
+}

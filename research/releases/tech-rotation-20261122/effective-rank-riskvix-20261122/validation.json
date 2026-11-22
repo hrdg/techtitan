@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0",
+  "status": "PARTIAL",
+  "strategy_sha256": "e318259a5138efb76674982a8613e8adece240c6ff5e045e6ccd48f8dfc2f73c",
+  "code_revision": {
+    "replay_frozen": "5141ee8639a677e24dc78ab0f1dde1ae553afe679e1577c5e910ba6b75f3f392",
+    "generate_beta_panel": "f079dbf7fd8df7e420948c60f578f40ef4700163350632ed972ac9966f997313",
+    "generate_guard_panel": "22c1c7c33858549cdcef723289ff794bdd0d81ee2ab9f030cc783eef4c268632",
+    "test_replay": "28251bc0692ff6e793379cb85d7ee4b42aea13444a784a86a8f8381e2fd9ff28"
+  },
+  "data_snapshot": {
+    "data_id": "ER_RISK_VIX_FROZEN_20261116",
+    "status": "PARTIAL",
+    "certificate": "data/README.md"
+  },
+  "environment": {
+    "python": "3.12",
+    "numpy": "from uv runtime",
+    "pandas": "from uv runtime",
+    "timezone": "Asia/Shanghai"
+  },
+  "checks": [
+    {
+      "id": "source_fidelity",
+      "status": "PARTIAL",
+      "criterion": "使用行业收益对ΔVIX的横截面敏感性作为机制来源。",
+      "evidence": [
+        {"path": "evidence.json", "locator": "F01"},
+        {"path": "ALGORITHM.md", "locator": "F2-F7"}
+      ],
+      "reason": "本地使用18个A股科技行业和阈值化风险覆盖，不是原文美国行业池的逐字复现。"
+    },
+    {
+      "id": "formula_fixture",
+      "status": "PASS",
+      "criterion": "合成样例验证有效秩切换只在实际切换月首日扣一次10bp。",
+      "evidence": [
+        {"path": "code/test_replay.py", "locator": "test_selector_cost_is_charged_once_on_switch_day"},
+        {"path": "logs/test_replay.log", "locator": "Ran 3 tests; OK"}
+      ],
+      "reason": null
+    },
+    {
+      "id": "point_in_time",
+      "status": "PARTIAL",
+      "criterion": "VIX先映射到最近可得A股收盘再shift；月末信号次月生效。",
+      "evidence": [
+        {"path": "code/generate_beta_panel.py", "locator": "build_panels"},
+        {"path": "code/replay_frozen.py", "locator": "selector_switch_dates"}
+      ],
+      "reason": "代码路径符合因果顺序，但没有对供应商原始输入做未来数据扰动测试。"
+    },
+    {
+      "id": "historical_universe",
+      "status": "PARTIAL",
+      "criterion": "继承父策略的18行业和ETF成员。",
+      "evidence": [
+        {"path": "data/README.md", "locator": "已知限制"}
+      ],
+      "reason": "ETF和行业历史成员未在本包重新认证。"
+    },
+    {
+      "id": "source_lineage",
+      "status": "PARTIAL",
+      "criterion": "冻结数据文件、代码和结果均有哈希。",
+      "evidence": [
+        {"path": "data/README.md", "locator": "文件哈希"},
+        {"path": "archive_manifest.json", "locator": "artifacts"}
+      ],
+      "reason": "供应商修订链不可得；归档只覆盖冻结研究账本。"
+    },
+    {
+      "id": "execution",
+      "status": "PARTIAL",
+      "criterion": "W/V2月度选择及10bp切换按冻结时点回放。",
+      "evidence": [
+        {"path": "code/replay_frozen.py", "locator": "replay_selector"},
+        {"path": "logs/replay.log", "locator": "max_abs_daily_return_diff"}
+      ],
+      "reason": "本包不重放原始订单和成交；执行层继承冻结分支会计。"
+    },
+    {
+      "id": "accounting",
+      "status": "PASS",
+      "criterion": "冻结分支逐日重放、选择费用和bootstrap与发布结果一致。",
+      "evidence": [
+        {"path": "logs/replay.log", "locator": "5bp/10bp max_abs_daily_return_diff"},
+        {"path": "logs/replay.log", "locator": "5bp/10bp max_abs_bootstrap_diff"}
+      ],
+      "reason": null
+    },
+    {
+      "id": "smoke_backtest",
+      "status": "PASS",
+      "criterion": "5bp与10bp两份真实冻结账本均完成端到端重放。",
+      "evidence": [
+        {"path": "logs/replay.log"},
+        {"path": "outputs/replayed/replay_summary.json"}
+      ],
+      "reason": null
+    },
+    {
+      "id": "reproducibility",
+      "status": "PASS",
+      "criterion": "两次完整重放输出哈希完全一致。",
+      "evidence": [
+        {"path": "logs/replay_hashes_first.txt"},
+        {"path": "logs/replay_hashes_second.txt"},
+        {"path": "logs/replay_hash_diff.txt", "locator": "empty diff"}
+      ],
+      "reason": null
+    },
+    {
+      "id": "metrics_comparison",
+      "status": "NOT_APPLICABLE",
+      "criterion": "与原文数值逐项对齐。",
+      "evidence": [
+        {"path": "reports/REPORT.md", "locator": "机制与实现"}
+      ],
+      "reason": "这是不同市场、行业池和组合层的策略扩展，不声称原文数值复现。"
+    },
+    {
+      "id": "reproduction_communication",
+      "status": "PASS",
+      "criterion": "提供text流程图、公式、变量状态、代码映射、验收和归档。",
+      "evidence": [
+        {"path": "ALGORITHM.md", "locator": "sections 1-6"},
+        {"path": "archive_manifest.json"}
+      ],
+      "reason": null
+    }
+  ],
+  "command_evidence": [
+    {
+      "command": "uv run --python 3.12 --with pandas --with numpy python code/test_replay.py",
+      "cwd": "tech-rotation/effective-rank-riskvix-20261122",
+      "executed_at": "2026-11-22T12:54:00+08:00",
+      "exit_code": 0,
+      "log_path": "logs/test_replay.log"
+    },
+    {
+      "command": "uv run --python 3.12 --with pandas --with numpy python code/replay_frozen.py",
+      "cwd": "tech-rotation/effective-rank-riskvix-20261122",
+      "executed_at": "2026-11-22T12:54:01+08:00",
+      "exit_code": 0,
+      "log_path": "logs/replay.log"
+    },
+    {
+      "command": "uv run ... python code/generate_guard_panel.py",
+      "cwd": "tech-rotation/effective-rank-riskvix-20261122",
+      "executed_at": "2026-11-22T12:54:02+08:00",
+      "exit_code": 0,
+      "log_path": "logs/generate_guard.log"
+    },
+    {
+      "command": "uv run ... python code/generate_beta_panel.py --industry-panel ... --vix ...",
+      "cwd": "tech-rotation/effective-rank-riskvix-20261122",
+      "executed_at": "2026-11-22T12:54:03+08:00",
+      "exit_code": 0,
+      "log_path": "logs/generate_beta.log"
+    },
+    {
+      "command": "repeat replay and diff output hashes",
+      "cwd": "tech-rotation/effective-rank-riskvix-20261122",
+      "executed_at": "2026-11-22T12:54:20+08:00",
+      "exit_code": 0,
+      "log_path": "logs/replay_hash_diff.txt"
+    }
+  ],
+  "metric_comparison": [
+    {"arm": "EFFECTIVE_RANK_HIGH_W", "cost_bps": 5, "cagr": 0.653961, "sharpe": 2.281342, "mdd": -0.261461},
+    {"arm": "ER_RISK_VIX", "cost_bps": 5, "cagr": 0.674087, "sharpe": 2.405079, "mdd": -0.232570, "bootstrap_ci": [-0.029089, 0.245220]},
+    {"arm": "ER_MATCHED", "cost_bps": 5, "cagr": 0.621222, "sharpe": 2.275631, "mdd": -0.249662},
+    {"arm": "ER_RISK_VIX", "cost_bps": 10, "cagr": 0.653115, "sharpe": 2.330237, "mdd": -0.234122, "bootstrap_ci": [-0.028731, 0.246067]}
+  ],
+  "conclusions": {
+    "code_correctness": "PASS",
+    "methodological_validity": "PARTIAL",
+    "report_reproduction": "NOT_APPLICABLE",
+    "live_profitability": "NOT_ASSESSED"
+  }
+}

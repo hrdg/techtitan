@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "release_id": "tech-rotation-20261122",
+  "imported_at": "2026-11-22T23:59:00+08:00",
+  "source_repository": "hrdg/rotation",
+  "source_commit": "6a9f0fa140b9ecda6696e050dde2077253b0469b",
+  "techtitan_base_commit": "1ccf4414d1fe4befebf792f602a6fc1218d28539",
+  "import_mode": "non_destructive_release_mirror",
+  "repository_roles": {
+    "techtitan": "technology strategy source of truth",
+    "rotation": "external release mirror; original tech-rotation packages retained"
+  },
+  "lineage": {
+    "base_architecture_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1",
+    "exact_data_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+    "warning": "The frozen v1 tag and refreshed R20261116 ledger are different return snapshots and must not be compared as if they were identical."
+  },
+  "production_change": false,
+  "independent_oos": false,
+  "reused_without_copy": [
+    {
+      "path": "src/tech_rotation/backtest.py",
+      "source_sha256": "b4687aa1b2a0f7cd68f8b3b6d47673a6286db4b590e862a547fec9c2fa53431d",
+      "techtitan_sha256_before_import": "b4687aa1b2a0f7cd68f8b3b6d47673a6286db4b590e862a547fec9c2fa53431d",
+      "decision": "identical; keep the existing techtitan source of truth"
+    },
+    {
+      "path": "src/tech_rotation/factors.py",
+      "source_sha256": "7a50af7645847edc6880abd086f03ef115394ef7b76045b7220ab43573472a73",
+      "techtitan_sha256_before_import": "7a50af7645847edc6880abd086f03ef115394ef7b76045b7220ab43573472a73",
+      "decision": "identical; keep the existing techtitan source of truth"
+    }
+  ],
+  "packages": [
+    {
+      "id": "effective-rank-w-20261116",
+      "path": "effective-rank-w-20261116",
+      "label": "EFFECTIVE_RANK_HIGH_W@R20261116",
+      "status": "FROZEN_EXPLORATORY_SHADOW_ONLY",
+      "data_cutoff": "2026-11-16",
+      "metrics": {
+        "cagr": 0.6544,
+        "sharpe": 2.282,
+        "mdd": -0.2615,
+        "calmar": 2.503
+      },
+      "exact_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+      "file_count": 22,
+      "tree_sha256": "629dab993fe6964950c57f433a16f6f46de34ea700894ff39cbde3db3cf5e241",
+      "gate_note": "Legacy release has reports/ALGORITHM.md but no root R2Q runtime manifest or evidence.json."
+    },
+    {
+      "id": "effective-rank-riskvix-20261122",
+      "path": "effective-rank-riskvix-20261122",
+      "label": "ER_RISK_VIX@20261122",
+      "status": "FROZEN_EXPLORATORY_SHADOW_ONLY",
+      "data_cutoff": "2026-11-16",
+      "metrics": {
+        "cagr": 0.6741,
+        "sharpe": 2.405,
+        "mdd": -0.2326,
+        "calmar": 2.898
+      },
+      "parent": "EFFECTIVE_RANK_HIGH_W@R20261116",
+      "exact_data_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+      "bootstrap_sharpe_vs_er": [-0.029, 0.245],
+      "file_count": 56,
+      "tree_sha256": "465d8598fcbbcf5af4fe51b2596694da731b6b80b7a4e23f396755ba743e6b94",
+      "gate_note": "Archive hashes verified; bootstrap interval includes zero, so SHADOW_ONLY."
+    },
+    {
+      "id": "w13612-global-vix-20261116",
+      "path": "w13612-global-vix-20261116",
+      "label": "W13612-GLOBAL-VIX@20261116",
+      "status": "ROBUST_SHADOW_ONLY",
+      "data_cutoff": "2026-11-16",
+      "metrics": {
+        "cagr": 0.6667,
+        "sharpe": 2.505,
+        "mdd": -0.2042,
+        "calmar": 3.265
+      },
+      "base_architecture_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1",
+      "exact_data_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+      "first_forward_shadow": {
+        "signal_date": "2026-11-20",
+        "effective_date": "2026-11-23",
+        "multiplier": 0.5,
+        "nav_status": "BLOCKED_W_SOURCE_NOT_WIRED"
+      },
+      "file_count": 48,
+      "tree_sha256": "2fee002aa865ed9741c1ae78f4657444a5f6c00aa2661f2e96e54b75656a53e4",
+      "gate_note": "Archive and evidence hashes verified; data certificate structure PASS with declared PARTIAL/BLOCKED limits."
+    }
+  ],
+  "replay_verification": {
+    "date": "2026-11-22",
+    "effective_rank_w": {
+      "status": "NUMERICALLY_REPRODUCED_DEPENDENCY_SENSITIVE_BYTES",
+      "metrics_max_absolute_difference": 7.532e-13,
+      "daily_return_max_absolute_difference": 9.975e-17,
+      "bootstrap_p_max_absolute_difference": 0.0124,
+      "decision_change": false,
+      "published_artifact_bytes": "restored_from_source_commit"
+    },
+    "effective_rank_riskvix": {
+      "status": "PASS",
+      "tests": "3/3",
+      "replay_summary_sha256_matches_archived_log": true
+    },
+    "w13612_global_vix": {
+      "status": "PASS",
+      "tests": "2/2",
+      "replay_summary_sha256_matches_archived_log": true,
+      "chart_sha256_reproduced": true
+    }
+  },
+  "tree_hash_algorithm": "From a package directory: sort file paths with LC_ALL=C, hash each file as 'sha256  ./relative/path', then SHA256 the concatenated lines."
+}

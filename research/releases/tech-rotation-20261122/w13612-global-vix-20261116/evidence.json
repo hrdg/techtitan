@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "source_documents": [
+    {
+      "id": "REPORT",
+      "file": "reports/REPORT.md",
+      "sha256": "5eae8bc95bad4b9a8aa59de4e3ffeefa8d511c4d480505c8f871150bcc905861"
+    },
+    {
+      "id": "SPEC",
+      "file": "strategy.json",
+      "sha256": "e6b019068c95f58a6128dd97d5f755848d6fa8f1835512ec18188d461bf8a102"
+    }
+  ],
+  "facts": [
+    {
+      "id": "F-PARENT",
+      "key": "parent.lineage",
+      "value": "The base architecture is W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1; the exact replay/data parent is W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116. Their return ledgers are not interchangeable.",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "REPORT",
+          "locator": "Conclusion"
+        }
+      ]
+    },
+    {
+      "id": "F-VIX",
+      "key": "vix.rule",
+      "value": "A 252-session CBOE VIX percentile of at least 80% halves W final exposure after conservative A-share lags.",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "SPEC",
+          "locator": "factor.formula"
+        },
+        {
+          "document_id": "REPORT",
+          "locator": "Scope"
+        }
+      ]
+    },
+    {
+      "id": "F-RESULT",
+      "key": "result",
+      "value": "On the common 2019-08-01 to 2026-11-16 axis, W plus global VIX has the highest Sharpe and shallowest drawdown; ER_RISK_VIX has the highest CAGR.",
+      "status": "confirmed",
+      "sources": [
+        {
+          "document_id": "REPORT",
+          "locator": "Common-window comparison"
+        }
+      ]
+    }
+  ],
+  "unread_ranges": []
+}

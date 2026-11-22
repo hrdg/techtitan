@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "label": "W13612-GLOBAL-VIX@20261116",
+  "status": "frozen_exploratory_shadow_only",
+  "parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+  "base_architecture_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1",
+  "conservative_lag_days": 2,
+  "vix_window": 252,
+  "vix_threshold": 0.8,
+  "multiplier": 0.5,
+  "data_cutoff": "2026-11-16",
+  "production_change": false,
+  "independent_oos": false,
+  "future_profitability": "NOT_ASSESSED"
+}

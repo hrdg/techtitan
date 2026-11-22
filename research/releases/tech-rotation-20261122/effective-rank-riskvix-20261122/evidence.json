@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "source_documents": [
+    {
+      "id": "PAPER",
+      "title": "Industry Rotation and Time-Varying Sensitivity by VIX",
+      "file": "reports/SOURCE_EVIDENCE.md",
+      "sha256": "3ecd4d3ca05d61f105ea017702f7629e5a6c9f2e90bac25f0c03ed4acaa578f1",
+      "page_numbering": "pp. 89-97; equations 1-2"
+    },
+    {
+      "id": "PARENT",
+      "title": "EFFECTIVE_RANK_HIGH_W@R20261116",
+      "file": "../effective-rank-w-20261116/reports/REPORT.md",
+      "sha256": "5dacaca90c6d85622e36b7824c458ca2e07b7053b92a82393941b394d143c5a1"
+    },
+    {
+      "id": "SPEC",
+      "title": "Frozen ER_RISK_VIX specification",
+      "file": "strategy.json",
+      "sha256": "e318259a5138efb76674982a8613e8adece240c6ff5e045e6ccd48f8dfc2f73c"
+    },
+    {
+      "id": "RESULT",
+      "title": "ER_RISK_VIX 5bp result summary",
+      "file": "outputs/result_5bp.json",
+      "sha256": "5738b0618ce100e7a9698359db683a1079ff7419ce823e4bf5467eeb49bc20f3"
+    }
+  ],
+  "facts": [
+    {
+      "id": "F01",
+      "key": "industry_vix_sensitivity",
+      "value": "The source mechanism estimates industry-return sensitivity to VIX changes and conditions industry exposure on VIX state.",
+      "status": "confirmed",
+      "sources": [
+        {"document_id": "PAPER", "locator": "Source mechanism; equations 1-2"}
+      ]
+    },
+    {
+      "id": "F02",
+      "key": "parent_clock",
+      "value": "The effective-rank parent uses a 63-day covariance effective rank and monthly W/V2 selection with a 10bp switch cost.",
+      "status": "confirmed",
+      "sources": [
+        {"document_id": "PARENT", "locator": "有效秩章节"}
+      ]
+    },
+    {
+      "id": "F03",
+      "key": "local_extension",
+      "value": "RISK_VIX uses 36-month monthly industry VIX betas, a 252-day VIX percentile, and halves each W/V2 branch exposure before the selector when state rank>=0.80 and selected beta rank<=0.50.",
+      "status": "confirmed",
+      "sources": [
+        {"document_id": "SPEC", "locator": "requirements and scope"}
+      ]
+    },
+    {
+      "id": "F04",
+      "key": "statistical_result",
+      "value": "Full-sample point estimates improve, but both 21-day block-bootstrap Sharpe intervals cross zero.",
+      "status": "confirmed",
+      "sources": [
+        {"document_id": "RESULT", "locator": "bootstrap"}
+      ]
+    }
+  ],
+  "unread_ranges": []
+}

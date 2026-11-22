@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "status": "PARTIAL",
+  "strategy_sha256": "370c2f1055045af3219367984d6e70eb55727c0acf6570c735c2dc6894b9daf8",
+  "code_revision": {
+    "replay": "186dcf5431613a241243146d4e2706dd9966ff55cfb39b28c90eebcd634d0884",
+    "test": "b11d30839783d611a044be0cbee112f42ea1581e2736d8c7a6340d0afa493ef0",
+    "chart": "f79612a93bf6a2e5ba2a2cfe219edbe16c9f4aa84b1355e7164d7aebfb25196b"
+  },
+  "data_snapshot":{"data_id":"W13612_GLOBAL_VIX_PUBLIC_20261116","certificate":"data_certificate.json","status":"PARTIAL"},
+  "environment":{"python":"3.12","numpy":"uv-managed","pandas":"uv-managed","timezone":"Asia/Shanghai"},
+  "checks":[
+    {"id":"source_fidelity","status":"PASS","criterion":"Use the refreshed R20261116 exact data parent and published ER/RISK_VIX ledgers; the frozen v1 tag remains the architecture parent only.","evidence":[{"path":"reports/REPORT.md","locator":"Conclusion"}],"reason":null},
+    {"id":"formula_fixture","status":"PASS","criterion":"Tests cover metrics and VIX mapping.","evidence":[{"path":"logs/test.log"}],"reason":null},
+    {"id":"point_in_time","status":"PARTIAL","criterion":"Future VIX perturbations leave prior states unchanged.","evidence":[{"path":"logs/replay.log"}],"reason":"Vendor timestamp/revision chain remains incomplete."},
+    {"id":"historical_universe","status":"PARTIAL","criterion":"Inherit the W/ER historical universes.","evidence":[{"path":"data/README.md"}],"reason":"ETF membership remains partial."},
+    {"id":"source_lineage","status":"PARTIAL","criterion":"All packaged inputs and transform are hashed.","evidence":[{"path":"data_certificate.json"}],"reason":"VIX vintage remains blocked."},
+    {"id":"execution","status":"PASS","criterion":"VIX applies next session and exposure only decreases.","evidence":[{"path":"ALGORITHM.md","locator":"state migration"}],"reason":null},
+    {"id":"accounting","status":"PASS","criterion":"W reconstruction error is zero.","evidence":[{"path":"outputs/common_axis_result.json"}],"reason":null},
+    {"id":"smoke_backtest","status":"PASS","criterion":"All four common-axis series completed.","evidence":[{"path":"logs/replay.log"}],"reason":null},
+    {"id":"reproducibility","status":"PASS","criterion":"Two replay runs have identical output hashes.","evidence":[{"path":"logs/replay_hash_diff.txt"}],"reason":null},
+    {"id":"metrics_comparison","status":"PASS","criterion":"All series share start/end and 5bp cost.","evidence":[{"path":"outputs/performance_comparison_20261116.csv"}],"reason":null},
+    {"id":"reproduction_communication","status":"PASS","criterion":"Algorithm and archive manifest describe actual implementation.","evidence":[{"path":"ALGORITHM.md"},{"path":"archive_manifest.json"}],"reason":null}
+  ],
+  "command_evidence":[
+    {"command":"uv run ... python code/test_replay.py","cwd":"tech-rotation/w13612-global-vix-20261116","executed_at":"2026-11-22T20:45:00+08:00","exit_code":0,"log_path":"logs/test.log"},
+    {"command":"uv run ... python code/replay_frozen.py","cwd":"tech-rotation/w13612-global-vix-20261116","executed_at":"2026-11-22T20:45:01+08:00","exit_code":0,"log_path":"logs/replay.log"},
+    {"command":"uv run ... python code/make_chart.py","cwd":"tech-rotation/w13612-global-vix-20261116","executed_at":"2026-11-22T20:45:02+08:00","exit_code":0,"log_path":"logs/chart.log"},
+    {"command":"repeat replay and diff hashes","cwd":"tech-rotation/w13612-global-vix-20261116","executed_at":"2026-11-22T20:45:05+08:00","exit_code":0,"log_path":"logs/replay_hash_diff.txt"}
+  ],
+  "metric_comparison":[
+    {"arm":"W_BASE","cagr":0.633873,"sharpe":2.227477,"mdd":-0.290512},
+    {"arm":"W_GLOBAL_VIX","cagr":0.666667,"sharpe":2.505223,"mdd":-0.204198},
+    {"arm":"ER_BASE","cagr":0.653961,"sharpe":2.281342,"mdd":-0.261461},
+    {"arm":"ER_RISK_VIX","cagr":0.674087,"sharpe":2.405079,"mdd":-0.232570}
+  ],
+  "conclusions":{"code_correctness":"PASS","methodological_validity":"PARTIAL","report_reproduction":"PASS","live_profitability":"NOT_ASSESSED"}
+}

@@ -1,0 +1,25 @@
+{
+  "status": "REPLAY_ONLY",
+  "selection_cost": 0.001,
+  "bootstrap": {
+    "block": 21,
+    "draws": 4000,
+    "seed": 20261122
+  },
+  "cases": {
+    "5": {
+      "max_abs_daily_return_diff": 4.3021142204224816e-16,
+      "max_abs_bootstrap_diff": 6.661338147750939e-16,
+      "daily_sha256": "2c1b2e4a1cc71a0bd7e1ccd3fc76222f7a8c68d73f4020dc9705ecd077663c5e",
+      "metrics_sha256": "a5bbe7abca42d96468c219e4cfdf53ca8f9fd2bd4ed78d7120bd3f5d053d45f6",
+      "bootstrap_sha256": "fd0878aa44f136b584228095aeef2ef969f131c64c2fb0a6e1f93c1df6291627"
+    },
+    "10": {
+      "max_abs_daily_return_diff": 4.3021142204224816e-16,
+      "max_abs_bootstrap_diff": 1.304512053934559e-15,
+      "daily_sha256": "236606df7303ee48992f1bf432ae4f4dd1f86633c6edf9822437051b5a10cd4a",
+      "metrics_sha256": "30d4a49fd4dd48b0a0baee0afb1fbdd78620369b72d7fd6cdbb988cf4776c710",
+      "bootstrap_sha256": "40ad2753ff8be74460f0af7443b2119580be4c4dd17a588f90a6efc0c4d647d2"
+    }
+  }
+}

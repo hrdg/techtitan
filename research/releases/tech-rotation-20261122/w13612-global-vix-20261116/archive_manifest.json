@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "run_id": "w13612_global_vix_20261116",
+  "strategy_id": "W13612-GLOBAL-VIX-20261116",
+  "strategy_sha256": "e6b019068c95f58a6128dd97d5f755848d6fa8f1835512ec18188d461bf8a102",
+  "generated_at": "2026-11-22T15:54:22.669067+00:00",
+  "status": "complete",
+  "artifacts": [
+    {
+      "role": "communication",
+      "path": "ALGORITHM.md",
+      "sha256": "b3a01bd88a4677db4eb70f3e0541c7dbdc7e7bdc938e089e2d3fcc6126d4115d",
+      "description": "Human-readable implementation and archive guide."
+    },
+    {
+      "role": "evidence",
+      "path": "evidence.json",
+      "sha256": "7acf1f201a3ecc33d6d6be380a9b1553d1a627c7d17bc375136123b39028dff2",
+      "description": "Source evidence ledger."
+    },
+    {
+      "role": "spec",
+      "path": "strategy.json",
+      "sha256": "e6b019068c95f58a6128dd97d5f755848d6fa8f1835512ec18188d461bf8a102",
+      "description": "Frozen strategy specification."
+    },
+    {
+      "role": "validation",
+      "path": "validation.json",
+      "sha256": "f3b40ef7bc1bf9883cf6559ff8315a1e697434d87b3abe001be5004ef43ea7d3",
+      "description": "Recorded acceptance evidence and conclusions."
+    },
+    {
+      "role": "code",
+      "path": "code/replay_frozen.py",
+      "sha256": "186dcf5431613a241243146d4e2706dd9966ff55cfb39b28c90eebcd634d0884",
+      "description": "Executed code snapshot."
+    },
+    {
+      "role": "code",
+      "path": "code/test_replay.py",
+      "sha256": "b11d30839783d611a044be0cbee112f42ea1581e2736d8c7a6340d0afa493ef0",
+      "description": "Executed code snapshot."
+    },
+    {
+      "role": "code",
+      "path": "code/make_chart.py",
+      "sha256": "f79612a93bf6a2e5ba2a2cfe219edbe16c9f4aa84b1355e7164d7aebfb25196b",
+      "description": "Executed code snapshot."
+    },
+    {
+      "role": "data",
+      "path": "data_certificate.json",
+      "sha256": "ad42cf1b5e3e3dccd611505addcc84ba3a9af52e4cd30d0380eefe602f4e15c3",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "data",
+      "path": "data/daily_returns_common_axis_20261116.csv",
+      "sha256": "54a81076d5468639080ebde33c9ddac64346746f9f2f32c79b194215b7e4041e",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "data",
+      "path": "data/vix_state.csv",
+      "sha256": "727a05cc6fdc93d60e8e3013984ac3c117dd8c75bf974c05d24efd430c080ca5",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "data",
+      "path": "data/forward_shadow.csv",
+      "sha256": "e5a74539cbd5da0c1ecb51dd19e7d6956eb9fc6b47a22a5b73820250cba19903",
+      "description": "Run-local certified or derived data artifact."
+    },
+    {
+      "role": "result",
+      "path": "outputs/performance_comparison_20261116.csv",
+      "sha256": "22c147220def3bb3da8ca7a34d0653b1aa82e0e0df5f9bb5bdf1c7b9c02880b9",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/metrics_common_axis_20261116.csv",
+      "sha256": "c0de00b512622a5e54679c576c9fa768917be6865cdd110c0f10f9a278162f1d",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/common_axis_result.json",
+      "sha256": "be1a4dc3cd6c57c57a66935399743c48b2028a45e6d43bc31ad1b171fa3ae817",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/robustness_metrics.csv",
+      "sha256": "f920322809f274eae831ba66a0a00c37597d8bc8c554881939840801a9d517b7",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/robustness_bootstrap.csv",
+      "sha256": "cbb3ef53ac67ef8686d7b6e939dd6fd4cb58809a3e33b7841afb661febb7d35c",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/parameter_grid.csv",
+      "sha256": "0d0c5a0b216ae4b72fbf850a103eb9a545a4dc3fc5d633223feb873570b2b68c",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/cross_start.csv",
+      "sha256": "97f4908c6ee98e60e2467fbf16e44879a9c3de1b4a5908debe4fd0f2bb75f2a7",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/placebo.csv",
+      "sha256": "9307926116a594ebd0f5273ddeed82abd94a94e135e1f60e12f562de4617f929",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/common_axis_nav_drawdown.png",
+      "sha256": "2e4b4069ccff3a0a6143d5330dccb0b335ae8e388fdc69254e3ce27b96c91944",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "result",
+      "path": "outputs/robustness_nav_drawdown.png",
+      "sha256": "2d78f6c3f95791c88db3cca2d0a44dd5eacf058a9fc91ce2652fefacf5408237",
+      "description": "Result table, metric file, or other output evidence."
+    },
+    {
+      "role": "report",
+      "path": "reports/REPORT.md",
+      "sha256": "5eae8bc95bad4b9a8aa59de4e3ffeefa8d511c4d480505c8f871150bcc905861",
+      "description": "Run report or research note."
+    },
+    {
+      "role": "report",
+      "path": "reports/ROBUSTNESS.md",
+      "sha256": "943b2e4e9a26f704132c96b2d0eec63cc775c1ac887464f026ce4b971a9888d4",
+      "description": "Run report or research note."
+    },
+    {
+      "role": "report",
+      "path": "reports/FORWARD_SHADOW.md",
+      "sha256": "c4fa96b32dc3e3a66d458aea03cad10d105f0a8c5d629a186dc6ff4968bee055",
+      "description": "Run report or research note."
+    },
+    {
+      "role": "report",
+      "path": "reports/VALIDATION.md",
+      "sha256": "6ec35d48d01b743c09b14ffcf1bc5e0c05f0bd5c770a417b3153a005caa31a33",
+      "description": "Run report or research note."
+    },
+    {
+      "role": "report",
+      "path": "reports/STRATEGY_ARCHITECTURES.md",
+      "sha256": "bcd014b4584e13b051f6d82a08ab5562f96e880ddb0fc4702eb1b4e41b2631d6",
+      "description": "Run report or research note."
+    },
+    {
+      "role": "log",
+      "path": "logs/replay.log",
+      "sha256": "63490a94e4804ad050ba46176ea5a3bed31a59bcf06c63119249cdb3de65450c",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "log",
+      "path": "logs/test.log",
+      "sha256": "455a234a903f02c7d36882c9b036acc1ee7cca1176404082cfe9897ae40211f7",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "log",
+      "path": "logs/chart.log",
+      "sha256": "3ec82402a166169889b93f4c63534419ab249eb6304a7d99c280fc926260ff3a",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "log",
+      "path": "logs/replay_hash_diff.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "log",
+      "path": "logs/check_data_certificate.log",
+      "sha256": "1e90c81d2c7ef0109f790de801c80e29067e7c573bb8e9be983755cbf1f9f280",
+      "description": "Actual command or execution log."
+    },
+    {
+      "role": "result",
+      "path": "outputs/robustness_result.json",
+      "sha256": "02b029553c70412c69f93749220c2c3a24621f8e6a6e2ee227cfa548293bd9e7",
+      "description": "Robustness metadata with explicit architecture and exact-data parent lineage."
+    }
+  ],
+  "external_inputs": [],
+  "notes": "Historical robustness passed; W production refresh remains blocked. Research-only shadow."
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "label": "EFFECTIVE_RANK_HIGH_W@R20261116",
+  "status": "frozen_exploratory_shadow_only",
+  "parent_w": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+  "parent_v2": "V2_18K53_ETF_NORMALIZED_V20261116",
+  "signal": {
+    "feature": "effective_rank_63d",
+    "industry_count": 18,
+    "lookback_days": 63,
+    "threshold": "trailing_252d_median",
+    "minimum_threshold_history": 126,
+    "high_state": "W",
+    "low_state": "V2"
+  },
+  "execution": {
+    "decision": "month_end_close",
+    "effective": "next_month",
+    "switch_cost_bps": 10
+  },
+  "data_cutoff": "2026-11-16",
+  "production_change": false,
+  "independent_oos": false,
+  "future_profitability": "NOT_ASSESSED"
+}

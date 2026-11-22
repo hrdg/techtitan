@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "id": "V2-W13612-LOCAL-EXCEEDANCE-REBASE-20261122",
+  "strategy_id": "V2-W13612-LOCAL-EXCEEDANCE-REBASE-20261122",
+  "version": "0.1.0",
+  "mode": "extension",
+  "status": "frozen",
+  "research_status": "CORRECTION; EFFECTIVE_RANK_ONLY_FULL_POINT_EXCEEDER; NO_PRODUCTION_CHANGE",
+  "parent_version": "../v2_voteonly_refresh_20261116@1.0.0",
+  "decision": "用统一的新版W基准重算此前所有局部超越候选。",
+  "scope": {
+    "data_cutoff": "2026-11-16",
+    "latest_complete_month": "2026-10-30",
+    "selector_window": ["2020-09-01", "2026-11-16"],
+    "portfolio_window": ["2019-08-01", "2026-11-16"],
+    "base_cost_bps": 5,
+    "selector_switch_cost_bps": 10,
+    "floor_extra_cost_bps": 5
+  },
+  "candidates": {
+    "W_CAUSAL_NEWDATA": "统一新版基准",
+    "V2_NEWDATA": "新版V2",
+    "AVG_CORR_HIGH_V2": "平均相关高选V2，月度选择表复用",
+    "EFFECTIVE_RANK_HIGH_W": "有效秩高选W，月度选择表复用",
+    "FLOOR_50_TREND63": "V2趋势正时给V2敞口50%下限",
+    "FLOOR_25_TREND63": "V2趋势正时给V2敞口25%下限"
+  },
+  "requirements": [
+    {
+      "key": "universe.definition",
+      "value": "frozen V2 18-industry technology ETF panel and W13612",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01"],
+      "critical": true
+    },
+    {
+      "key": "universe.history",
+      "value": "same ETF and bond splice as refreshed V2/W strategies",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01"],
+      "critical": true
+    },
+    {
+      "key": "data.fields",
+      "value": "refreshed W/V2 returns, exposures, W equity/bond decomposition, selector monthly schedules",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "Inputs are read from v2_voteonly_refresh_20261116 and the frozen selector schedule.",
+      "critical": true
+    },
+    {
+      "key": "data.availability",
+      "value": "selector decisions from prior month-end; V2 63-day trend uses prior close",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "The rebase preserves the original causal schedule and shift-one trend.",
+      "critical": true
+    },
+    {
+      "key": "data.revisions",
+      "value": "frozen refreshed panel dated 2026-11-16",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "Not a full vendor vintage reconstruction.",
+      "critical": false
+    },
+    {
+      "key": "data.adjustment",
+      "value": "inherited refreshed ETF adjusted-close and bond returns",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01"],
+      "critical": true
+    },
+    {
+      "key": "factor.formula",
+      "value": "reuse selector schedules and recompute FLOOR with max(W exposure, k*V2 trend-on exposure)",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "run.py selector_returns and floor_returns implement the formulas.",
+      "critical": true
+    },
+    {
+      "key": "factor.preprocessing",
+      "value": "monthly selector state; no re-tuning; FLOOR k in {0.25,0.50}",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "Existing schedules are reused exactly.",
+      "critical": true
+    },
+    {
+      "key": "signal.clock",
+      "value": "month-end decision; next-month selector holding; daily FLOOR trend signal from prior close",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "No current-day return is used in the decision.",
+      "critical": true
+    },
+    {
+      "key": "portfolio.selection",
+      "value": "W, V2, frozen state selector schedules",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01", "F02"],
+      "critical": true
+    },
+    {
+      "key": "portfolio.weights",
+      "value": "selector chooses W or V2 monthly; FLOOR alters exposure only",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "Exposure remains bounded at one.",
+      "critical": true
+    },
+    {
+      "key": "execution.rebalance",
+      "value": "monthly selector switch; daily FLOOR exposure changes",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01", "F02"],
+      "critical": true
+    },
+    {
+      "key": "execution.fill",
+      "value": "inherited next-session convention",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01"],
+      "critical": true
+    },
+    {
+      "key": "execution.constraints",
+      "value": "long-only, no leverage; inherited tradability",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "The candidate exposure is clipped by the parent data.",
+      "critical": true
+    },
+    {
+      "key": "costs.model",
+      "value": "base 5bp; selector switch extra 10bp; FLOOR extra exposure 5bp",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01", "F02"],
+      "critical": true
+    },
+    {
+      "key": "backtest.period",
+      "value": "selector 2020-09-01..2026-11-16; portfolio 2019-08-01..2026-11-16",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "Windows reflect each candidate's data-specific minimum history.",
+      "critical": true
+    },
+    {
+      "key": "backtest.benchmark",
+      "value": "W_CAUSAL_NEWDATA on each same window",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01"],
+      "notes": "The old frozen W is not used for any current comparison.",
+      "critical": true
+    },
+    {
+      "key": "missing_data.policy",
+      "value": "intersection by date and fail on missing returns/exposure",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "All result frames are dropna-validated.",
+      "critical": true
+    },
+    {
+      "key": "validation.acceptance",
+      "value": "four-metric strict dominance plus paired block bootstrap",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F03"],
+      "notes": "Point dominance and statistical confirmation are reported separately.",
+      "critical": true
+    },
+    {
+      "key": "point_in_time",
+      "value": "frozen causal selector schedules and prior-close trend",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "The state thresholds and selection dates are unchanged.",
+      "critical": true
+    }
+  ],
+  "decisions": [],
+  "blockers": []
+}

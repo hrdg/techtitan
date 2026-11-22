@@ -1,0 +1,215 @@
+{
+  "schema_version": "1.0",
+  "id": "ER-RISKVIX-HA009-20261122",
+  "strategy_id": "ER-RISKVIX-HA009-20261122",
+  "version": "1.0.0",
+  "mode": "extension",
+  "status": "frozen",
+  "research_status": "EXPLORATORY_SHADOW_ONLY_NO_PRODUCTION_CHANGE",
+  "parent_version": "EFFECTIVE_RANK_HIGH_W@R20261116",
+  "decision": "行业VIX敏感度只在W/V2两个候选分支内部降低组合敞口，再由原有效秩选择器选择分支。",
+  "scope": {
+    "data_cutoff": "2026-11-16",
+    "latest_complete_month": "2026-10-30",
+    "portfolio_window": ["2019-08-01", "2026-11-16"],
+    "branch_turnover_cost_bps": [5, 10],
+    "selector_switch_cost_bps": 10,
+    "guard_multiplier": 0.5,
+    "vix_state_threshold": 0.80,
+    "selected_beta_rank_threshold": 0.50,
+    "beta_window_months": 36,
+    "effective_rank_window_days": 63,
+    "effective_rank_threshold_days": 252
+  },
+  "requirements": [
+    {
+      "key": "universe.definition",
+      "value": "18 SW L2 technology industries; W and V2 candidate sleeves inherit their frozen ETF mappings",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01", "F02"],
+      "critical": true
+    },
+    {
+      "key": "universe.history",
+      "value": "frozen parent snapshots dated 2026-11-16",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F02"],
+      "notes": "ETF membership and vendor vintage remain PARTIAL.",
+      "critical": true
+    },
+    {
+      "key": "data.fields",
+      "value": ["industry monthly returns", "VIX close", "W/V2 branch returns", "W/V2 exposure", "monthly effective-rank schedule"],
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "Fields are inherited from the frozen W/V2 ledger and copied industry/VIX panels.",
+      "critical": true
+    },
+    {
+      "key": "data.availability",
+      "value": "VIX is mapped to the latest available A-share close and shifted; month-end guard and selector execute next session",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "The source generator maps VIX to the latest available A-share close, shifts by one session, and executes month-end decisions next session.",
+      "critical": true
+    },
+    {
+      "key": "data.revisions",
+      "value": "frozen local snapshots dated 2026-11-16; no vendor revision history claimed",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "The package states the frozen-vintage limitation rather than reconstructing a full vendor release chain.",
+      "critical": true
+    },
+    {
+      "key": "data.adjustment",
+      "value": "inherited ETF adjusted close, industry returns and VIX index points",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "Adjustment and return construction are inherited from the parent branch ledgers; the new layer uses point changes in VIX.",
+      "critical": true
+    },
+    {
+      "key": "factor.formula",
+      "value": "R_i,m=a_i+b_i*DeltaVIX_m+e_i,m over trailing 36 months; selected beta rank is mean percentile of selected industries",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F01"],
+      "notes": "This is a Copeland-like industry-sensitivity proxy, not a claim of exact paper sample reproduction.",
+      "critical": true
+    },
+    {
+      "key": "factor.preprocessing",
+      "value": "VIX 252-day percentile; guard=.5 iff percentile>=.80 and selected beta percentile<=.5",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F03"],
+      "notes": "Beta uses 36 monthly observations; the guard uses the frozen 80% VIX percentile and 50% selected-beta percentile thresholds.",
+      "critical": true
+    },
+    {
+      "key": "signal.clock",
+      "value": "month-end signal; next-session effect",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "Signal dates come from the frozen month-end holdings and selections; portfolio effects start on the next trading session.",
+      "critical": true
+    },
+    {
+      "key": "portfolio.selection",
+      "value": "RISK_VIX is applied independently inside both W and V2; the original effective-rank selector then chooses W or V2",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F03"],
+      "notes": "The guard is applied separately to both candidate sleeves before the unchanged selector maps the monthly state to W or V2.",
+      "critical": true
+    },
+    {
+      "key": "portfolio.weights",
+      "value": "guarded exposure=original exposure*guard; no leverage; multipliers in {0.5,1.0}",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F03"],
+      "notes": "Original branch exposure is multiplied by a guard in {0.5,1.0}; the replay checks bounds and does not add leverage.",
+      "critical": true
+    },
+    {
+      "key": "execution.rebalance",
+      "value": "monthly selector choice; inherited daily risk exposure updates",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "The selector changes at month starts from the frozen schedule; inherited daily branch exposure updates remain unchanged.",
+      "critical": true
+    },
+    {
+      "key": "execution.fill",
+      "value": "inherited close-to-close branch returns with bond residual; no new intraday fill model",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "The publication replays frozen net branch returns rather than order-level fills.",
+      "critical": true
+    },
+    {
+      "key": "execution.constraints",
+      "value": "long-only, exposure bounded at one, inherited tradability and ETF mapping",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "The new multiplier reduces exposure only and cannot create leverage or new instruments.",
+      "critical": true
+    },
+    {
+      "key": "costs.model",
+      "value": {"branch_turnover_bps": [5, 10], "selector_switch_bps": 10},
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F03"],
+      "notes": "The 10bp cost case charges 10bp on all branch turnover and still charges the separate 10bp W/V2 switch.",
+      "critical": true
+    },
+    {
+      "key": "backtest.period",
+      "value": {"start": "2019-08-01", "end": "2026-11-16"},
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F02"],
+      "notes": "All package candidates use the same 1767-day frozen branch axis.",
+      "critical": true
+    },
+    {
+      "key": "backtest.benchmark",
+      "value": "EFFECTIVE_RANK_HIGH_W@R20261116 and an average-guard exposure-matched control",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F03"],
+      "notes": "The baseline is the effective-rank parent; the additionally matched control holds average guard exposure constant across time.",
+      "critical": true
+    },
+    {
+      "key": "missing_data.policy",
+      "value": "missing beta/state fails the replay; no adjustment if upstream guard is 1.0",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F03"],
+      "notes": "The replay requires complete beta and state rows and fails closed instead of inventing a guard.",
+      "critical": true
+    },
+    {
+      "key": "validation.acceptance",
+      "value": "point-estimate improvement is separate from statistical confirmation; 95% Sharpe-delta interval must exclude zero",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F04"],
+      "notes": "Point-estimate improvement, cost robustness and block-bootstrap confirmation are recorded separately.",
+      "critical": true
+    },
+    {
+      "key": "point_in_time",
+      "value": "frozen branch ledgers and causal monthly selections; source generator shifts VIX and executes next session",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F01", "F02"],
+      "notes": "Published replay can verify accounting, not independently reconstruct every vendor input.",
+      "critical": true
+    }
+  ],
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "decision": "Keep the candidate as SHADOW_ONLY because both 21-day block-bootstrap intervals include zero.",
+      "status": "approved",
+      "approved_at": "2026-11-22"
+    }
+  ],
+  "production_change": false,
+  "blockers": []
+}

@@ -1,0 +1,176 @@
+{
+  "status": "ROBUST_SHADOW_ELIGIBLE",
+  "parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+  "base_architecture_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1",
+  "sample": [
+    "2019-08-01",
+    "2026-07-31"
+  ],
+  "w_reconstruction": {
+    "return_max_abs_diff": 0.0,
+    "exposure_max_abs_diff": 0.0
+  },
+  "base_metrics": {
+    "5": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.6716861194626829,
+      "vol": 0.2862961268822839,
+      "sharpe": 2.3461236684450832,
+      "mdd": -0.20522996398861149,
+      "calmar": 3.27284625699177,
+      "total_return": 31.71706603952228,
+      "n_days": 1697
+    },
+    "10": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.6427800380766278,
+      "vol": 0.2863524165386274,
+      "sharpe": 2.244716653159168,
+      "mdd": -0.21238529127053907,
+      "calmar": 3.026480949934741,
+      "total_return": 28.063845913540636,
+      "n_days": 1697
+    },
+    "20": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.5863778088081759,
+      "vol": 0.28663005317229684,
+      "sharpe": 2.0457652724074156,
+      "mdd": -0.2265243916578875,
+      "calmar": 2.5885857347042935,
+      "total_return": 21.927683489330608,
+      "n_days": 1697
+    }
+  },
+  "candidate_metrics": {
+    "5": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.7021037046838294,
+      "vol": 0.27005993487748536,
+      "sharpe": 2.599806983595489,
+      "mdd": -0.18729041038883643,
+      "calmar": 3.748743479317395,
+      "total_return": 35.97712004396565,
+      "n_days": 1697,
+      "guard_days": 311,
+      "guard_episodes": 45,
+      "median_guard_days": 2.0,
+      "max_guard_days": 44,
+      "average_exposure": 0.44077784325279906
+    },
+    "10": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.6688692544972057,
+      "vol": 0.2701123396395154,
+      "sharpe": 2.4762632295505655,
+      "mdd": -0.19216376726867912,
+      "calmar": 3.4807251335888285,
+      "total_return": 31.344665617012247,
+      "n_days": 1697,
+      "guard_days": 311,
+      "guard_episodes": 45,
+      "median_guard_days": 2.0,
+      "max_guard_days": 44,
+      "average_exposure": 0.44077784325279906
+    },
+    "20": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.6042511635827312,
+      "vol": 0.2703918331656692,
+      "sharpe": 2.234724164958437,
+      "mdd": -0.20183745115732488,
+      "calmar": 2.9937514575119146,
+      "total_return": 23.73937933496305,
+      "n_days": 1697,
+      "guard_days": 311,
+      "guard_episodes": 45,
+      "median_guard_days": 2.0,
+      "max_guard_days": 44,
+      "average_exposure": 0.44077784325279906
+    }
+  },
+  "matched_metrics": {
+    "5": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.19895691732492526,
+      "vol": 0.168390862016054,
+      "sharpe": 1.1815184918167185,
+      "mdd": -0.21441894505958137,
+      "calmar": 0.9278887053083876,
+      "total_return": 2.427036147271795,
+      "n_days": 1697
+    },
+    "10": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.19556403072613993,
+      "vol": 0.16835220181463084,
+      "sharpe": 1.1616363113650956,
+      "mdd": -0.21493723624068162,
+      "calmar": 0.9098657549832453,
+      "total_return": 2.361742476803058,
+      "n_days": 1697
+    },
+    "20": {
+      "start": "2019-08-01",
+      "end": "2026-07-31",
+      "cagr": 0.1888030843644719,
+      "vol": 0.16829411787915985,
+      "sharpe": 1.1218638342430844,
+      "mdd": -0.21802361917490043,
+      "calmar": 0.8659753703703654,
+      "total_return": 2.234790497684398,
+      "n_days": 1697
+    }
+  },
+  "core_gates": {
+    "delta_5bp_at_least_0_05": true,
+    "delta_10bp_positive": true,
+    "delta_20bp_positive": true,
+    "bootstrap_base_5bp_lower_positive": true,
+    "bootstrap_matched_5bp_lower_positive": true,
+    "mdd_no_worse_than_base_by_1pp": true,
+    "cross_start_all_positive": true
+  },
+  "plateau": {
+    "positive_configs": 27,
+    "positive_share": 1.0,
+    "primary_grid_sharpe": 2.599806983595489,
+    "primary_is_positive": true,
+    "cross_start_all_positive": true,
+    "placebo_p_one_sided": 0.007984031936127744,
+    "placebo_95th_sharpe": 2.4520708368873017
+  },
+  "shadow": {
+    "protocol_version": "W13612-US-VIX-SHADOW-20261122-v1.0",
+    "frozen_at": "2026-11-22T20:00:00+08:00",
+    "signal_date": "2026-11-20",
+    "effective_date": "2026-11-23",
+    "vix_last_observation": "2026-11-18",
+    "vix_value_used": 24.56,
+    "vix_percentile_252": 0.9186507936507936,
+    "multiplier": 0.5,
+    "base_exposure": null,
+    "shadow_exposure": null,
+    "evaluation_status": "WAITING_FOR_VIX_REFRESH_AND_W_SOURCE_WIRING",
+    "reason": "W production refresh remains BLOCKED_W_SOURCE_NOT_WIRED; no forward return or target exposure is fabricated."
+  },
+  "input_hashes": {
+    "vix_history": "d4e2b1199951501b7757814b6e1c2356394922a7ea8ef16d85c3a4596e6e2c2d",
+    "vix_latest": "05727128e10cd2cfd3cf90abdc8fb9e4b021f04b2ac326fed54441e309e7cc67",
+    "cn_calendar": "75aa546809ef10caaedc3117b34852c4b5fbdf7b4e8c9ab0bf0b88c47842f7ba",
+    "parent_run": "24160b68db259f181f5fbe70d57a56f84fcdf8e0323cdf966f6ee56bd8e104fa"
+  },
+  "boundary": [
+    "Historical exploratory evidence; not independent OOS.",
+    "W production refresh remains blocked after 2026-07-31.",
+    "Forward shadow stores signals only until W exposure and return are wired."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "id": "W13612-GLOBAL-VIX-20261116",
+  "strategy_id": "W13612-GLOBAL-VIX-20261116",
+  "version": "1.0.0",
+  "mode": "extension",
+  "status": "frozen",
+  "research_status": "ROBUST_SHADOW_ONLY_NO_PRODUCTION_CHANGE",
+  "parent_version": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+  "parent_lineage": {
+    "base_architecture": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1",
+    "exact_data_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
+    "relationship": "The architecture is inherited from the frozen v1 tag, while the packaged 2019-08-01..2026-11-16 comparison uses the refreshed research ledger. Metrics must not be applied to the frozen v1 ledger as if they share one snapshot."
+  },
+  "requirements": [
+    {"key":"universe.definition","value":"frozen W13612 18-industry ETF-mapped architecture; exact replay data from the 2026-11-16 refreshed W ledger","status":"confirmed","basis":"source","evidence_ids":["F-PARENT"],"critical":true},
+    {"key":"universe.history","value":"refreshed research ledger 2019-08-01 through 2026-11-16; direct refreshed-W diagnostic through 2026-07-31","status":"confirmed","basis":"source","evidence_ids":["F-PARENT"],"critical":true},
+    {"key":"data.fields","value":["W target","W exposure","W equity return","W bond return","CBOE VIX"],"status":"confirmed","basis":"derived","evidence_ids":["F-PARENT","F-VIX"],"notes":"Fields are aligned to one common daily axis.","critical":true},
+    {"key":"data.availability","value":"VIX state lags and executes next session","status":"confirmed","basis":"derived","evidence_ids":["F-VIX"],"notes":"Conservative double lag is retained.","critical":true},
+    {"key":"data.revisions","value":"frozen snapshots; no production vintage claim","status":"confirmed","basis":"derived","evidence_ids":["F-VIX"],"notes":"Vendor revision chain remains blocked.","critical":true},
+    {"key":"data.adjustment","value":"inherited adjusted-close W accounting","status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"No new price adjustment.","critical":true},
+    {"key":"factor.formula","value":"0.5 exposure if trailing 252-session VIX rank >=0.8","status":"confirmed","basis":"source","evidence_ids":["F-VIX"],"notes":"The rule is frozen before this publication package.","critical":true},
+    {"key":"factor.preprocessing","value":"VIX mapped to A-share dates, one-date lag, rank, then one state lag","status":"confirmed","basis":"derived","evidence_ids":["F-VIX"],"notes":"No same-close execution.","critical":true},
+    {"key":"signal.clock","value":"A-share close; next-session effect","status":"confirmed","basis":"derived","evidence_ids":["F-VIX"],"notes":"Signals are causal under the conservative convention.","critical":true},
+    {"key":"portfolio.selection","value":"all W selections unchanged","status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"Risk multiplier only.","critical":true},
+    {"key":"portfolio.weights","value":"candidate exposure=W exposure*guard; residual bond","status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"No leverage.","critical":true},
+    {"key":"execution.rebalance","value":"daily risk multiplier; inherited W rebalance","status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"Turnover charged on target weights.","critical":true},
+    {"key":"execution.fill","value":"inherited close-to-close W accounting","status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"No new fill model.","critical":true},
+    {"key":"execution.constraints","value":"long-only, exposure <=1","status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"Guard only reduces exposure.","critical":true},
+    {"key":"costs.model","value":{"primary":0.0005,"stress":[0.001,0.002]},"status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"Research and stress cases are separated.","critical":true},
+    {"key":"backtest.period","value":{"common_axis":["2019-08-01","2026-11-16"],"robustness":["2019-08-01","2026-07-31"]},"status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"The common-axis view and robustness period are explicitly separated.","critical":true},
+    {"key":"backtest.benchmark","value":"refreshed W base, refreshed ER base and constant average exposure","status":"confirmed","basis":"derived","evidence_ids":["F-PARENT"],"notes":"All comparisons use the same refreshed-ledger dates and costs; the frozen v1 tag is an architecture parent, not the metric comparator.","critical":true},
+    {"key":"missing_data.policy","value":"missing VIX state means guard off; no forward W target while source blocked","status":"confirmed","basis":"derived","evidence_ids":["F-VIX"],"notes":"No synthetic future value.","critical":true},
+    {"key":"validation.acceptance","value":"zero-error W reconstruction, cost robustness, parameter plateau, cross-start and placebo","status":"confirmed","basis":"derived","evidence_ids":["F-VIX"],"notes":"Published validation records each check.","critical":true},
+    {"key":"point_in_time","value":"future VIX changes do not affect prior states","status":"confirmed","basis":"derived","evidence_ids":["F-VIX"],"notes":"Synthetic truncation test passes.","critical":true}
+  ],
+  "decisions": [],
+  "production_change": false,
+  "blockers": []
+}
