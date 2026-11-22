@@ -13,6 +13,8 @@ validation / logs）。**这是一个部分复现**，与原文的差距、原�
 `techtitan` 是科技策略主库；`rotation/tech-rotation` 作为对外发布镜像保留。
 三个版本化研究包已非破坏性迁入
 [`research/releases/tech-rotation-20261122/`](research/releases/tech-rotation-20261122/)：
+该入口同时整合了原 `rotation/tech-rotation/README.md` 的基线、滚动 OOS、
+v1→v2、77因子否证及扩展研究总览。
 
 - `EFFECTIVE_RANK_HIGH_W@R20261116`：W/V2有效秩选择器，65.44% / 2.282 / -26.15%；
 - `ER_RISK_VIX@20261122`：有效秩内叠行业VIX Beta守卫，67.41% / 2.405 / -23.26%；

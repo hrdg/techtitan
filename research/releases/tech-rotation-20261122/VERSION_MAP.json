@@ -10,6 +10,12 @@
     "techtitan": "technology strategy source of truth",
     "rotation": "external release mirror; original tech-rotation packages retained"
   },
+  "readme_integration": {
+    "source_path": "rotation@6a9f0fa140b9ecda6696e050dde2077253b0469b:tech-rotation/README.md",
+    "source_sha256": "f7aed4c092c8d1b4341d19a45225c4f735018a85348dff2e63a35a50b30e384e",
+    "target": "research/releases/tech-rotation-20261122/README.md",
+    "adaptation": "The baseline and extension narrative was integrated; links to baseline-only configuration, results, scripts and momentum77 assets use the source GitHub paths."
+  },
   "lineage": {
     "base_architecture_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-v1",
     "exact_data_parent": "W13612-A015-MOMBIN-3OF5-VOTEONLY-ETF-BC50-BOND30-R20261116",
