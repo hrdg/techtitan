@@ -23,6 +23,17 @@ v1→v2、77因子否证及扩展研究总览。
 三包均为历史已查看的 `SHADOW_ONLY` 研究，不是独立OOS或生产配置。全球VIX结果绑定
 刷新账本 `...-R20261116`，不能归因到冻结 `...-v1` 的 `70.53%` 原始账本。
 
+### 有效秩 + global VIX（2026-11-23）
+
+新增独立研究包
+[`research/effective_rank_global_vix_20261123/`](research/effective_rank_global_vix_20261123/)：
+月末有效秩选择 W/V2，VIX 252日分位达到80%时把所选科技袖套减半到债券残差。
+
+历史 `2019-08-01..2026-11-16`、5bp：CAGR 68.42%、Sharpe 2.566、MDD -20.42%、
+Calmar 3.351。它修复了裸有效秩的2025年深回撤，但相对 `W + global VIX`
+仅小幅领先，且多重检验后核心Sharpe增量未确认。状态：
+`POINT_ESTIMATE_IMPROVEMENT_STATISTICALLY_INCONCLUSIVE / NO_PRODUCTION_CHANGE`。
+
 
 ## 当前策略分层（2026-11-04）
 

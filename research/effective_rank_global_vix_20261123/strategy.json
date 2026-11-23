@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "strategy_id": "ER-GLOBAL-VIX-252D80-HALF@20261123",
+  "mode": "extension",
+  "status": "frozen",
+  "parent_versions": [
+    "EFFECTIVE_RANK_HIGH_W@R20261116",
+    "W13612-GLOBAL-VIX@20261116"
+  ],
+  "parent_version": "EFFECTIVE_RANK_HIGH_W@R20261116",
+  "decision": "在有效秩选择的 W_BASE/V2_BASE 科技袖套上，再叠加冻结的全球 VIX 252 日分位减半规则。",
+  "requirements": [
+    {
+      "key": "universe.definition",
+      "value": "科技袖套在 W_BASE 与 V2_BASE 间月末二选一；VIX≥80%时50%袖套转债券残差（早期511260，2023-06起511090）。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "Direct composition of the frozen W/V2 selector universe and the bond residual policy."
+    },
+    {
+      "key": "universe.history",
+      "value": "W、V2、有效秩和VIX共同轴2019-08-01至2026-11-16；有效秩切换自2020-09启用。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "data.fields",
+      "value": ["W_BASE净收益", "ER_BASE净收益", "V2基础分支", "VIX 252日分位", "VIX乘数", "511090日收益"],
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "data.availability",
+      "value": "有效秩月末收盘后形成、下一交易日生效；VIX沿用双重滞后；债券残差日频盯市。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "data.revisions",
+      "value": "复用2026-11-16冻结研究面板；不宣称完整vendor vintage。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "data.adjustment",
+      "value": "继承W、ER和511090上游复权口径；不引入新价格源。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F3"],
+      "critical": true,
+      "notes": "No new price source; all adjustments are inherited from the frozen parent series."
+    },
+    {
+      "key": "factor.formula",
+      "value": "r_candidate=f*r_ER_BASE+(1-f)*r_511090-0.0005*abs(diff(f))；f=0.5 iff VIX rank252>=0.8 else 1。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F2", "F3"],
+      "critical": true,
+      "notes": "User requested this combination; the formula is the frozen VIX multiplier and bond-residual accounting applied to frozen ER_BASE."
+    },
+    {
+      "key": "factor.preprocessing",
+      "value": "有效秩63日窗口、252日滚动中位阈值和月末选择完全继承；VIX 252日分位阈值与双重滞后完全继承。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "signal.clock",
+      "value": "W/V2月末决策，下一共同交易日生效；VIX状态下一交易日生效；不使用未来收益。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "portfolio.selection",
+      "value": "固定七个科技臂和AW7 pair/triple替换，不扩展阈值或窗口候选。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "Selection is limited to the predeclared seven technology arms and AW7 replacement arms."
+    },
+    {
+      "key": "portfolio.weights",
+      "value": "ER_BASE为1单位袖套；VIX警报时0.5单位ER_BASE+0.5单位债券残差，否则1单位ER_BASE。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "Weights combine the selected sleeve with the bond residual using the frozen 0.5 multiplier."
+    },
+    {
+      "key": "execution.rebalance",
+      "value": "W/V2月末切换；VIX状态按日调整袖套与债券权重。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "execution.fill",
+      "value": "继承子腿close-to-close研究会计，次日生效；不声称开盘成交。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "execution.constraints",
+      "value": "long-only，无杠杆，科技袖套和债券权重均非负且合计1。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "Long-only and nonnegative weights follow directly from f in [0.5,1]."
+    },
+    {
+      "key": "costs.model",
+      "value": {"base_overlay":0.0005,"stress_overlay":0.001},
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "Underlying W/ER returns already include their internal 5bp costs."
+    },
+    {
+      "key": "backtest.period",
+      "value": {"full":["2019-08-01","2026-11-16"],"mature":["2022-08-01","2026-11-16"]},
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "The period is the intersection of the frozen W, V2, ER and VIX common axis."
+    },
+    {
+      "key": "backtest.benchmark",
+      "value": ["ER_BASE", "W_GLOBAL_VIX", "W_BASE", "same-average exposure control"],
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "Benchmarks are the frozen ER_BASE and W_GLOBAL_VIX parents plus a same-average exposure control."
+    },
+    {
+      "key": "missing_data.policy",
+      "value": "主输入共同轴内有缺失即失败；VIX分位未形成时乘数1。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "Fail closed on missing common-axis observations; the inherited VIX warm-up uses multiplier one."
+    },
+    {
+      "key": "validation.acceptance",
+      "value": "全期/分段指标、63日块bootstrap、5/10bp成本、同平均敞口、pair/triple替换和BH校正。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "Acceptance follows PRE_REPRO sections 5 and 6 and the same frozen comparison arms."
+    },
+    {
+      "key": "point_in_time",
+      "value": "有效秩只用截至月末数据；VIX按冻结双重滞后映射；未来数据变化不得改变历史乘数。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true
+    },
+    {
+      "key": "historical_universe",
+      "value": "继承W 18行业和V2 ETF历史池；本实验不重建成员。",
+      "status": "confirmed",
+      "basis": "source",
+      "evidence_ids": ["F1", "F3"],
+      "critical": true
+    },
+    {
+      "key": "accounting",
+      "value": "袖套收益与511090按f加权；额外换手仅按|Δf|×成本率计入。",
+      "status": "confirmed",
+      "basis": "derived",
+      "evidence_ids": ["F1", "F2", "F3"],
+      "critical": true,
+      "notes": "The candidate is the f-weighted sleeve plus bond return less the explicitly defined overlay turnover cost."
+    }
+  ],
+  "decisions": [],
+  "blockers": [],
+  "production_change": false
+}
