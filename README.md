@@ -34,6 +34,15 @@ Calmar 3.351。它修复了裸有效秩的2025年深回撤，但相对 `W + glob
 仅小幅领先，且多重检验后核心Sharpe增量未确认。状态：
 `POINT_ESTIMATE_IMPROVEMENT_STATISTICALLY_INCONCLUSIVE / NO_PRODUCTION_CHANGE`。
 
+#### RV3 / ΔC6 前瞻影子
+
+25组网格中，`RV Top3 ∩ ΔC Top6` 成为全期点估计最优：
+`ER-GLOBAL-VIX-RV3-DC6@20261123`。相对原 `RV3 / ΔC5`：
+CAGR 68.51%→70.23%、Sharpe 2.568→2.625、MDD同为-20.42%、
+Calmar 3.355→3.439。Sharpe增量仅+0.057且bootstrap跨零，改善集中于
+2025–2026，不替换基线。代码、策略架构图和绩效说明见
+[`research/releases/er-global-vix-rv3-dc6-20261123/`](research/releases/er-global-vix-rv3-dc6-20261123/)。
+
 
 ## 当前策略分层（2026-11-04）
 

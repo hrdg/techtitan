@@ -1,0 +1,83 @@
+{
+  "strategy": "ER-GLOBAL-VIX-252D80-HALF@20261123",
+  "grid": {
+    "rv_k": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "dc_k": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "sample": [
+    "2019-08-01",
+    "2026-11-16"
+  ],
+  "baseline": {
+    "rv_k": 3,
+    "dc_k": 5
+  },
+  "best_full_sharpe": {
+    "rv_k": 3,
+    "dc_k": 6,
+    "arm": "ER_GLOBAL_VIX",
+    "window": "FULL",
+    "start": "2019-08-02",
+    "end": "2026-11-16",
+    "cagr": 0.7022735248040484,
+    "vol": 0.267483942577771,
+    "sharpe": 2.62547918965215,
+    "sortino": 4.595952169970039,
+    "mdd": -0.2041975197804874,
+    "calmar": 3.439187339586658,
+    "total_return": 41.85399265613057,
+    "n_days": 1766
+  },
+  "best_full_vs_baseline_bootstrap": {
+    "sharpe_delta": 0.057274538477450676,
+    "sharpe_ci025": -0.09248517450479762,
+    "sharpe_ci975": 0.23509714276532506,
+    "sharpe_p_two_sided": 0.5064
+  },
+  "pseudo_oos_selected_on_2019_2023": {
+    "rv_k": 3,
+    "dc_k": 4,
+    "result": {
+      "selected_on_2019_2023": [
+        3,
+        4
+      ],
+      "start": "2024-01-02",
+      "end": "2026-11-16",
+      "cagr": 0.8766035049,
+      "vol": 0.285408919,
+      "sharpe": 3.0713949239,
+      "sortino": 5.7687644194,
+      "mdd": -0.159328122,
+      "calmar": 5.5018755867,
+      "total_return": 4.7396065719,
+      "n_days": 694,
+      "baseline_2024_2026": {
+        "start": "2024-01-02",
+        "end": "2026-11-16",
+        "cagr": 0.8766035049,
+        "vol": 0.285408919,
+        "sharpe": 3.0713949239,
+        "sortino": 5.7687644194,
+        "mdd": -0.159328122,
+        "calmar": 5.5018755867,
+        "total_return": 4.7396065719,
+        "n_days": 694
+      }
+    }
+  },
+  "production_change": false,
+  "future_profitability": "NOT_ASSESSED"
+}
